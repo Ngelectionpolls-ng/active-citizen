@@ -8,6 +8,7 @@ import Footer from "@/components/shared/footer";
 import Hero from "@/components/shared/hero";
 import { Icons } from "@/components/shared/icons";
 import Navbar from "@/components/shared/navbar";
+import ScrollToTop from "@/components/shared/scroll-to-top";
 import Image from "next/image";
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
       <LatestCampaigns />
       <StartCompaign />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }
