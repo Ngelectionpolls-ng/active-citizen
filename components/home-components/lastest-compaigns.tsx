@@ -11,7 +11,7 @@ const LatestCampaigns = () => {
             <h4 className='text-[#2F2A33] text-2xl font-bold'>Latest Compaign</h4>
         </div>
 
-        <div className="section-container flex space-x-4 mt-4 overflow-x-auto p-4">
+        <div className="section-container no-scrollbar flex space-x-4 mt-4 overflow-x-auto p-4">
   {compaigns.map((compaign) => (
     <div key={compaign.id} className="flex rounded-md bg-[#F8F1EA] p-3 min-w-[300px]">
       <Image src={compaign.imagesrc} alt="alt" width={80} height={80} />
