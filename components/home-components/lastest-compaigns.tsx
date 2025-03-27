@@ -13,10 +13,10 @@ const LatestCampaigns = () => {
 
         <div className="section-container no-scrollbar flex space-x-4 mt-4 overflow-x-auto p-4">
   {compaigns.map((compaign) => (
-    <div key={compaign.id} className="flex rounded-md bg-[#F8F1EA] p-3 min-w-[300px]">
-      <Image src={compaign.imagesrc} alt="alt" width={80} height={80} />
+    <div key={compaign.id} className="flex rounded-md bg-[#F8F1EA] p-3 w-full min-w-[300px]">
+      <Image src={compaign.imagesrc} alt="alt" width={100} height={80} />
       <div className="p-3">
-        <p className="font-bold">{compaign.summary}</p>
+        <p className="font-bold max-w-[200px] w-full">{compaign.summary}</p>
       </div>
     </div>
   ))}

@@ -14,7 +14,7 @@ const StartCompaign = () => {
 
 
         </div>
-        <div className='section-container place-content-center place-items-center grid grid-cols-1 gap-4 mt-6 pb-8 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='section-container place-content-center grid grid-cols-1 place-items-center gap-4 mt-6 pb-8 md:grid-cols-2 lg:grid-cols-3'>
             {needStart.map((need) => (
                 <div className=' w-fit bg-[#F8F1EA] rounded-[10px]' key={need.id}>
                     <div className='overflow-hidden'>
