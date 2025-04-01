@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -28,16 +29,21 @@ export function FeedCard({
   daysLeft,
 }: FeedCardProps) {
   const progress = (current / target) * 100;
+  const blurDataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAFUlEQVR4nGM8ceIEA27AhEduBEsDAN9QAmyb10RsAAAAAElFTkSuQmCC";
 
   return (
     <Link href={`/campaign/${id}`}>
       <Card className="group hover:shadow-lg transition-shadow duration-200">
         <CardHeader className="p-0">
           <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
-            <img
+            <Image
               src={imageUrl}
               alt={title}
-              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-200"
+              layout="fill"
+              objectFit="cover"
+              className="group-hover:scale-105 transition-transform duration-200"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
             />
             <Badge 
               className={`absolute top-4 left-4 ${
