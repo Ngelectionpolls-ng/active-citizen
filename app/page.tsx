@@ -6,10 +6,8 @@ import StatsContainer from "@/components/home-components/stats-container";
 import WhoWeAre from "@/components/home-components/who-we-are";
 import Footer from "@/components/shared/footer";
 import Hero from "@/components/shared/hero";
-import { Icons } from "@/components/shared/icons";
 import Navbar from "@/components/shared/navbar";
 import ScrollToTop from "@/components/shared/scroll-to-top";
-import Image from "next/image";
 
 export default function Home() {
   return (
