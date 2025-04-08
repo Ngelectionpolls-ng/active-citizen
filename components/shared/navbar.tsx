@@ -5,6 +5,7 @@ import { Button, buttonVariants } from '../ui/button'
 import { MenuIcon, Search, X } from 'lucide-react'
 import Link from 'next/link'
 import NavigationMenuComponent from './navs-dropdown'
+import { ActionDropdown } from './nav-action-dropdown'
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -40,9 +41,10 @@ const Navbar: React.FC = () => {
           <div className='hidden lg:inline-block'>
             <Search className="text-[#2F2A33]" />
           </div>
-          <Button className='font-bold'>
+          <ActionDropdown />
+          {/* <Button className='font-bold'>
             Donate or Start Petition
-          </Button>
+          </Button> */}
           <Link href={'/login'} className={buttonVariants({ variant: 'ghost' })}>Log in</Link>
         </div>
         
