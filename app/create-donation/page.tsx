@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,8 +13,22 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Users, User, Heart, ArrowLeft, ArrowRight, Image as ImageIcon } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Users,
+  User,
+  Heart,
+  ArrowLeft,
+  ArrowRight,
+  Image as ImageIcon,
+  Home,
+} from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const formSchema = z.object({
   fundraisingType: z.enum(["self", "other", "charity"]),
@@ -24,8 +40,10 @@ const formSchema = z.object({
 });
 
 export default function CreateDonation() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
   const [coverImagePreview, setCoverImagePreview] = useState<string | null>(null);
   const maxSteps = 5;
 
@@ -43,12 +61,10 @@ export default function CreateDonation() {
 
   const onSubmit = async (data) => {
     const isAuthenticated = true; // Replace with actual auth check
-
     if (!isAuthenticated) {
       setIsAuthModalOpen(true);
       return;
     }
-
     console.log(data);
   };
 
@@ -71,7 +87,6 @@ export default function CreateDonation() {
                   <p className="text-sm text-gray-500">Funds are delivered to your bank account</p>
                 </div>
               </Label>
-
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
                 <RadioGroupItem value="other" />
                 <Users className="w-6 h-6" />
@@ -80,7 +95,6 @@ export default function CreateDonation() {
                   <p className="text-sm text-gray-500">You'll invite a beneficiary to receive funds</p>
                 </div>
               </Label>
-
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
                 <RadioGroupItem value="charity" />
                 <Heart className="w-6 h-6" />
@@ -100,16 +114,11 @@ export default function CreateDonation() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="title">Fundraiser Title</Label>
-                <Input
-                  id="title"
-                  placeholder="Give your fundraiser a clear title"
-                  {...form.register("title")}
-                />
+                <Input id="title" placeholder="Give your fundraiser a clear title" {...form.register("title")} />
                 {form.formState.errors.title && (
                   <p className="text-sm text-red-500">{form.formState.errors.title.message}</p>
                 )}
               </div>
-
               <div>
                 <Label htmlFor="story">Your Story</Label>
                 <Textarea
@@ -219,9 +228,16 @@ export default function CreateDonation() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="flex flex-col lg:flex-row min-h-screen">
-        {/* Left side - Form */}
         <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
+            {/* Home Button with Dialog Trigger */}
+            <div className="mb-6">
+              <Button variant="ghost" onClick={() => setIsLeaveDialogOpen(true)}>
+                <Home className="w-4 h-4 mr-2" />
+                Back to Homepage
+              </Button>
+            </div>
+
             <Progress value={(step / maxSteps) * 100} className="mb-8" />
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -253,7 +269,7 @@ export default function CreateDonation() {
           </div>
         </div>
 
-        {/* Right side - Image (hidden on mobile) */}
+        {/* Right Side Visual */}
         <div className="hidden lg:block lg:w-1/2 relative">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -272,17 +288,44 @@ export default function CreateDonation() {
         </div>
       </div>
 
+      {/* Auth Modal */}
       <Dialog open={isAuthModalOpen} onOpenChange={setIsAuthModalOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Sign in to create your fundraiser</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 pt-4">
-            <Button className="w-full" onClick={() => {/* Handle sign in */}}>
+            <Button className="w-full" onClick={() => {}}>
               Sign In
             </Button>
-            <Button variant="outline" className="w-full" onClick={() => {/* Handle register */}}>
+            <Button variant="outline" className="w-full" onClick={() => {}}>
               Create Account
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Leave Confirmation Dialog */}
+      <Dialog open={isLeaveDialogOpen} onOpenChange={setIsLeaveDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Leave this page?</DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-gray-600">
+            You haven’t finished creating your fundraiser. Are you sure you want to go back to the homepage?
+          </p>
+          <div className="flex justify-end space-x-2 pt-4">
+            <Button variant="outline" onClick={() => setIsLeaveDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                setIsLeaveDialogOpen(false);
+                router.push("/");
+              }}
+            >
+              Leave
             </Button>
           </div>
         </DialogContent>
