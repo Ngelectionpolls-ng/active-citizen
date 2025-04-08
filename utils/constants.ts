@@ -108,11 +108,20 @@ export const whoWeAre = [
         heading: 'Our Vision',
         description: 'A thriving African continent where transparent and accountable governance upholds democratic values, empowers citizens, and ensures equitable and sustainable development.'
     },
-    {
+
+      {
         id: uuidv4(),
         heading: 'Our Value',
-        description: 'Transparency Accountability Inclusivity Collaboration Empowerment Integrity'
-    },
+        description: [
+            'Transparency',
+            'Accountability',
+            'Inclusivity',
+            'Collaboration',
+            'Empowerment',
+            'Integrity'
+        ]
+    
+  }
 ]
 
 export const ourInitiative = [
