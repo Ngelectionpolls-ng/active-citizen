@@ -84,24 +84,24 @@ export default function CreateDonation() {
                 <RadioGroupItem value="self" />
                 <User className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">Yourself</p>
-                  <p className="text-sm text-gray-500">Funds are delivered to your bank account</p>
+                  <p className="font-medium">A Citizen in Need</p>
+                  <p className="text-sm text-gray-500">Help a Citizen in Need </p>
                 </div>
               </Label>
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
                 <RadioGroupItem value="other" />
                 <Users className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">Someone else</p>
-                  <p className="text-sm text-gray-500">You'll invite a beneficiary to receive funds</p>
+                  <p className="font-medium">A Local Community</p>
+                  <p className="text-sm text-gray-500">Help a Local Community</p>
                 </div>
               </Label>
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
                 <RadioGroupItem value="charity" />
                 <Heart className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">Charity</p>
-                  <p className="text-sm text-gray-500">Funds are delivered to your chosen charity</p>
+                  <p className="font-medium">A Natioanl Interest</p>
+                  {/* <p className="text-sm text-gray-500">A National Interest</p> */}
                 </div>
               </Label>
             </RadioGroup>

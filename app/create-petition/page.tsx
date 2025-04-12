@@ -83,24 +83,24 @@ export default function CreatePetition() {
                 <RadioGroupItem value="local" />
                 <HomeIcon className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">Local</p>
-                  <p className="text-sm text-gray-500">For changes in your community</p>
+                  <p className="font-medium">A Citizen in Need</p>
+                  <p className="text-sm text-gray-500">For changes for an individual</p>
                 </div>
               </Label>
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
                 <RadioGroupItem value="national" />
                 <Building2 className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">National</p>
-                  <p className="text-sm text-gray-500">For changes at the country level</p>
+                  <p className="font-medium">A Local Community</p>
+                  <p className="text-sm text-gray-500">For changes in your Local Community</p>
                 </div>
               </Label>
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
                 <RadioGroupItem value="global" />
                 <Globe className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">Global</p>
-                  <p className="text-sm text-gray-500">For worldwide impact</p>
+                  <p className="font-medium">A National Interest</p>
+                  <p className="text-sm text-gray-500">For national impact</p>
                 </div>
               </Label>
             </RadioGroup>

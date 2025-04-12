@@ -11,7 +11,7 @@ const OurInitiatives = () => {
             {
                 ourInitiative.map((who) =>(
                     <div className='card-styling ' key={who.id} >
-                        <h3 className='text-[#056D22] font-bold'>{who.heading}</h3>
+                        <h3 className='text-[#056D22] text-center font-bold'>{who.heading}</h3>
                         <p className='text-[#2F2A33] text-center text-lg font-medium'>{who.description}</p>
                     </div>
                 ))
