@@ -18,12 +18,16 @@ const ProfileNavbar = () => {
         
         {/* Desktop Navigation */}
         <nav className='hidden md:flex gap-6 items-center'>
-          <Link href={'/feeds'} className='text-lg font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200'>
+          <Link href={'/feeds'} className='text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200'>
             Feeds
           </Link>
-          <Link href={'/campaigns'} className='text-lg font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200'>
-            Campaigns
+          <Link href={'/timeline'} className='text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200'>
+            Trending 
           </Link>
+          <Link href={'/campaigns'} className='text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200'>
+            Stats
+          </Link>
+          
         </nav>
         
         <div className='hidden md:flex gap-6 items-center'>

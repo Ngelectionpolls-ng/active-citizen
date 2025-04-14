@@ -8,16 +8,18 @@ import { mockFeeds } from "@/utils/constants";
 
 
 
-// Define the type for a feed item
 export interface Feed {
   id: string;
-  type: "petition" | "donation";
+  type: 'petition' | 'donation';
   title: string;
   description: string;
   imageUrl: string;
   target: number;
   current: number;
   daysLeft: number;
+  creatorName: string;
+  creatorUsername: string;
+  creatorAvatarUrl?: string;
 }
 
 

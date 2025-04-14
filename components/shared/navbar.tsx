@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
           <Icons.logo className='size-12' />
         </Link>
         
-        <div className='hidden md:inline-block'>
+        <div className='hidden lg:inline-block'>
           <NavigationMenuComponent />
         </div>
         
@@ -42,16 +42,13 @@ const Navbar: React.FC = () => {
             <Search className="text-[#2F2A33]" />
           </div>
           <ActionDropdown />
-          {/* <Button className='font-bold'>
-            Donate or Start Petition
-          </Button> */}
           <Link href={'/login'} className={buttonVariants({ variant: 'ghost' })}>Log in</Link>
-        </div>
-        
         {/* Mobile Menu Icon */}
         <div className='md:hidden inline-block cursor-pointer' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X /> : <MenuIcon />}
         </div>
+        </div>
+        
       </section>
 
       {/* Mobile Navigation Dropdown */}

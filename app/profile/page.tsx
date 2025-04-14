@@ -47,27 +47,91 @@ const mockUser = {
   campaigns: {
     created: [
       {
-        id: "1",
-        type: "petition" as "petition",
-        title: "Save Local Wildlife Park",
-        description: "Help us protect our local wildlife park from being turned into a commercial development.",
-        imageUrl: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
-        target: 10000,
-        current: 7500,
-        daysLeft: 15,
-      }
+    id: "2",
+    type: "donation",
+    title: "Emergency Relief Fund",
+    description:
+      "Support communities affected by recent natural disasters. Your donation will provide essential supplies and aid to those in need.",
+    imageUrl: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b",
+    target: 50000,
+    current: 35000,
+    daysLeft: 30,
+    creatorName: "James Nolan",
+    creatorUsername: "jamesnolan",
+    creatorAvatarUrl: "https://randomuser.me/api/portraits/men/2.jpg",
+  },
+  {
+    id: "3",
+    type: "petition",
+    title: "Protect Ocean Wildlife",
+    description:
+      "Join our campaign to ban single-use plastics and protect marine life from plastic pollution. Every signature counts towards cleaner oceans.",
+    imageUrl: "https://picsum.photos/seed/picsum/800/800",
+    target: 25000,
+    current: 18750,
+    daysLeft: 20,
+    creatorName: "Sophia Chen",
+    creatorUsername: "sophiachen",
+    creatorAvatarUrl: "https://randomuser.me/api/portraits/women/3.jpg",
+  },
+  {
+    id: "4",
+    type: "donation",
+    title: "Education for All",
+    description:
+      "Help provide quality education to underprivileged children. Your contribution will fund school supplies, books, and teaching resources.",
+    imageUrl: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6",
+    target: 75000,
+    current: 42000,
+    daysLeft: 45,
+    creatorName: "Marcus Grant",
+    creatorUsername: "marcusgrant",
+    creatorAvatarUrl: "https://randomuser.me/api/portraits/men/4.jpg",
+  },
     ],
     supported: [
       {
-        id: "2",
-        type: "donation" as "donation",
-        title: "Emergency Relief Fund",
-        description: "Support communities affected by recent natural disasters.",
-        imageUrl: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b",
-        target: 50000,
-        current: 35000,
-        daysLeft: 30,
-      }
+    id: "2",
+    type: "donation",
+    title: "Emergency Relief Fund",
+    description:
+      "Support communities affected by recent natural disasters. Your donation will provide essential supplies and aid to those in need.",
+    imageUrl: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b",
+    target: 50000,
+    current: 35000,
+    daysLeft: 30,
+    creatorName: "James Nolan",
+    creatorUsername: "jamesnolan",
+    creatorAvatarUrl: "https://randomuser.me/api/portraits/men/2.jpg",
+  },
+  {
+    id: "3",
+    type: "petition",
+    title: "Protect Ocean Wildlife",
+    description:
+      "Join our campaign to ban single-use plastics and protect marine life from plastic pollution. Every signature counts towards cleaner oceans.",
+    imageUrl: "https://picsum.photos/seed/picsum/800/800",
+    target: 25000,
+    current: 18750,
+    daysLeft: 20,
+    creatorName: "Sophia Chen",
+    creatorUsername: "sophiachen",
+    creatorAvatarUrl: "https://randomuser.me/api/portraits/women/3.jpg",
+  },
+  {
+    id: "4",
+    type: "donation",
+    title: "Education for All",
+    description:
+      "Help provide quality education to underprivileged children. Your contribution will fund school supplies, books, and teaching resources.",
+    imageUrl: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6",
+    target: 75000,
+    current: 42000,
+    daysLeft: 45,
+    creatorName: "Marcus Grant",
+    creatorUsername: "marcusgrant",
+    creatorAvatarUrl: "https://randomuser.me/api/portraits/men/4.jpg",
+  },
     ]
   }
 };
@@ -286,14 +350,14 @@ export default function ProfilePage() {
           <TabsContent value="created" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {userData.campaigns.created.map((campaign) => (
-                <FeedCard key={campaign.id} {...campaign} />
+                <FeedCard key={campaign.id} {...{ ...campaign, type: campaign.type as "donation" | "petition" }} />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="supported" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {userData.campaigns.supported.map((campaign) => (
-                <FeedCard key={campaign.id} {...campaign} />
+                <FeedCard key={campaign.id} {...{ ...campaign, type: campaign.type as "donation" | "petition" }} />
               ))}
             </div>
           </TabsContent>
