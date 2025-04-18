@@ -7,7 +7,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Navlinks } from "@/utils/constants";
 
@@ -17,16 +16,33 @@ export default function NavigationMenuComponent() {
       <NavigationMenuList>
         {Navlinks.map((navItem) => (
           <NavigationMenuItem key={navItem.id}>
-            <NavigationMenuTrigger className="text-[#2F2A33] font-bold">{navItem.name}</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[200px] gap-2 p-4 md:w-[250px] lg:w-[300px]">
-                {navItem.children.map((child) => (
-                  <ListItem key={child.id} title={child.name} href={child.path}>
-                    {child.name}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
+            {navItem.type === "dropdown" ? (
+              <>
+                <NavigationMenuTrigger className="text-[#2F2A33] font-bold">
+                  {navItem.name}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-6 p-4 md:w-[250px] lg:w-[300px]">
+                    {/* Increased gap from 5 to 6 */}
+                    {navItem.children?.map((child) => (
+                      <ListItem key={child.id} title={child.name} href={child.path}>
+                        {child.name}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </>
+            ) : navItem.type === "href" ? (
+              <Link href={navItem.href || "#"} className="px-3" passHref>
+                <NavigationMenuLink className="text-[#2F2A33] font-bold">
+                  {navItem.name}
+                </NavigationMenuLink>
+              </Link>
+            ) : navItem.type === "section" ? (
+              <a href={navItem.path || "#"} className="text-[#2F2A33] font-bold">
+                {navItem.name}
+              </a>
+            ) : null}
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>

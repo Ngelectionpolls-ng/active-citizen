@@ -40,7 +40,7 @@ export default function FeedHome() {
             <TabsList className="w-full max-w-md mx-auto grid grid-cols-3">
               <TabsTrigger value="all">All</TabsTrigger>
               <TabsTrigger value="petitions">Petitions</TabsTrigger>
-              <TabsTrigger value="donations">Donations</TabsTrigger>
+              <TabsTrigger value="Campaign">Campaigns</TabsTrigger>
             </TabsList>
             <TabsContent value="all" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -62,7 +62,7 @@ export default function FeedHome() {
                   ))}
               </div>
             </TabsContent>
-            <TabsContent value="donations" className="mt-6">
+            <TabsContent value="Campaign" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {mockFeeds
                   .filter((feed) => feed.type === "donation")

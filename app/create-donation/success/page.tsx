@@ -1,4 +1,4 @@
-export default function DonationSuccess() {
+export default function Campaignuccess() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 text-center">
@@ -23,7 +23,7 @@ export default function DonationSuccess() {
           </h2>
           <p className="text-gray-600 mb-6">
             Your fundraiser has been created and is now live. Share it with your network to start
-            receiving donations.
+            receiving Campaign.
           </p>
           <div className="space-y-4">
             <button className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-lg">

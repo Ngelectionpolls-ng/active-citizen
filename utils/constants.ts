@@ -1,5 +1,4 @@
 import { Icons } from '@/components/shared/icons';
-import { url } from 'inspector';
 import { v4 as uuidv4 } from 'uuid';
 
 export const courses = [
@@ -26,51 +25,39 @@ export const Navlinks = [
   {
     id: uuidv4(),
     name: 'About Us',
+    type: 'dropdown', // Indicates this item has children (dropdown)
     children: [
-      { id: uuidv4(), name: 'Who We Are', path: '/about' },
-      { id: uuidv4(), name: 'Our Team', path: '/about/team' },
-      { id: uuidv4(), name: 'Our Mission', path: '/about/mission' },
+      { id: uuidv4(), name: 'Who We Are', path: '#who-we-are', type: 'section' },
+      { id: uuidv4(), name: 'Our Team', path: '/about/team', type: 'href' },
+      { id: uuidv4(), name: 'Our Mission', path: '/about/mission', type: 'href' },
     ],
   },
   {
     id: uuidv4(),
     name: 'Our Initiative',
-    children: [
-      { id: uuidv4(), name: 'Projects', path: '/initiatives/projects' },
-      { id: uuidv4(), name: 'Campaigns', path: '/initiatives/campaigns' },
-    ],
+    type: 'section', // Navigates to a section of the page
+    path: '#our-initiative',
   },
   {
     id: uuidv4(),
-    name: 'Our Impact',
-    children: [
-      { id: uuidv4(), name: 'Success Stories', path: '/impact/stories' },
-      { id: uuidv4(), name: 'Reports & Data', path: '/impact/reports' },
-    ],
+    name: 'Petitions',
+    type: 'href', // Navigates to a specific page
+    href: '/petitions',
+  },
+  {
+    id: uuidv4(),
+    name: 'Campaigns',
+    type: 'href', // Navigates to a specific page
+    href: '/campaigns',
   },
   {
     id: uuidv4(),
     name: 'Resources',
+    type: 'dropdown', // Indicates this item has children (dropdown)
     children: [
-      { id: uuidv4(), name: 'Blog', path: '/resources/blog' },
-      { id: uuidv4(), name: 'Publications', path: '/resources/publications' },
-      { id: uuidv4(), name: 'Webinars', path: '/resources/webinars' },
-    ],
-  },
-  {
-    id: uuidv4(),
-    name: 'Contact Us',
-    children: [
-      { id: uuidv4(), name: 'Support', path: '/contact/support' },
-      { id: uuidv4(), name: 'Careers', path: '/contact/careers' },
-    ],
-  },
-  {
-    id: uuidv4(),
-    name: 'Membership',
-    children: [
-      { id: uuidv4(), name: 'Join Us', path: '/membership/join' },
-      { id: uuidv4(), name: 'Benefits', path: '/membership/benefits' },
+      { id: uuidv4(), name: 'Blog', path: '/resources/blog', type: 'href' },
+      { id: uuidv4(), name: 'Publications', path: '/resources/publications', type: 'href' },
+      { id: uuidv4(), name: 'Webinars', path: '/resources/webinars', type: 'href' },
     ],
   },
 ];

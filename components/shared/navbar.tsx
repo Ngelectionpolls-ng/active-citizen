@@ -9,6 +9,7 @@ import { ActionDropdown } from './nav-action-dropdown'
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   // Close mobile menu when clicking outside
@@ -26,11 +27,24 @@ const Navbar: React.FC = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileMenuOpen]);
 
+  // Add scroll listener to toggle blur effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className='py-4 border-b shadow-md'>
+    <nav
+      className={`py-4 border-b shadow-md sticky top-0 z-50 transition-all ${
+        isScrolled ? 'bg-white/70 backdrop-blur-md' : 'bg-white'
+      }`}
+    >
       <section className='section-container flex justify-between items-center'>
         <Link href={'/'}>
-          <Icons.logo className='size-12' />
+          <Icons.logo className='size-10' />
         </Link>
         
         <div className='hidden lg:inline-block'>
