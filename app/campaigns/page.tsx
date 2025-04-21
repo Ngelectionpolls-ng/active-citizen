@@ -7,7 +7,7 @@ import { courses } from "@/utils/constants"; // Import courses for categories
 import ListCourses from "@/components/home-components/compaigns";
 import StartCompaign from "@/components/home-components/start-compaign";
 import Footer from "@/components/shared/footer";
-import { DontaionGrid } from "./components/donations-grid";
+import { DonationGrid } from "./components/donations-grid";
 
 const CampaignPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -66,7 +66,7 @@ const CampaignPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8">
-          <h1 className="text-3xl font-bold text-left">All Petitions</h1>
+          <h1 className="text-3xl font-bold text-left">All Campaigns</h1>
 
           {/* Filter Section */}
           <FilterSection
@@ -80,7 +80,8 @@ const CampaignPage = () => {
 
           {/* Petition Grid */}
           <div className="mt-6">
-            <DontaionGrid petitions={filteredPetitions} itemsPerPage={6} />
+           
+            <DonationGrid petitions={filteredPetitions} itemsPerPage={6} />
           </div>
         </div>
       </div>

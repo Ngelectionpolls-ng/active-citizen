@@ -175,7 +175,7 @@ export function ArticleCard({
             type === 'petition' ? 'bg-blue-600' : 'bg-[#174023]'
           }`}
         >
-          {type === 'petition' ? 'Petition' : 'Donation'}
+          {type === 'petition' ? 'Petition' : 'Campaign'}
         </Badge>
       </div>
       {/* Image */}

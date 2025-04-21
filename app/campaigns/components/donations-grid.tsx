@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Feed } from "@/app/timeline/components/article-card";
 import { ArticleCard } from "@/app/timeline/components/article-card";
+import { FeedCard } from "@/app/feeds/components/feed-card";
 
 interface PetitionGridProps {
   petitions: Feed[];
@@ -11,7 +12,7 @@ interface PetitionGridProps {
   itemsPerPage?: number;
 }
 
-export function DontaionGrid({ petitions, columns = 3, className = "", itemsPerPage = 6 }: PetitionGridProps) {
+export function DonationGrid({ petitions, columns = 3, className = "", itemsPerPage = 6 }: PetitionGridProps) {
   const [gridColumns, setGridColumns] = useState(columns);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -52,7 +53,7 @@ export function DontaionGrid({ petitions, columns = 3, className = "", itemsPerP
       >
         {currentPetitions.map((petition) => (
           <div key={petition.id} className="break-inside-avoid">
-            <ArticleCard {...petition} />
+            <FeedCard {...petition} />
           </div>
         ))}
       </div>
