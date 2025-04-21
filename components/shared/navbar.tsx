@@ -12,7 +12,6 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -27,7 +26,6 @@ const Navbar: React.FC = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileMenuOpen]);
 
-  // Add scroll listener to toggle blur effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);

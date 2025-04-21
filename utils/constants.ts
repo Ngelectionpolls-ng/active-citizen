@@ -244,10 +244,11 @@ export const mockFeeds = [
     creatorName: "Emily Stone",
     creatorUsername: "emilystone",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+    category: "Climate Change",
   },
   {
     id: "2",
-    type: "donation",
+    type: "campaign",
     title: "Emergency Relief Fund",
     description:
       "Support communities affected by recent natural disasters. Your donation will provide essential supplies and aid to those in need.",
@@ -258,6 +259,7 @@ export const mockFeeds = [
     creatorName: "James Nolan",
     creatorUsername: "jamesnolan",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/men/2.jpg",
+    category: "Insecurity",
   },
   {
     id: "3",
@@ -272,10 +274,11 @@ export const mockFeeds = [
     creatorName: "Sophia Chen",
     creatorUsername: "sophiachen",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/women/3.jpg",
+    category: "Community Engagement",
   },
   {
     id: "4",
-    type: "donation",
+    type: "campaign",
     title: "Education for All",
     description:
       "Help provide quality education to underprivileged children. Your contribution will fund school supplies, books, and teaching resources.",
@@ -286,6 +289,7 @@ export const mockFeeds = [
     creatorName: "Marcus Grant",
     creatorUsername: "marcusgrant",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/men/4.jpg",
+    category: "Education",
   },
   {
     id: "5",
@@ -300,10 +304,11 @@ export const mockFeeds = [
     creatorName: "Amara Patel",
     creatorUsername: "amarapatel",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/women/5.jpg",
+    category: "Environment Pollution",
   },
   {
     id: "6",
-    type: "donation",
+    type: "campaign",
     title: "Community Food Bank",
     description:
       "Support our local food bank in providing meals to families in need. Every donation helps feed those facing food insecurity.",
@@ -314,6 +319,7 @@ export const mockFeeds = [
     creatorName: "David Reyes",
     creatorUsername: "davidreyes",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/men/6.jpg",
+    category: "Food Security For Africa",
   },
   {
     id: "7",
@@ -328,10 +334,11 @@ export const mockFeeds = [
     creatorName: "Lily Moore",
     creatorUsername: "lilymoore",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/women/7.jpg",
+    category: "Citizen Empowerment",
   },
   {
     id: "8",
-    type: "donation",
+    type: "campaign",
     title: "Animal Shelter Support",
     description:
       "Help our local animal shelter provide care for abandoned pets. Your donation supports medical care, food, and shelter improvements.",
@@ -342,6 +349,7 @@ export const mockFeeds = [
     creatorName: "Daniel Brooks",
     creatorUsername: "danielbrooks",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/men/8.jpg",
+    category: "Human Rights",
   },
   {
     id: "9",
@@ -356,10 +364,11 @@ export const mockFeeds = [
     creatorName: "Zara Miles",
     creatorUsername: "zaramiles",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/women/9.jpg",
+    category: "Election Integrity",
   },
   {
     id: "10",
-    type: "donation",
+    type: "campaign",
     title: "Mental Health Services",
     description:
       "Support accessible mental health services in our community. Your donation helps provide counseling and support programs.",
@@ -370,5 +379,8 @@ export const mockFeeds = [
     creatorName: "Noah Anderson",
     creatorUsername: "noahanderson",
     creatorAvatarUrl: "https://randomuser.me/api/portraits/men/10.jpg",
-  }
+    category: "Healthcare Outreach",
+  },
 ];
+export const mockPetitions = mockFeeds.filter((feed) => feed.type === "petition");
+export const mockDonations = mockFeeds.filter((feed) => feed.type !== "petition");

@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 interface FeedCardProps {
   id: string;
-  type: 'petition' | 'donation';
+  type: 'petition' | 'campaign';
   title: string;
   description: string;
   imageUrl: string;
@@ -84,7 +84,7 @@ export function FeedCard({
                 type === 'petition' ? 'bg-blue-600' : 'bg-[#174023]'
               }`}
             >
-              {type === 'petition' ? 'Petition' : 'Donation'}
+              {type === 'petition' ? 'Petition' : 'Campaign'}
             </Badge>
 
             {/* Top-right interactions */}

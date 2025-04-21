@@ -1,77 +1,73 @@
 'use client';
 
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search } from "lucide-react";
-import { FeedCard } from "./components/feed-card";
-import { mockFeeds } from "@/utils/constants";
+import { useState, useMemo } from "react";
+import { courses, mockFeeds } from "@/utils/constants";
+import { Feed } from "../timeline/components/article-card";
+import { CampaignGrid } from "./components/campaign-grid";
+import { FeedTabs } from "./components/feed-tab";
+import { FilterSection } from "./components/filter-section";
 
-
-
-export interface Feed {
-  id: string;
-  type: 'petition' | 'donation';
-  title: string;
-  description: string;
-  imageUrl: string;
-  target: number;
-  current: number;
-  daysLeft: number;
-  creatorName: string;
-  creatorUsername: string;
-  creatorAvatarUrl?: string;
-}
 
 
 export default function FeedHome() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedType, setSelectedType] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showTabs, setShowTabs] = useState(true);
+
+  const filteredFeeds = useMemo(() => {
+    return (mockFeeds as Feed[]).filter((feed) => {
+      // Filter by search query
+      const matchesSearch = searchQuery === "" || 
+        feed.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        feed.description.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      // Filter by type
+      const matchesType = selectedType === "all" || feed.type === selectedType;
+      
+      // Filter by category (assuming feeds have categories)
+      const matchesCategory = selectedCategory === "all" || 
+        (feed.category && feed.category.split(',').some(cat => 
+          cat.trim().toLowerCase() === selectedCategory.toLowerCase()
+        ));
+      
+      return matchesSearch && matchesType && matchesCategory;
+    });
+  }, [searchQuery, selectedType, selectedCategory]);
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    // Hide tabs when searching or filtering
+    setShowTabs(value === "" && selectedType === "all" && selectedCategory === "all");
+  };
+
+  const handleTypeChange = (value: string) => {
+    setSelectedType(value);
+    setShowTabs(searchQuery === "" && value === "all" && selectedCategory === "all");
+  };
+
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
+    setShowTabs(searchQuery === "" && selectedType === "all" && value === "all");
+  };
+
   return (
-    <main className="min-h-screen  section-container">
+    <main className="min-h-screen section-container">
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-            <Input 
-              placeholder="Search campaigns..." 
-              className="pl-10"
-            />
-          </div>
+          <h1 className="text-3xl font-bold text-left">All campaigns</h1>
+          
+          <FilterSection 
+            categories={courses}
+            onSearchChange={handleSearchChange}
+            onTypeChange={handleTypeChange}
+            onCategoryChange={handleCategoryChange}
+          />
 
-          <Tabs defaultValue="all" className="w-full">
-            <TabsList className="w-full max-w-md mx-auto grid grid-cols-3">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="petitions">Petitions</TabsTrigger>
-              <TabsTrigger value="Campaign">Campaigns</TabsTrigger>
-            </TabsList>
-            <TabsContent value="all" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {(mockFeeds as Feed[]).map((feed: Feed) => (
-                  <FeedCard
-                    key={feed.id}
-                    {...feed}
-                    type={feed.type as "petition" | "donation"}
-                  />
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="petitions" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {mockFeeds
-                  .filter((feed) => feed.type === "petition")
-                  .map((feed) => (
-                    <FeedCard key={feed.id} {...feed} type={feed.type as "petition" | "donation"} />
-                  ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="Campaign" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {mockFeeds
-                  .filter((feed) => feed.type === "donation")
-                  .map((feed) => (
-                    <FeedCard key={feed.id} {...feed} type={feed.type as "petition" | "donation"} />
-                  ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+            <div className="mt-6">
+          
+              <CampaignGrid feeds={filteredFeeds} />
+            </div>
         </div>
       </div>
     </main>

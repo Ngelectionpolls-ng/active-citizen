@@ -22,11 +22,12 @@ import { useState, useRef, useEffect } from "react";
 
 export interface Feed {
   id: string;
-  type: 'petition' | 'donation';
+  type: 'petition' | 'campaign';
   title: string;
   description: string;
   imageUrl: string;
   target: number;
+  category: string;
   current: number;
   daysLeft: number;
   creatorName: string;

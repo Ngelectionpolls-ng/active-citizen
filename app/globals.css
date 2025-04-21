@@ -132,7 +132,7 @@ body {
     @apply border-border;
   }
   .section-container{
-    @apply mx-auto w-[93%] md:w-[80%];
+    @apply mx-auto w-[93%] md:max-w-7xl;
   }
   .card-styling{
     @apply bg-lightgray space-y-4 rounded-[20px] shadow-md max-w-[400px] w-full items-center justify-center p-8 flex flex-col;
@@ -140,4 +140,7 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+.break-inside-avoid {
+  break-inside: avoid;
 }
