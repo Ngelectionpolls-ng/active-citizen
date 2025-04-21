@@ -43,8 +43,7 @@ const Page = () => {
   const handleCategoryChange = (value: string) => setSelectedCategory(value);
 
   // 👇 filter course based on slug
-  const matchedCourse = courses.find((course) => course.slug === slug);
-
+  const matchedCourse = courses.find((course) => course.slug === (slug?.[0] ?? ""));
   return (
     <section>
       <Navbar />
