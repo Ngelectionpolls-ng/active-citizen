@@ -2,22 +2,118 @@ import { Icons } from '@/components/shared/icons';
 import { v4 as uuidv4 } from 'uuid';
 
 export const courses = [
-  { id: uuidv4(), course: 'Accountability in Governance', icon: Icons.accountability },
-  { id: uuidv4(), course: 'Community Engagement', icon: Icons.community },
-  { id: uuidv4(), course: 'Crime & Justice', icon: Icons.crime },
-  { id: uuidv4(), course: 'Election Integrity', icon: Icons.election },
-  { id: uuidv4(), course: 'Insecurity', icon: Icons.accountability },
-  { id: uuidv4(), course: 'Tech Innovation', icon: Icons.tech },
-  { id: uuidv4(), course: 'Education', icon: Icons.education },
-  { id: uuidv4(), course: 'Campaign Against Misinformation', icon: Icons.community },
-  { id: uuidv4(), course: 'Environment Pollution', icon: Icons.election },
-  { id: uuidv4(), course: 'Inequality', icon: Icons.election },
-  { id: uuidv4(), course: 'Climate Change', icon: Icons.climate },
-  { id: uuidv4(), course: 'Healthcare Outreach', icon: Icons.healthcare },
-  { id: uuidv4(), course: 'Food Security For Africa', icon: Icons.crime },
-  { id: uuidv4(), course: 'Human Rights', icon: Icons.tech },
-  { id: uuidv4(), course: 'Citizen Empowerment', icon: Icons.empowerment },
-  { id: uuidv4(), course: 'Judiciary Reform In Africa', icon: Icons.judiciary }
+  {
+    id: uuidv4(),
+    course: 'Accountability in Governance',
+    icon: Icons.accountability,
+    slug: 'accountability-in-governance',
+    description: 'This course explores mechanisms to hold governments and institutions accountable. Participants will learn about transparency, anti-corruption frameworks, public sector audits, and civic engagement strategies that ensure leaders are responsible for their actions and decisions.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Community Engagement',
+    icon: Icons.community,
+    slug: 'community-engagement',
+    description: 'Dive into strategies for effective community involvement. This course covers grassroots mobilization, local governance participation, and tools for facilitating inclusive dialogue, empowering communities to take active roles in shaping their future.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Crime & Justice',
+    icon: Icons.crime,
+    slug: 'crime-and-justice',
+    description: 'Examine the criminal justice system in depth. Learn about crime prevention, rehabilitation, restorative justice, and how to advocate for reforms that promote equity, fairness, and security for all citizens.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Election Integrity',
+    icon: Icons.election,
+    slug: 'election-integrity',
+    description: 'Learn how to uphold free and fair elections. Topics include electoral systems, combating voter fraud, transparency in results, voter education, and monitoring practices that protect democracy and public trust.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Insecurity',
+    icon: Icons.accountability,
+    slug: 'insecurity',
+    description: 'This course addresses national and regional insecurity issues such as insurgency, banditry, and civil unrest. It explores root causes, preventive strategies, peacebuilding initiatives, and the role of civic and governmental responses.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Tech Innovation',
+    icon: Icons.tech,
+    slug: 'tech-innovation',
+    description: 'Explore how emerging technologies are transforming societies. Learn about digital inclusion, automation, AI, and how tech can solve pressing social, economic, and governance challenges across the continent.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Education',
+    icon: Icons.education,
+    slug: 'education',
+    description: 'Tackle the educational gaps with strategies for inclusive learning, curriculum reform, digital education tools, and equitable access. This course empowers you to champion quality education as a tool for development.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Campaign Against Misinformation',
+    icon: Icons.community,
+    slug: 'campaign-against-misinformation',
+    description: 'Learn how to identify and combat misinformation and fake news. This course provides tools for critical thinking, media literacy, fact-checking, and strategies to ensure accurate public communication.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Environment Pollution',
+    icon: Icons.election,
+    slug: 'environment-pollution',
+    description: 'Understand the causes and consequences of environmental pollution. Learn about waste management, sustainable practices, environmental policy, and how citizens can engage in advocacy for a cleaner planet.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Inequality',
+    icon: Icons.election,
+    slug: 'inequality',
+    description: 'This course highlights the structural and systemic causes of inequality. It explores social justice, wealth distribution, gender parity, and policies aimed at promoting fairness and opportunity for all.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Climate Change',
+    icon: Icons.climate,
+    slug: 'climate-change',
+    description: 'Study the global climate crisis and its local implications. Learn about mitigation, adaptation strategies, environmental policies, and how communities can become more resilient and sustainable.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Healthcare Outreach',
+    icon: Icons.healthcare,
+    slug: 'healthcare-outreach',
+    description: 'Explore health challenges facing underserved populations. This course equips participants with outreach strategies, health education, community mobilization, and health equity frameworks for impactful interventions.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Food Security For Africa',
+    icon: Icons.crime,
+    slug: 'food-security-for-africa',
+    description: 'Address the issue of hunger and malnutrition through agricultural reform, food systems innovation, and policy frameworks that ensure food accessibility, affordability, and sustainability in Africa.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Human Rights',
+    icon: Icons.tech,
+    slug: 'human-rights',
+    description: 'Gain a thorough understanding of human rights laws, advocacy strategies, and tools for protecting marginalized groups. Learn how to champion dignity, justice, and equality in diverse societies.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Citizen Empowerment',
+    icon: Icons.empowerment,
+    slug: 'citizen-empowerment',
+    description: 'Empower citizens through civic education, leadership training, and participatory governance. This course provides strategies to build a more informed, active, and engaged citizenry.'
+  },
+  {
+    id: uuidv4(),
+    course: 'Judiciary Reform In Africa',
+    icon: Icons.judiciary,
+    slug: 'judiciary-reform-in-africa',
+    description: 'Explore key areas of judicial reform including access to justice, legal accountability, independence of the judiciary, and how to drive reforms that strengthen the rule of law in African nations.'
+  }
 ];
 
 
