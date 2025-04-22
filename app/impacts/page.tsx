@@ -10,7 +10,7 @@ import Testimonials from './components/testimonials'
 
 const ImpactsPage = () => {
   return (
-     <main className="min-h-screen flex flex-col space-y-3 bg-background">
+     <main className="min-h-screen flex flex-col space-y-4 bg-background">
        <ImpactHero />
        <ImpactStats />
       <SuccessStories />

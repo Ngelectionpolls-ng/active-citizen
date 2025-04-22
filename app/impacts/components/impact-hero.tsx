@@ -14,16 +14,11 @@ const ImpactHero = () => {
   }
 
   return (
-    <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-      <div 
-        className="absolute inset-0 z-0 bg-black opacity-50"
-        style={{
-          backgroundImage: "url('/images/photo.jpeg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'multiply',
-        }}
-      />
+ <section className="relative h-[50vh] pb-12 flex items-center justify-center overflow-hidden bg-gray-900">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-brandgreen/20 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.8)_100%)]" />
+      </div>
       <div className="section-container relative z-10 text-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
