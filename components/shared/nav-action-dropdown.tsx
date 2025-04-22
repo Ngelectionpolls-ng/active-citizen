@@ -18,7 +18,7 @@ export const ActionDropdown = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className='font-bold'>
-          Donate or Start Petition
+          Get Started
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[200px]">

@@ -37,17 +37,17 @@ export function FilterSection({
 
   return (
     <div className={cn("w-full flex flex-col sm:flex-row gap-4", className)}>
-      <div className="relative flex-grow">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+      <div className="relative  flex-grow w-full max-w-2xl">
+        {/* <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" /> */}
         <Input
-          placeholder="Search campaigns..."
-          className="pl-10"
+          placeholder="Search..."
+          className="pl-4"
           value={searchQuery}
           onChange={handleSearchChange}
         />
       </div>
       
-      <div className="flex gap-3">
+      {/* <div className="flex gap-3">
         <Select onValueChange={onTypeChange}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Campaign Type" />
@@ -72,7 +72,7 @@ export function FilterSection({
             ))}
           </SelectContent>
         </Select>
-      </div>
+      </div> */}
     </div>
   );
 }

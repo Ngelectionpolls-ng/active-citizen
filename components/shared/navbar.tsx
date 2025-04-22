@@ -6,6 +6,7 @@ import { MenuIcon, Search, X } from 'lucide-react'
 import Link from 'next/link'
 import NavigationMenuComponent from './navs-dropdown'
 import { ActionDropdown } from './nav-action-dropdown'
+import clsx from 'clsx'
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -35,43 +36,63 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav
-      className={`py-4 border-b shadow-md sticky top-0 z-50 transition-all ${
-        isScrolled ? 'bg-white/70 backdrop-blur-md' : 'bg-white'
-      }`}
-    >
+    <nav className={clsx(
+      'py-4 border-b shadow-md sticky top-0 z-50 transition-all',
+      isScrolled ? 'bg-white/70 backdrop-blur-md' : 'bg-white'
+    )}>
       <section className='section-container flex justify-between items-center'>
         <Link href={'/'}>
           <Icons.logo className='size-10' />
         </Link>
-        
+
         <div className='hidden lg:inline-block'>
           <NavigationMenuComponent />
         </div>
-        
-        <div className='hidden md:flex gap-6 items-center'>
+
+        <div className='flex gap-6 items-center'>
           <div className='hidden lg:inline-block'>
             <Search className="text-[#2F2A33]" />
           </div>
-          <ActionDropdown />
-          <Link href={'/login'} className={buttonVariants({ variant: 'ghost' })}>Log in</Link>
-        {/* Mobile Menu Icon */}
-        <div className='md:hidden inline-block cursor-pointer' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X /> : <MenuIcon />}
+          <div className='hidden md:flex gap-2 items-center '>
+            <ActionDropdown />
+            <Link href={'/login'} className={buttonVariants({ variant: 'ghost' })}>
+              Log in
+            </Link>
+          </div>
+          <div className='md:hidden flex'>
+            <MenuIcon className="cursor-pointer" onClick={() => setMobileMenuOpen(true)} />
+          </div>
         </div>
-        </div>
-        
       </section>
 
-      {/* Mobile Navigation Dropdown */}
-      {mobileMenuOpen && (
-        <div ref={menuRef} className='md:hidden flex flex-col gap-4 bg-white shadow-md py-4 px-6 absolute w-full left-0 top-[60px] z-50'>
-          <Button className='font-bold w-full' onClick={() => setMobileMenuOpen(false)}>
-            Donate or Start Petition
-          </Button>
-          <Link href={'/login'} className={buttonVariants({ variant: 'ghost' })} onClick={() => setMobileMenuOpen(false)}>Log in</Link>
+      {/* Mobile Sidebar */}
+      <div className={clsx(
+        'fixed inset-0 z-50 bg-black/40 transition-opacity duration-300',
+        mobileMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'
+      )}>
+        <div
+          ref={menuRef}
+          className={clsx(
+            'fixed top-0 right-0 h-full w-[80%] max-w-xs bg-white shadow-lg transition-transform duration-300 p-6',
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          )}
+        >
+          <div className='flex justify-between items-center mb-6'>
+            <Icons.logo className='size-8' />
+            <X className="cursor-pointer" onClick={() => setMobileMenuOpen(false)} />
+          </div>
+
+          <div className='flex flex-col gap-6'>
+            <NavigationMenuComponent />
+            <div className='flex flex-col gap-4 mt-6'>
+              <ActionDropdown />
+              <Link href={'/login'} className={buttonVariants({ variant: 'outline' })}>
+                Log in
+              </Link>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   )
 }

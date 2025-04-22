@@ -121,12 +121,8 @@ export const Navlinks = [
   {
     id: uuidv4(),
     name: 'About Us',
-    type: 'dropdown', // Indicates this item has children (dropdown)
-    children: [
-      { id: uuidv4(), name: 'Who We Are', path: '#who-we-are', type: 'section' },
-      { id: uuidv4(), name: 'Our Team', path: '/about/team', type: 'href' },
-      { id: uuidv4(), name: 'Our Mission', path: '/about/mission', type: 'href' },
-    ],
+    type: 'href', // Indicates this item has children (dropdown)
+    href: '/about'
   },
   {
     id: uuidv4(),

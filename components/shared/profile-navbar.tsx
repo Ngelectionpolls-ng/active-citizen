@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { Icons } from "./icons";
-import { Button, buttonVariants } from "../ui/button";
-import { MenuIcon, Search, X, User, Settings, LogOut } from "lucide-react"; // Importing icons
+import { Button } from "../ui/button";
+import { MenuIcon, Search, X, User, Settings, LogOut } from "lucide-react";
 import Link from "next/link";
 import NavigationMenuComponent from "./navs-dropdown";
+import { ActionDropdown } from "./nav-action-dropdown";
 
 const ProfileNavbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false); // For profile dropdown in mobile
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,13 +40,13 @@ const ProfileNavbar = () => {
             Feeds
           </Link>
           <Link
-            href={"/timeline"}
+            href={"/impacts"}
             className="text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
           >
-            Trending
+            Impacts
           </Link>
           <Link
-            href={"/campaigns"}
+            href={"/stats"}
             className="text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
           >
             Stats
@@ -57,9 +57,8 @@ const ProfileNavbar = () => {
           <div className="hidden lg:inline-block">
             <Search className="text-[#2F2A33]" />
           </div>
-          <Button className="font-bold">Donate or Start Petition</Button>
+          <ActionDropdown />
 
-          {/* Profile Avatar with Dropdown */}
           <div className="relative">
             <div
               className="cursor-pointer flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold"
@@ -104,9 +103,11 @@ const ProfileNavbar = () => {
         </div>
       </section>
 
-      {/* Mobile Navigation Dropdown */}
+      {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden flex flex-col gap-4 bg-white shadow-md py-4 px-6 absolute w-full left-0 top-[60px] z-50">
+          <NavigationMenuComponent />
+
           <Link
             href={"/feeds"}
             className="text-lg font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
@@ -115,12 +116,13 @@ const ProfileNavbar = () => {
             Feeds
           </Link>
           <Link
-            href={"/campaigns"}
+            href={"/impacts"}
             className="text-lg font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Campaigns
+            Impacts
           </Link>
+
           <Button
             className="font-bold w-full"
             onClick={() => setMobileMenuOpen(false)}
@@ -128,7 +130,7 @@ const ProfileNavbar = () => {
             Donate or Start Petition
           </Button>
 
-          {/* Profile Dropdown in Mobile */}
+          {/* Profile Section in Mobile */}
           <div className="relative">
             <div
               className="cursor-pointer flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold"

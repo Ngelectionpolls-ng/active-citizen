@@ -42,7 +42,7 @@ export function CampaignGrid({ feeds, columns = 3, className = "", itemsPerPage 
 
   return (
     <div>
-   \
+   
       <div 
         className={`grid gap-6 ${className}`} 
         style={{ 

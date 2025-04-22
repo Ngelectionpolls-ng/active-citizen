@@ -144,3 +144,57 @@ body {
 .break-inside-avoid {
   break-inside: avoid;
 }
+
+@layer components {
+  .section-container-new {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center;
+  }
+  
+  .section-subtitle {
+    @apply text-xl text-brandgray max-w-3xl mx-auto text-center mb-12;
+  }
+  
+  .stat-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 flex flex-col items-center justify-center transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .story-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .category-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 flex flex-col items-center justify-center transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer;
+  }
+  
+  .testimonial-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 transition-all duration-300;
+  }
+  
+  .timeline-item {
+    @apply relative pb-8;
+  }
+  
+  .count-up-animation {
+    @apply transition-all duration-1000;
+  }
+  
+  .text-brandgreen {
+    @apply text-[hsl(var(--brandgreen))];
+  }
+  
+  .text-brandgray {
+    @apply text-[hsl(var(--brandgray))];
+  }
+  
+  .bg-brandgreen {
+    @apply bg-[hsl(var(--brandgreen))];
+  }
+  
+  .border-brandgreen {
+    @apply border-[hsl(var(--brandgreen))];
+  }
+}
