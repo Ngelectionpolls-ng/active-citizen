@@ -6,8 +6,12 @@ import { MenuIcon, Search, X, User, Settings, LogOut } from "lucide-react";
 import Link from "next/link";
 import NavigationMenuComponent from "./navs-dropdown";
 import { ActionDropdown } from "./nav-action-dropdown";
+import { usePathname } from "next/navigation";
 
 const ProfileNavbar = () => {
+  const router = usePathname();
+
+  const isActive = (path: string) => router === path;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -33,24 +37,20 @@ const ProfileNavbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 items-center">
-          <Link
-            href={"/feeds"}
-            className="text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
-          >
-            Feeds
-          </Link>
-          <Link
-            href={"/impacts"}
-            className="text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
-          >
-            Impacts
-          </Link>
-          <Link
-            href={"/stats"}
-            className="text-base font-medium text-[#2F2A33] hover:text-brandgreen transition-all duration-200"
-          >
-            Stats
-          </Link>
+          {["/feeds", "/impacts", "/stats"].map((path) => (
+            <Link
+              key={path}
+              href={path}
+              className={`text-base font-medium transition-all duration-200 ${
+                isActive(path)
+                  ? "text-brandgreen border-b-2 border-brandgreen"
+                  : "text-[#2F2A33] hover:text-brandgreen hover:border-b-2 hover:border-brandgreen"
+              }`}
+            >
+              {path.replace("/", "").charAt(0).toUpperCase() +
+                path.replace("/", "").slice(1)}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden md:flex gap-6 items-center">
@@ -70,7 +70,7 @@ const ProfileNavbar = () => {
               <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
                 <div className="flex items-center gap-2 hover:bg-gray-100 p-2 rounded-md">
                   <User className="w-4 h-4 text-gray-600" />
-                  <Link href="/profile" className="text-gray-800">
+                  <Link href="/user/reree" className="text-gray-800">
                     Profile
                   </Link>
                 </div>
