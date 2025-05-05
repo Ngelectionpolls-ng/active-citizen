@@ -27,25 +27,38 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { courses } from "@/utils/constants";
 
 const formSchema = z.object({
   fundraisingType: z.enum(["self", "other", "charity"]),
   title: z.string().min(5, "Title must be at least 5 characters"),
-  story: z.string().min(50, "Please tell a more detailed story (min 50 characters)"),
+  story: z
+    .string()
+    .min(50, "Please tell a more detailed story (min 50 characters)"),
   coverImage: z.string().optional(),
-  category: z.string(),
+  category: z.string().min(1, "Please select a category"),
   goal: z.number().min(1, "Goal amount must be greater than 0"),
 });
+
 type DonationFormData = z.infer<typeof formSchema>;
 type FundraisingType = z.infer<typeof formSchema>["fundraisingType"];
+
 export default function CreateDonation() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
-  const [coverImagePreview, setCoverImagePreview] = useState<string | null>(null);
+  const [coverImagePreview, setCoverImagePreview] = useState<string | null>(
+    null
+  );
   const maxSteps = 5;
 
   const form = useForm({
@@ -55,7 +68,7 @@ export default function CreateDonation() {
       title: "",
       story: "",
       coverImage: "",
-      category: "community",
+      category: "",
       goal: 0,
     },
   });
@@ -77,7 +90,9 @@ export default function CreateDonation() {
             <h2 className="text-2xl font-bold">Who are you fundraising for?</h2>
             <RadioGroup
               defaultValue="self"
-              onValueChange={(value: FundraisingType) => form.setValue("fundraisingType", value)}
+              onValueChange={(value: FundraisingType) =>
+                form.setValue("fundraisingType", value)
+              }
               className="grid gap-4"
             >
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
@@ -85,7 +100,9 @@ export default function CreateDonation() {
                 <User className="w-6 h-6" />
                 <div>
                   <p className="font-medium">A Citizen in Need</p>
-                  <p className="text-sm text-gray-500">Help a Citizen in Need </p>
+                  <p className="text-sm text-gray-500">
+                    Help a Citizen in Need{" "}
+                  </p>
                 </div>
               </Label>
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
@@ -93,7 +110,9 @@ export default function CreateDonation() {
                 <Users className="w-6 h-6" />
                 <div>
                   <p className="font-medium">A Local Community</p>
-                  <p className="text-sm text-gray-500">Help a Local Community</p>
+                  <p className="text-sm text-gray-500">
+                    Help a Local Community
+                  </p>
                 </div>
               </Label>
               <Label className="flex items-center space-x-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
@@ -101,7 +120,6 @@ export default function CreateDonation() {
                 <Heart className="w-6 h-6" />
                 <div>
                   <p className="font-medium">A National Interest</p>
-                  {/* <p className="text-sm text-gray-500">A National Interest</p> */}
                 </div>
               </Label>
             </RadioGroup>
@@ -115,9 +133,38 @@ export default function CreateDonation() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="title">Fundraiser Title</Label>
-                <Input id="title" placeholder="Give your fundraiser a clear title" {...form.register("title")} />
+                <Input
+                  id="title"
+                  placeholder="Give your fundraiser a clear title"
+                  {...form.register("title")}
+                />
                 {form.formState.errors.title && (
-                  <p className="text-sm text-red-500">{form.formState.errors.title.message}</p>
+                  <p className="text-sm text-red-500">
+                    {form.formState.errors.title.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="category">Category</Label>
+                <Select
+                  onValueChange={(value) => form.setValue("category", value)}
+                  defaultValue={form.getValues("category")}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {courses.map((course: { id: string; course: string }) => (
+                      <SelectItem key={course.id} value={course.course}>
+                        {course.course}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {form.formState.errors.category && (
+                  <p className="text-sm text-red-500">
+                    {form.formState.errors.category.message}
+                  </p>
                 )}
               </div>
               <div>
@@ -129,7 +176,9 @@ export default function CreateDonation() {
                   {...form.register("story")}
                 />
                 {form.formState.errors.story && (
-                  <p className="text-sm text-red-500">{form.formState.errors.story.message}</p>
+                  <p className="text-sm text-red-500">
+                    {form.formState.errors.story.message}
+                  </p>
                 )}
               </div>
             </div>
@@ -145,7 +194,9 @@ export default function CreateDonation() {
                 <ImageIcon className="w-12 h-12 text-gray-400" />
                 <div>
                   <p className="font-medium">Upload a photo</p>
-                  <p className="text-sm text-gray-500">Bring your story to life with an image</p>
+                  <p className="text-sm text-gray-500">
+                    Bring your story to life with an image
+                  </p>
                 </div>
                 <Input
                   type="file"
@@ -185,7 +236,9 @@ export default function CreateDonation() {
                 {...form.register("goal", { valueAsNumber: true })}
               />
               {form.formState.errors.goal && (
-                <p className="text-sm text-red-500">{form.formState.errors.goal.message}</p>
+                <p className="text-sm text-red-500">
+                  {form.formState.errors.goal.message}
+                </p>
               )}
             </div>
           </div>
@@ -212,6 +265,10 @@ export default function CreateDonation() {
                   <p>{form.getValues("fundraisingType")}</p>
                 </div>
                 <div>
+                  <h3 className="font-semibold">Category</h3>
+                  <p>{form.getValues("category") || "Not selected"}</p>
+                </div>
+                <div>
                   <h3 className="font-semibold">Goal</h3>
                   <p>${form.getValues("goal").toLocaleString()}</p>
                 </div>
@@ -231,9 +288,11 @@ export default function CreateDonation() {
       <div className="flex flex-col lg:flex-row min-h-screen">
         <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
-            {/* Home Button with Dialog Trigger */}
             <div className="mb-6">
-              <Button variant="ghost" onClick={() => setIsLeaveDialogOpen(true)}>
+              <Button
+                variant="ghost"
+                onClick={() => setIsLeaveDialogOpen(true)}
+              >
                 <Home className="w-4 h-4 mr-2" />
                 Back to Homepage
               </Button>
@@ -270,7 +329,6 @@ export default function CreateDonation() {
           </div>
         </div>
 
-        {/* Right Side Visual */}
         <div className="hidden lg:block lg:w-1/2 relative">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -280,16 +338,18 @@ export default function CreateDonation() {
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex flex-col justify-end p-12">
-              <h2 className="text-white text-3xl font-bold mb-4">Make a Difference Today</h2>
+              <h2 className="text-white text-3xl font-bold mb-4">
+                Make a Difference Today
+              </h2>
               <p className="text-white/90 text-lg">
-                Join thousands of people who are creating positive change through fundraising. Your story matters.
+                Join thousands of people who are creating positive change
+                through fundraising. Your story matters.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Auth Modal */}
       <Dialog open={isAuthModalOpen} onOpenChange={setIsAuthModalOpen}>
         <DialogContent>
           <DialogHeader>
@@ -306,17 +366,20 @@ export default function CreateDonation() {
         </DialogContent>
       </Dialog>
 
-      {/* Leave Confirmation Dialog */}
       <Dialog open={isLeaveDialogOpen} onOpenChange={setIsLeaveDialogOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Leave this page?</DialogTitle>
           </DialogHeader>
           <p className="text-sm text-gray-600">
-            You haven’t finished creating your fundraiser. Are you sure you want to go back to the homepage?
+            You haven’t finished creating your fundraiser. Are you sure you want
+            to go back to the homepage?
           </p>
           <div className="flex justify-end space-x-2 pt-4">
-            <Button variant="outline" onClick={() => setIsLeaveDialogOpen(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setIsLeaveDialogOpen(false)}
+            >
               Cancel
             </Button>
             <Button

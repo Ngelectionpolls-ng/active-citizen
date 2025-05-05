@@ -165,13 +165,13 @@ export default function CreatePetition() {
                 )}
               </div>
               <div>
-                <Label htmlFor="course">Course</Label>
+                <Label htmlFor="course">Categories</Label>
                 <Select
                   onValueChange={(value) => form.setValue("course", value)}
                   defaultValue={form.getValues("course")}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a course" />
+                    <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
                   <SelectContent>
                     {courses.map((course: { id: string; course: string }) => (
@@ -329,7 +329,7 @@ export default function CreatePetition() {
                   <p className="text-gray-600">{targetSignatures || "Not set"}</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold">Course</h3>
+                  <h3 className="font-semibold">Category</h3>
                   <p className="text-gray-600">{course || "Not selected"}</p>
                 </div>
               </CardContent>
