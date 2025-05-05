@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { v4 as uuidv4 } from "uuid";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +29,30 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { courses } from "@/utils/constants";
+
+// Mock Icons object (replace with actual imports)
+const Icons = {
+  accountability: Building2,
+  community: HomeIcon,
+  crime: Home,
+  election: Globe,
+  tech: ImageIcon,
+  education: Home,
+  climate: Globe,
+  healthcare: Building2,
+  empowerment: HomeIcon,
+  judiciary: Building2,
+};
+
+
 
 const formSchema = z.object({
   scope: z.enum(["local", "national", "global"]),
@@ -35,17 +60,19 @@ const formSchema = z.object({
   story: z.string().min(100, "Please tell a more detailed story (min 100 characters)"),
   coverImage: z.string().optional(),
   targetSignatures: z.number().min(100, "Target signatures must be at least 100"),
+  course: z.string().min(1, "Please select a course"),
 });
 
 type ScopeType = z.infer<typeof formSchema>["scope"];
 type PetitionFormData = z.infer<typeof formSchema>;
+
 export default function CreatePetition() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
   const [coverImagePreview, setCoverImagePreview] = useState<string | null>(null);
-  const maxSteps = 4;
+  const maxSteps = 5;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -55,6 +82,7 @@ export default function CreatePetition() {
       story: "",
       coverImage: "",
       targetSignatures: 1000,
+      course: "",
     },
   });
 
@@ -124,6 +152,39 @@ export default function CreatePetition() {
                   <p className="text-sm text-red-500">{form.formState.errors.title.message}</p>
                 )}
               </div>
+              <div>
+                <Label htmlFor="targetSignatures">Target Signatures</Label>
+                <Input
+                  id="targetSignatures"
+                  type="number"
+                  placeholder="Enter target number of signatures"
+                  {...form.register("targetSignatures", { valueAsNumber: true })}
+                />
+                {form.formState.errors.targetSignatures && (
+                  <p className="text-sm text-red-500">{form.formState.errors.targetSignatures.message}</p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="course">Course</Label>
+                <Select
+                  onValueChange={(value) => form.setValue("course", value)}
+                  defaultValue={form.getValues("course")}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a course" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {courses.map((course: { id: string; course: string }) => (
+                      <SelectItem key={course.id} value={course.course}>
+                        {course.course}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {form.formState.errors.course && (
+                  <p className="text-sm text-red-500">{form.formState.errors.course.message}</p>
+                )}
+              </div>
               <Card className="bg-gray-50 border-none">
                 <CardContent className="pt-6">
                   <h3 className="font-semibold mb-2">Tips</h3>
@@ -131,6 +192,8 @@ export default function CreatePetition() {
                     <li>• Start with an action verb (Stop, Save, Ban, Grant, etc.)</li>
                     <li>• Name specific places, organizations, or people</li>
                     <li>• Use longer titles to add key details</li>
+                    <li>• Set a realistic but ambitious signature goal</li>
+                    <li>• Choose a course that matches your petition's theme</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -228,13 +291,58 @@ export default function CreatePetition() {
             </Card>
           </div>
         );
+
+      case 5:
+        const { scope, title, story, coverImage, targetSignatures, course } = form.getValues();
+        return (
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold">Review your petition</h2>
+            <p className="text-gray-600">
+              Preview how your petition will look to supporters. Make any final edits before publishing.
+            </p>
+            <Card>
+              <CardHeader>
+                <CardTitle>Petition Preview</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {coverImage && (
+                  <img
+                    src={coverImage}
+                    alt="Cover Preview"
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                )}
+                <div>
+                  <h3 className="font-semibold">Scope</h3>
+                  <p className="text-gray-600 capitalize">{scope || "Not selected"}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Title</h3>
+                  <p className="text-gray-600">{title || "Your petition title will appear here"}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Story</h3>
+                  <p className="text-gray-600 line-clamp-3">{story || "Your story will appear here"}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Target Signatures</h3>
+                  <p className="text-gray-600">{targetSignatures || "Not set"}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Course</h3>
+                  <p className="text-gray-600">{course || "Not selected"}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8 overflow-y-auto">
+      <div className="flex  min-h-screen">
+        <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="mb-6">
               <Button variant="ghost" onClick={() => setIsLeaveDialogOpen(true)}>

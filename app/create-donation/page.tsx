@@ -100,7 +100,7 @@ export default function CreateDonation() {
                 <RadioGroupItem value="charity" />
                 <Heart className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">A Natioanl Interest</p>
+                  <p className="font-medium">A National Interest</p>
                   {/* <p className="text-sm text-gray-500">A National Interest</p> */}
                 </div>
               </Label>
