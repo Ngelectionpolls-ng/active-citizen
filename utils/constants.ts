@@ -476,3 +476,18 @@ export const mockFeeds = [
 ];
 export const mockPetitions = mockFeeds.filter((feed) => feed.type === "petition");
 export const mockDonations = mockFeeds.filter((feed) => feed.type !== "petition");
+export const Industries = [
+  { name: "Agriculture", value: "agriculture" },
+  { name: "Manufacturing", value: "manufacturing" },
+  { name: "Retail", value: "retail" },
+  { name: "Financial Services", value: "financial_services" },
+  { name: "Technology", value: "technology" },
+  { name: "Healthcare", value: "healthcare" },
+  { name: "Education", value: "education" },
+  { name: "Transportation", value: "transportation" },
+  { name: "Construction", value: "construction" },
+  { name: "Mining", value: "mining" },
+  { name: "Energy", value: "energy" },
+  { name: "Tourism", value: "tourism" },
+  { name: "Other", value: "other" }
+];

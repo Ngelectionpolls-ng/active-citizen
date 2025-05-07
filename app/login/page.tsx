@@ -2,7 +2,7 @@
 import Navbar from '@/components/shared/navbar'
 import React, { useState } from 'react'
 import { z } from 'zod'
-import SignupForm from './components/signup-form'
+import SignupForm from '../register/components/signup-form'
 import LoginForm from './components/login-form'
 import Footer from '@/components/shared/footer'
 import { useRouter } from 'next/navigation'
@@ -27,29 +27,25 @@ const LoginPage = () => {
           <div className="flex mb-6 border-b">
             <button 
               className={`pb-2 px-4 font-medium ${isLogin ? 'border-b-2 border-blue-500 text-brandgreen' : 'text-gray-500'}`}
-              onClick={() => setIsLogin(true)}
+              // onClick={() => setIsLogin(true)}
             >
               Log in
             </button>
             <button 
               className={`pb-2 px-4 font-medium ${!isLogin ? 'border-b-2 border-blue-500 text-brandgreen' : 'text-gray-500'}`}
-              onClick={() => setIsLogin(false)}
+              onClick={() => {
+                router.push('/register')
+              }}
             >
               Sign up
             </button>
           </div>
-          {
-            isLogin ? 
+        
               <LoginForm onSubmit={(data) => {
                 router.push('/feeds')
                 console.log(data)
               }} />
-              :
-              <SignupForm onSubmit={(data) => {
-                 router.push('/feeds')
-                console.log(data)
-              }} />
-          }
+              
         </div>
       </section>
       <Footer />
