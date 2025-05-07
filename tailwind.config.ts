@@ -18,6 +18,16 @@ export default {
   			lightergreen: '#154029B2',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+			brandGray: '#F0F2F7',
+  			textgray: '#6C6C6C',
+  			sucess300: '#0B7B69',
+  			error300: '#8C1823',
+  			'color-900': '#3A3C3D',
+  			'color-1000': '#1D1E1E',
+  			primary100: '#D7F4FE',
+  			textgreen: '#156B2D',
+  			bordergray: '#71787E',
+  			inputGray: '#EEEEEE',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

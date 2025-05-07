@@ -19,7 +19,7 @@ const LoginPage = () => {
       <section className='section-container py-12 max-w-lg mx-auto'>
         <div>
            <h1 className='text-2xl font-bold text-brandgreen capitalize mb-6'>
-         Log in or sign up
+         Log in
         </h1>
         </div>
         <div className="bg-white rounded-lg mt-12 mb-16 shadow-md p-8">

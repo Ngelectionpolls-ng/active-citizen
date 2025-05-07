@@ -16,12 +16,12 @@ import CustomDropdown from "@/components/inputs/custom-dropdown";
 import { FileUploadResponse } from "@/types/response";
 
 const RegisterSchema = z.object({
-  co_operativeName: z.string().min(1, "Cooperative name is required"),
+  co_operativeName: z.string().min(1, "Organisation name is required"),
   co_operativeIndustry: z.string().min(1, "Industry is required"),
   yearOfIncorporation: z.string(),
   officeAddress: z.string().min(1, "Office address is required"),
   overseerName: z.string().min(1, "Overseer name is required"),
-  cooperativeDoc: z.instanceof(File, { message: "Cooperative Document is required" }),
+  OrganisationDoc: z.instanceof(File, { message: "Organisation Document is required" }),
 
   overseerDesignation: z.string().min(1, "Overseer designation is required"),
   overseerEmail: z.string().email("Invalid email address"),
@@ -46,7 +46,7 @@ const RegisterForm = () => {
   
 const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(null);
   const [isDialogOpen, setDialogOpen] = useState(false);
-  const [cooperativeName, setCooperativeName] = useState("");
+  const [OrganisationName, setOrganisationName] = useState("");
   const { data } = useGetStates();
   const stateValue = methods.watch("state");
 
@@ -59,7 +59,7 @@ const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(
     onError: (error: any) => void
   ) => {
     const formData = {
-      file: data.cooperativeDoc,
+      file: data.OrganisationDoc,
       name: data.co_operativeName,
       description: data.co_operativeName,
     };
@@ -112,7 +112,7 @@ const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(
     //           title: "Registration successful",
     //           description: "User registered successfully",
     //         });
-    //         setCooperativeName(data.co_operativeName);
+    //         setOrganisationName(data.co_operativeName);
     //         setDialogOpen(true); // Open dialog
     //       },
     //       (error) => {
@@ -135,37 +135,28 @@ const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(
     // );
   };
   return (
-    <div className=" bg-white p-4 md:p-8 flex  flex-col space-y-8 border-[#E9E9EA] border  shadow-custom-shadow   max-w-[63.5rem] w-full rounded-lg">
-      <Link href={'/'}>
-      <div className="flex justify-center items-center py-4">
-        <Image
-          src="/logo.png"
-          alt="Portfolio Logo"
-          width={89}
-          height={89}
-          className="transition-all duration-300"
-        />
-      </div></Link>
+    <div className=" ">
+      
       <div className="flex flex-col space-y-4">
         <p className="text-center text-md text-color-900 text-[16px]">
           Create a new account
         </p>
       </div>
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <section className="grid gap-8 py-4 grid-cols-1  md:grid-cols-2">
+        <form className="flex flex-col space-y-4" onSubmit={methods.handleSubmit(onSubmit)}>
+          {/* <section className="grid gap-8 py-4 grid-cols-1  md:grid-cols-1"> */}
             <InputField
               name="co_operativeName"
               icon={<Building2 className="text-primary100" />}
-              label="Cooperative Name :"
-              placeholder="Enter cooperative name"
+              label="Organisation Name :"
+              placeholder="Enter Organisation name"
               type="text"
             />
 
             <InputField
               name="yearOfIncorporation"
               icon={<Eye className="text-primary100" />}
-              label="Year of Incorporation :"
+              label="Year of Registration :"
               placeholder="Enter year"
               type="years"
             />
@@ -244,8 +235,8 @@ const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(
       
 <div className="col-span-1 md:col-span-2">
 <InputField
-              name="cooperativeDoc"
-              label="Cooperative Document :"
+              name="OrganisationDoc"
+              label="Organisation Document :"
               placeholder="Upload file"
               type="file"
             />
@@ -260,18 +251,18 @@ const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(
               />
              
             </div>
-          </section>
+          {/* </section> */}
 
           <div className="flex justify-center items-center">
             <button
             // disabled={isLoading || isUploading}
               type="submit"
-              className="bg-textgreen disabled:opacity-50 text-white max-w-[26.688rem]  py-3 rounded-[8px] w-full font-bold"
+              className="bg-textgreen disabled:opacity-50 text-white w-full  py-3 rounded-[8px] w-full font-bold"
             >
              
                 
                 
-             "Sign up"
+             Sign up
               
             </button>
           </div>
@@ -280,7 +271,7 @@ const [uploadResponse, setUploadResponse] = useState<FileUploadResponse | null>(
       {/* <SuccessDialog
         isOpen={isDialogOpen}
         onClose={() => setDialogOpen(false)}
-        cooperativeName={cooperativeName}
+        OrganisationName={OrganisationName}
       /> */}
       <Link href={"/login"} className="flex justify-center items-center">
         <p className="text-textgray">
