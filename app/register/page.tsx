@@ -116,7 +116,7 @@ const Register: React.FC = () => {
         <div className="relative w-full h-screen">
           <img
             src="https://images.pexels.com/photos/7709287/pexels-photo-7709287.jpeg"
-            alt="Election illustration"
+            alt=" illustration"
             className="w-full h-full object-cover rounded-lg shadow-xl"
           />
           <div className="absolute inset-0 bg-green-600 opacity-10 rounded-lg"></div>
@@ -125,8 +125,7 @@ const Register: React.FC = () => {
               Make Your Voice Count
             </h3>
             <p className="text-white/90 mt-2">
-              Join us in shaping the future through transparent and secure
-              election monitoring.
+              Join millions of people taking action to create positive change.
             </p>
           </div>
         </div>
