@@ -26,7 +26,7 @@ const Register: React.FC = () => {
         </div>
 
         {/* Registration type tabs */}
-        <div className="flex mb-6 bg-gray-100 rounded-lg p-1 max-w-md mx-auto">
+        <div className="flex mb-6 bg-gray-100 rounded-lg p-1 max-w-lg mx-auto">
           <button
             className={cn(
               "flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 flex items-center justify-center space-x-2",
@@ -54,7 +54,7 @@ const Register: React.FC = () => {
         </div>
 
         {/* Google sign-up button */}
-        <div className="max-w-md mx-auto mb-6">
+        <div className="max-w-lg mx-auto mb-6">
           <button
             type="button"
             className="w-full flex justify-center items-center gap-2 py-2 px-4 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
@@ -88,7 +88,7 @@ const Register: React.FC = () => {
         </div>
 
         {/* Divider */}
-        <div className="max-w-md mx-auto relative my-6">
+        <div className="max-w-lg mx-auto relative my-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-300"></div>
           </div>
@@ -98,7 +98,7 @@ const Register: React.FC = () => {
         </div>
 
         {/* Registration Forms */}
-        <div className="w-full transition-all duration-300 max-w-2xl mx-auto">
+        <div className="w-full transition-all duration-300 max-w-lg mx-auto">
           {registrationType === "individual" ? (
             <div className="animate-fadeIn">
               <SignupForm onSubmit={handleSubmit} />
