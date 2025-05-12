@@ -80,14 +80,14 @@ const Navbar: React.FC = () => {
       {/* Mobile Sidebar */}
       <div
         className={clsx(
-          "fixed inset-0 z-50 bg-black/40 transition-opacity duration-300",
+          "fixed inset-0  bg-black/40 transition-opacity duration-300",
           mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0"
         )}
       >
         <div
           ref={menuRef}
           className={clsx(
-            "fixed top-0 right-0 h-full w-[80%] max-w-xs bg-white shadow-lg transition-transform duration-300 p-6",
+            "fixed top-0 z-[9999] right-0 h-full w-[80%] max-w-xs bg-white shadow-lg transition-transform duration-300 p-6",
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           )}
         >

@@ -140,11 +140,7 @@ const RegisterForm = () => {
 
   return (
     <div className=" ">
-      <div className="flex flex-col space-y-4">
-        <p className="text-center text-md text-color-900 text-[16px]">
-          Create a new account
-        </p>
-      </div>
+      <div className="flex flex-col space-y-4"></div>
       <FormProvider {...methods}>
         <form
           className="flex flex-col space-y-4"
@@ -153,7 +149,8 @@ const RegisterForm = () => {
           <InputField
             name="co_operativeName"
             icon={<Building2 className="text-primary100" />}
-            label="Organisation Name :"
+            label="Organisation Name "
+            required={true}
             placeholder="Enter Organisation name"
             type="text"
           />
@@ -161,15 +158,16 @@ const RegisterForm = () => {
           <InputField
             name="yearOfIncorporation"
             icon={<Eye className="text-primary100" />}
-            label="Year of Registration :"
+            label="Year of Registration "
             placeholder="Enter year"
+            required={true}
             type="years"
           />
 
           <InputField
             name="officeAddress"
             icon={<HomeIcon className="text-primary100" />}
-            label="Office Address :"
+            label="Office Address "
             placeholder="Enter your office address"
             type="text"
           />
@@ -177,7 +175,8 @@ const RegisterForm = () => {
           <InputField
             name="overseerEmail"
             icon={<Mail className="text-primary100" />}
-            label="Email Address :"
+            label="Email Address "
+            required={true}
             placeholder="Enter email address"
             type="text"
           />
@@ -185,7 +184,8 @@ const RegisterForm = () => {
           <InputField
             name="overseerPhone"
             icon={<Phone className="text-primary100" />}
-            label="Phone number :"
+            label="Phone number "
+            required={true}
             placeholder="Enter phone number"
             type="text"
           />
@@ -193,7 +193,8 @@ const RegisterForm = () => {
           <CustomDropdown
             name="co_operativeIndustry"
             placeholder="Enter industry"
-            label="Industry :"
+            label="Industry "
+            required={true}
             options={Industries}
             onChange={(value) =>
               methods.setValue("co_operativeIndustry", value)
@@ -203,7 +204,8 @@ const RegisterForm = () => {
           <InputField
             name="overseerName"
             icon={<UserRound className="text-primary100" />}
-            label="Contact Person Name :"
+            label="Contact Person Name "
+            required={true}
             placeholder="Enter contact person name"
             type="text"
           />
@@ -211,14 +213,16 @@ const RegisterForm = () => {
           <InputField
             name="overseerDesignation"
             icon={<Network className="text-primary100" />}
-            label="Contact Designation :"
+            label="Contact Designation "
+            required={true}
             placeholder="Enter contact designation"
             type="text"
           />
 
           <CountryDropdown
             name="location"
-            label="Location :"
+            label="Location "
+            required={true}
             options={countries}
             placeholder="Select your country"
             onChange={(value) => methods.setValue("location", value)}
@@ -227,9 +231,10 @@ const RegisterForm = () => {
           <div className="col-span-1 md:col-span-2">
             <InputField
               name="OrganisationDoc"
-              label="Organisation Document :"
+              label="Organisation Document "
               placeholder="Upload file"
               type="file"
+              required={true}
             />
           </div>
 
@@ -238,6 +243,7 @@ const RegisterForm = () => {
               label="acceptTerms"
               name="acceptTerms"
               type="checkbox"
+              required={true}
               containerClassName="w-fit"
               showLabel={false}
             />

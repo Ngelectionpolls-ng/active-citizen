@@ -19,6 +19,7 @@ interface DropdownProps {
   containerClassName?: string;
   inputClassName?: string;
   labelClassName?: string;
+  required?: boolean;
   onChange?: (value: string) => void;
 }
 
@@ -32,6 +33,7 @@ const CustomDropdown: React.FC<DropdownProps> = ({
   inputClassName,
   labelClassName,
   onChange,
+  required
 }) => {
   const { register, setValue, formState: { errors } } = useFormContext();
   const [selectedValue, setSelectedValue] = useState("");
@@ -46,9 +48,18 @@ const CustomDropdown: React.FC<DropdownProps> = ({
   return (
     <div className={cn("w-full flex flex-col space-y-4", containerClassName)}>
       {label && (
-        <label className={cn("text-color-900", labelClassName)} htmlFor={name}>
-          {label}
-        </label>
+         <div className="flex items-center gap-3">
+                <label className={cn("text-color-900 ", labelClassName)} htmlFor={name}>
+                  {label}
+                </label>
+                {
+                  required && (
+                    <div className="text-red-500 text-lg">
+                      <p>*</p>
+                    </div>
+                  )
+                }
+                </div>
       )}
       <div className="relative">
         {loading ? (

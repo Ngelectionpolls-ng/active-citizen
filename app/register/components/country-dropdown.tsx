@@ -31,6 +31,7 @@ interface CountryDropdownProps {
   placeholder: string;
   options: { code: string; name: string }[];
   onChange?: (value: string) => void;
+  required?: boolean;
 }
 
 const CountryDropdown = ({
@@ -39,6 +40,7 @@ const CountryDropdown = ({
   placeholder,
   options,
   onChange,
+  required
 }: CountryDropdownProps) => {
   const { control, setValue } = useFormContext();
   const [open, setOpen] = useState(false);
@@ -50,7 +52,17 @@ const CountryDropdown = ({
       render={({ field }) => (
         <FormItem className="flex flex-col gap-2">
           <FormLabel className="text-[14px] font-normal text-[#333333]">
-            {label}
+            <div className="flex items-center gap-2">
+                   <p>
+
+                      {label}
+                   </p>
+                    {
+                      required && (
+                          <p className="text-red-500 text-lg">*</p>
+                      )
+                    }
+                    </div>
           </FormLabel>
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>

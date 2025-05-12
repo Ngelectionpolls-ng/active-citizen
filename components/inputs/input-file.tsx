@@ -16,6 +16,7 @@ interface InputFieldProps {
   showLabel?: boolean;
   containerClassName?: string;
   inputClassName?: string;
+  required?: boolean;
   labelClassName?: string;
   variant?: "default" | "outline";
 }
@@ -32,6 +33,7 @@ const InputField: React.FC<InputFieldProps> = ({
   inputClassName,
   labelClassName,
   variant = "default",
+  required
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   
@@ -184,10 +186,19 @@ const InputField: React.FC<InputFieldProps> = ({
   return (
     <div className={cn("w-full flex flex-col space-y-4", containerClassName)}>
       {showLabel && (
-        <label className={cn("text-color-900", labelClassName)} htmlFor={name}>
+          <div className="flex items-center gap-2">
+        <label className={cn("text-color-900 ", labelClassName)} htmlFor={name}>
           {label}
         </label>
-      )}
+        {
+          required && (
+            <div className="text-red-500 text-lg">
+              <p>*</p>
+            </div>
+          )
+        }
+        </div>
+        )}
       {type === "checkbox" ? (
         <div className="cursor-pointer justify-center flex gap-2 items-center  w-full">
           <div className="relative">{renderInput()}</div>
