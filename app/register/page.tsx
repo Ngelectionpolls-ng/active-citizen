@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
+import { Icons } from "@/components/shared/icons";
 import { CheckSquare, Building } from "lucide-react";
 import SignupForm from "./components/signup-form";
 import RegisterForm from "./components/organization-register";
@@ -19,6 +21,9 @@ const Register: React.FC = () => {
       {/* Form Section - scrollable */}
       <div className="w-full lg:w-[60%] overflow-y-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-8">
+          <Link href="/" className="inline-block mb-4">
+            <Icons.logo className="size-12" />
+          </Link>
           <h1 className="text-3xl font-bold text-gray-800">Sign up</h1>
           <p className="mt-2 text-gray-600">
             Create an account to get started with us.
