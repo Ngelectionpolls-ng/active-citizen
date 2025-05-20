@@ -25,15 +25,20 @@ export function CurrencyDropdown() {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="ghost" size="sm" className="flex items-center gap-2">
-          <img
-            src={`https://flagcdn.com/w20/${selectedCurrency.flag.toLowerCase()}.png`}
-            width="20"
-            height="15"
-            alt={selectedCurrency.name}
-          />
-          <span className="hidden md:inline-block">{selectedCurrency.symbol}</span>
-          <DollarSign className="h-4 w-4 opacity-50" />
+        <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-gray-100/50 transition-colors">
+          <div className="w-5 h-5 relative flex items-center">
+            <img
+              src={`https://flagcdn.com/w20/${selectedCurrency.flag.toLowerCase()}.png`}
+              width="20"
+              height="15"
+              alt={selectedCurrency.name}
+              className="object-cover rounded-sm"
+            />
+          </div>
+          <span className="hidden md:inline-block text-sm font-medium">
+            {selectedCurrency.symbol}
+          </span>
+          <DollarSign className="h-4 w-4 text-gray-500" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
