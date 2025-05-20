@@ -140,8 +140,8 @@ export default function ProfilePage() {
           </a>
         </div>
         
-        <div className="mt-4 text-muted-foreground">
-          <h3 className="text-sm font-medium mb-2">Interests</h3>
+        <div className="mt-4 text-muted-foreground flex items-center gap-4">
+          <h3 className="text-sm font-medium whitespace-nowrap">Interests:</h3>
           <div className="flex flex-wrap gap-2">
             {user.interests.map((interest) => {
               const Icon = interestIcons[interest as keyof typeof interestIcons] || User
