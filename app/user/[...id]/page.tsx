@@ -109,21 +109,6 @@ export default function ProfilePage() {
         <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
         <p className="text-muted-foreground text-sm mb-4">@{user.username}</p>
 
-        <div className="mt-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Interests</h2>
-          <div className="flex flex-wrap gap-2">
-            {user.interests.map((interest) => {
-              const Icon = interestIcons[interest as keyof typeof interestIcons] || User
-              return (
-                <span key={interest} className="bg-white shadow-xl p-1 flex rounded-[8px]  items-center">
-                  <Icon className="size-8" />
-                  <p className='text-black underline font-bold'>{interest}</p>
-                </span>
-              )
-            })}
-          </div>
-        </div>
-
         <div className="flex items-center text-sm text-muted-foreground gap-3 mt-2 flex-wrap">
           <span className="flex items-center gap-1">
             <MapPin className="w-4 h-4" />
@@ -154,6 +139,22 @@ export default function ProfilePage() {
             GitHub
           </a>
         </div>
+        
+        <div className="mt-4 text-muted-foreground">
+          <h3 className="text-sm font-medium mb-2">Interests</h3>
+          <div className="flex flex-wrap gap-2">
+            {user.interests.map((interest) => {
+              const Icon = interestIcons[interest as keyof typeof interestIcons] || User
+              return (
+                <span key={interest} className="bg-white shadow-sm p-1 flex rounded-[4px] items-center">
+                  <Icon className="size-4" />
+                  <p className='text-sm ml-1'>{interest}</p>
+                </span>
+              )
+            })}
+          </div>
+        </div>
+
 
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
           <div className="bg-muted rounded-lg py-4">
