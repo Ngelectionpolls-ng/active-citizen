@@ -25,7 +25,7 @@ export default function NavigationMenuComponent() {
             <NavigationMenuItem key={navItem.id}>
               {navItem.type === 'dropdown' ? (
                 <>
-                  <NavigationMenuTrigger className="text-[#2F2A33] font-bold">
+                  <NavigationMenuTrigger className="text-[#2F2A33] font-bold text-base">
                     {navItem.name}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
