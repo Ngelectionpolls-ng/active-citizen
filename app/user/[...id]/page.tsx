@@ -107,7 +107,22 @@ export default function ProfilePage() {
 
       <div className="pt-20 px-6 sm:px-8">
         <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
-        <p className="text-muted-foreground text-sm">@{user.username}</p>
+        <p className="text-muted-foreground text-sm mb-4">@{user.username}</p>
+
+        <div className="mt-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Interests</h2>
+          <div className="flex flex-wrap gap-2">
+            {user.interests.map((interest) => {
+              const Icon = interestIcons[interest as keyof typeof interestIcons] || User
+              return (
+                <span key={interest} className="bg-white shadow-xl p-1 flex rounded-[8px]  items-center">
+                  <Icon className="size-8" />
+                  <p className='text-black underline font-bold'>{interest}</p>
+                </span>
+              )
+            })}
+          </div>
+        </div>
 
         <div className="flex items-center text-sm text-muted-foreground gap-3 mt-2 flex-wrap">
           <span className="flex items-center gap-1">
@@ -156,21 +171,6 @@ export default function ProfilePage() {
           <div className="bg-muted rounded-lg py-4">
             <p className="text-xl font-bold">{user.supported.length}</p>
             <p className="text-xs text-muted-foreground">Campaigns Supported</p>
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <h2 className="font-semibold text-lg mb-4">Interests</h2>
-          <div className="flex flex-wrap gap-3">
-            {user.interests.map((interest) => {
-              const Icon = interestIcons[interest as keyof typeof interestIcons] || User
-              return (
-                <span key={interest} className="bg-white shadow-xl p-1 flex rounded-[8px]  items-center">
-                  <Icon className="size-8" />
-                  <p className='text-black underline font-bold'>{interest}</p>
-                </span>
-              )
-            })}
           </div>
         </div>
 
