@@ -57,7 +57,6 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center gap-2">
             <LanguageDropdown />
             <CurrencyDropdown />
-            <Search className="text-[#2F2A33]" />
           </div>
           <div className="hidden md:flex gap-2 items-center">
             <ActionDropdown />
