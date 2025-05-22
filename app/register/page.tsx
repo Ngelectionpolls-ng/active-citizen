@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/components/shared/icons";
 import { CheckSquare, Building } from "lucide-react";
@@ -121,11 +120,9 @@ const Register: React.FC = () => {
       <div className="hidden lg:block w-[40%] bg-gray-50">
         <div className="relative w-full h-screen flex items-center justify-center p-8">
           <div className="relative w-full max-w-md">
-            <Image
+            <img
               src="/attached_assets/one-continent-one-future-symbol-unity-hope.jpg"
               alt="One Continent One Future"
-              width={800}
-              height={600}
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 rounded-2xl"></div>
