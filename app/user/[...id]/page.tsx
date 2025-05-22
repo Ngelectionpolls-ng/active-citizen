@@ -12,7 +12,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { MapPin, Link as LinkIcon, User, Heart, Users } from "lucide-react"
+import { MapPin, Link as LinkIcon, User, Heart, Users, BookOpen, Lightbulb, Sprout, Home, Globe, Shield, Brain, HandHeart, GraduationCap } from "lucide-react"
 
 const dummyUser = {
   name: "Adewale Johnson",
@@ -71,22 +71,22 @@ export default function ProfilePage() {
   const user = dummyUser
 
   const interestIcons = {
-    "Accountability in Governance": Icons.accountability,
-    "Community Engagement": Icons.community,
-    "Crime & Justice": Icons.crime,
-    "Election Integrity": Icons.election,
-    "Insecurity": Icons.accountability,
-    "Tech Innovation": Icons.tech,
-    "Education": Icons.education,
-    "Campaign Against Misinformation": Icons.community,
-    "Environment Pollution": Icons.election,
-    "Inequality": Icons.election,
-    "Climate Change": Icons.climate,
-    "Healthcare Outreach": Icons.healthcare,
-    "Food Security For Africa": Icons.crime,
-    "Human Rights": Icons.tech,
-    "Citizen Empowerment": Icons.empowerment,
-    "Judiciary Reform In Africa": Icons.judiciary
+    "Accountability in Governance": Shield,
+    "Community Engagement": Users,
+    "Crime & Justice": Shield,
+    "Election Integrity": Globe,
+    "Insecurity": Shield,
+    "Tech Innovation": Lightbulb,
+    "Education": GraduationCap,
+    "Campaign Against Misinformation": Brain,
+    "Environment Pollution": Sprout,
+    "Inequality": HandHeart,
+    "Climate Change": Sprout,
+    "Healthcare Outreach": Heart,
+    "Food Security For Africa": Home,
+    "Human Rights": HandHeart,
+    "Citizen Empowerment": Users,
+    "Judiciary Reform In Africa": BookOpen
   }
 
   return (
