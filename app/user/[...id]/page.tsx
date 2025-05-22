@@ -114,19 +114,57 @@ const dummyUser = {
   badges: [
     {
       id: "b1",
-      name: "Impact Pioneer",
-      icon: "🌟",
-      level: "Gold",
-      description: "Reached 10,000+ lives",
-      progress: 100
+      name: "Impact Starter",
+      icon: "🌱",
+      level: "Bronze",
+      description: "Impacted 10 lives",
+      threshold: 10,
+      unlocked: true
     },
     {
       id: "b2",
-      name: "Campaign Master",
-      icon: "🎯",
+      name: "Community Builder",
+      icon: "🤝",
+      level: "Bronze",
+      description: "Impacted 100 lives",
+      threshold: 100,
+      unlocked: true
+    },
+    {
+      id: "b3",
+      name: "Change Maker",
+      icon: "🌟",
       level: "Silver",
-      description: "Created 5 successful campaigns",
-      progress: 80
+      description: "Impacted 1,000 lives",
+      threshold: 1000,
+      unlocked: true
+    },
+    {
+      id: "b4",
+      name: "Impact Leader",
+      icon: "🏆",
+      level: "Silver",
+      description: "Impacted 10,000 lives",
+      threshold: 10000,
+      unlocked: true
+    },
+    {
+      id: "b5",
+      name: "Visionary",
+      icon: "🚀",
+      level: "Gold",
+      description: "Impacted 100,000 lives",
+      threshold: 100000,
+      unlocked: true
+    },
+    {
+      id: "b6",
+      name: "World Changer",
+      icon: "🌍",
+      level: "Gold",
+      description: "Impacted 1,000,000 lives",
+      threshold: 1000000,
+      unlocked: true
     }
   ]
 }
@@ -338,24 +376,38 @@ export default function ProfilePage() {
             <TabsContent value="achievements" className="mt-6">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {user.badges.map((badge) => (
-                  <div key={badge.id} className={`p-6 rounded-lg border ${
-                    badge.level === 'Gold' ? 'bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200' :
-                    badge.level === 'Silver' ? 'bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200' :
-                    'bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200'
-                  }`}>
+                  <div 
+                    key={badge.id} 
+                    className={`p-6 rounded-lg border transition-all ${
+                      badge.unlocked 
+                        ? badge.level === 'Gold' 
+                          ? 'bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200' 
+                          : badge.level === 'Silver' 
+                            ? 'bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200' 
+                            : 'bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200'
+                        : 'bg-gray-100 border-gray-300 opacity-50'
+                    }`}
+                  >
                     <div className="flex flex-col items-center text-center">
                       <span className="text-4xl mb-3">{badge.icon}</span>
                       <h3 className="font-semibold">{badge.name}</h3>
                       <span className={`text-sm px-2 py-1 rounded-full mt-2 ${
-                        badge.level === 'Gold' ? 'bg-yellow-200 text-yellow-700' :
-                        badge.level === 'Silver' ? 'bg-gray-200 text-gray-700' :
-                        'bg-orange-200 text-orange-700'
+                        badge.unlocked 
+                          ? badge.level === 'Gold' 
+                            ? 'bg-yellow-200 text-yellow-700' 
+                            : badge.level === 'Silver' 
+                              ? 'bg-gray-200 text-gray-700' 
+                              : 'bg-orange-200 text-orange-700'
+                          : 'bg-gray-200 text-gray-500'
                       }`}>
                         {badge.level}
                       </span>
                       <p className="text-sm text-muted-foreground mt-2">{badge.description}</p>
                       <div className="w-full mt-3">
-                        <Progress value={badge.progress} className="h-1.5" />
+                        <Progress 
+                          value={badge.unlocked ? 100 : Math.min((user.stats.achievements.impacts / badge.threshold) * 100, 100)} 
+                          className="h-1.5" 
+                        />
                       </div>
                     </div>
                   </div>
