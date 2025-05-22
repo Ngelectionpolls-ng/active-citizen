@@ -27,10 +27,12 @@ const dummyUser = {
     campaignsCreated: 100,
     goalAchievement: 98,
     achievements: {
-      signatures: 10000,
-      donations: 100000,
+      signatures: 10,
+      donations: 100,
       supporters: 1000,
-      impacts: 1000000
+      impacts: 10000,
+      petitionsWon: 100000,
+      fundingRaised: 1000000
     },
   },
   myPetitions: [
@@ -57,22 +59,6 @@ const dummyUser = {
       signatures: 856,
       status: "Completed",
       goalReached: 100
-    },
-    {
-      id: "p4",
-      title: "Affordable Healthcare",
-      summary: "Making healthcare accessible to low-income families",
-      signatures: 3456,
-      status: "Active",
-      goalReached: 60
-    },
-    {
-      id: "p5",
-      title: "Environmental Conservation",
-      summary: "Protecting natural resources and wildlife habitats",
-      signatures: 4567,
-      status: "Active",
-      goalReached: 80
     }
   ],
   myCampaigns: [
@@ -91,30 +77,6 @@ const dummyUser = {
       raised: 8500,
       goal: 10000,
       status: "Active"
-    },
-    {
-      id: "c3",
-      title: "Job Creation Initiative",
-      description: "Supporting small businesses and startups",
-      raised: 5678,
-      goal: 7000,
-      status: "Active"
-    },
-    {
-      id: "c4",
-      title: "Clean Energy Campaign",
-      description: "Promoting renewable energy sources",
-      raised: 9012,
-      goal: 12000,
-      status: "Active"
-    },
-    {
-      id: "c5",
-      title: "Community Development Fund",
-      description: "Investing in local infrastructure projects",
-      raised: 6789,
-      goal: 8000,
-      status: "Active"
     }
   ],
   signedPetitions: [
@@ -131,27 +93,6 @@ const dummyUser = {
       creator: "John Doe",
       date: "2024-02-01",
       impact: 100000
-    },
-    {
-      id: 3,
-      title: "Digital Rights Protection",
-      creator: "Sarah Wilson",
-      date: "2024-02-15",
-      impact: 50000
-    },
-    {
-      id: 4,
-      title: "Climate Action Now",
-      creator: "Michael Green",
-      date: "2024-02-28",
-      impact: 75000
-    },
-    {
-      id: 5,
-      title: "End World Hunger",
-      creator: "Global Relief",
-      date: "2024-03-10",
-      impact: 200000
     }
   ],
   supportedCampaigns: [
@@ -168,27 +109,6 @@ const dummyUser = {
       amount: 2500,
       date: "2024-02-05",
       impact: 250000
-    },
-    {
-      id: 3,
-      title: "Healthcare Access",
-      amount: 3000,
-      date: "2024-02-10",
-      impact: 300000
-    },
-    {
-      id: 4,
-      title: "Youth Empowerment",
-      amount: 5000,
-      date: "2024-02-25",
-      impact: 500000
-    },
-    {
-      id: 5,
-      title: "Disaster Relief",
-      amount: 7500,
-      date: "2024-03-01",
-      impact: 750000
     }
   ],
   badges: [
@@ -207,38 +127,6 @@ const dummyUser = {
       level: "Silver",
       description: "Created 5 successful campaigns",
       progress: 80
-    },
-    {
-      id: "b3",
-      name: "Community Champion",
-      icon: "👥",
-      level: "Gold",
-      description: "Built strong supporter base",
-      progress: 100
-    },
-    {
-      id: "b4",
-      name: "Change Catalyst",
-      icon: "⚡",
-      level: "Bronze",
-      description: "Initiated impactful changes",
-      progress: 60
-    },
-    {
-      id: "b5",
-      name: "Signature Gatherer",
-      icon: "✍️",
-      level: "Silver",
-      description: "Collected 5000+ signatures",
-      progress: 90
-    },
-    {
-      id: "b6",
-      name: "Fundraising Whiz",
-      icon: "💰",
-      level: "Gold",
-      description: "Raised $50,000+ for causes",
-      progress: 100
     }
   ]
 }
@@ -247,154 +135,125 @@ export default function ProfilePage() {
   const user = dummyUser
 
   const interestIcons = {
-    "Accountability in Governance": Shield,
-    "Community Engagement": Users,
-    "Crime & Justice": Shield,
-    "Election Integrity": Globe,
-    "Insecurity": Shield,
     "Tech Innovation": Lightbulb,
-    "Education": GraduationCap,
-    "Campaign Against Misinformation": Brain,
-    "Environment Pollution": Sprout,
-    "Inequality": HandHeart,
     "Climate Change": Sprout,
-    "Healthcare Outreach": Heart,
-    "Food Security For Africa": Home,
-    "Human Rights": HandHeart,
-    "Citizen Empowerment": Users,
-    "Judiciary Reform In Africa": BookOpen
+    "Community Engagement": Users,
+    "Education": GraduationCap,
+    "Human Rights": HandHeart
   }
 
   return (
-    <div className="max-w-5xl mx-auto pt-4 mb-12">
-      <div className="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden">
+    <div className="max-w-5xl mx-auto pt-4 mb-12 px-4 sm:px-6">
+      <div className="relative w-full h-48 sm:h-64 bg-gray-200 rounded-lg overflow-hidden">
         <img
           src="https://source.unsplash.com/featured/?community"
           alt="Cover"
           className="w-full h-full object-cover"
         />
-        <Avatar className="w-32 h-32 absolute -bottom-16 left-6 border-4 border-white shadow-md">
-          <AvatarImage src={user.avatar} />
-          <AvatarFallback>
-            <User className="w-10 h-10" />
-          </AvatarFallback>
-        </Avatar>
+        <div className="absolute bottom-0 left-0 right-0 px-6 py-4 bg-gradient-to-t from-black/60 to-transparent">
+          <Avatar className="w-24 h-24 sm:w-32 sm:h-32 border-4 border-white shadow-md">
+            <AvatarImage src={user.avatar} />
+            <AvatarFallback>
+              <User className="w-10 h-10" />
+            </AvatarFallback>
+          </Avatar>
+        </div>
       </div>
 
-      <div className="pt-20 px-6 sm:px-8">
-        <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
-        <p className="text-muted-foreground text-sm mb-4">@{user.username}</p>
+      <div className="pt-4 sm:pt-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
+            <p className="text-muted-foreground text-sm">@{user.username}</p>
+          </div>
 
-        <div className="flex items-center text-sm text-muted-foreground gap-3 mt-2 flex-wrap">
-          <span className="flex items-center gap-1">
-            <MapPin className="w-4 h-4" />
-            {user.location}
-          </span>
-          <span>Joined {user.joinDate}</span>
-        </div>
-
-        <div className="mt-4 max-w-2xl text-sm text-gray-700">
-          {user.bio}
-        </div>
-
-        <div className="flex flex-wrap gap-4 mt-4">
-          <a href={user.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1 text-sm">
-            <LinkIcon className="w-4 h-4" />
-            Website
-          </a>
-          <a href={user.twitter} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline flex items-center gap-1 text-sm">
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4.36a9.14 9.14 0 01-2.88 1.1 4.48 4.48 0 00-7.64 4.08A12.7 12.7 0 013 2.16a4.48 4.48 0 001.39 5.98A4.41 4.41 0 012 7.5v.05a4.48 4.48 0 003.6 4.4 4.5 4.5 0 01-2 .08 4.48 4.48 0 004.19 3.12A9 9 0 012 19.54 12.66 12.66 0 008.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.35-.01-.53A8.4 8.4 0 0023 3z" />
-            </svg>
-            Twitter
-          </a>
-          <a href={user.github} target="_blank" rel="noopener noreferrer" className="text-black hover:underline flex items-center gap-1 text-sm">
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4">
-              <path d="M12 .297a12 12 0 00-3.79 23.4c.6.113.82-.26.82-.577v-2.234c-3.34.726-4.042-1.61-4.042-1.61a3.18 3.18 0 00-1.335-1.75c-1.093-.75.084-.735.084-.735a2.52 2.52 0 011.84 1.235 2.55 2.55 0 003.48.997 2.55 2.55 0 01.762-1.61c-2.66-.3-5.467-1.33-5.467-5.93a4.63 4.63 0 011.235-3.22 4.29 4.29 0 01.117-3.175s1.01-.322 3.3 1.23a11.46 11.46 0 016 0c2.29-1.552 3.3-1.23 3.3-1.23.48 1.295.434 2.747.117 3.175a4.63 4.63 0 011.236 3.22c0 4.61-2.807 5.628-5.48 5.922a2.85 2.85 0 01.813 2.22v3.293c0 .32.218.694.825.577A12.004 12.004 0 0012 .297z" />
-            </svg>
-            GitHub
-          </a>
-        </div>
-
-        <div className="mt-4 text-muted-foreground flex items-center gap-4">
-          <h3 className="text-sm font-medium whitespace-nowrap">Interests:</h3>
-          <div className="flex flex-wrap gap-2">
-            {user.interests.map((interest) => {
-              const Icon = interestIcons[interest as keyof typeof interestIcons] || User
-              return (
-                <span key={interest} className="bg-white shadow-md p-2 flex rounded-[6px] items-center gap-2 hover:bg-gray-50 transition-colors">
-                  <Icon className="size-5 text-brandgreen" />
-                  <p className='text-sm'>{interest}</p>
-                </span>
-              )
-            })}
+          <div className="flex items-center text-sm text-muted-foreground gap-3 mt-2 sm:mt-0">
+            <span className="flex items-center gap-1">
+              <MapPin className="w-4 h-4" />
+              {user.location}
+            </span>
+            <span>Joined {user.joinDate}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-5 mt-6 border-b pb-3">
-          <button className="hover:underline">
-            <span className="font-bold">{user.following}</span>{" "}
-            <span className="text-muted-foreground">Following</span>
-          </button>
-          <button className="hover:underline">
-            <span className="font-bold">{user.followers}</span>{" "}
-            <span className="text-muted-foreground">Followers</span>
-          </button>
+        <div className="mt-4 text-sm text-gray-700">{user.bio}</div>
+
+        <div className="flex flex-wrap gap-4 mt-4">
+          {user.website && (
+            <a href={user.website} target="_blank" rel="noopener noreferrer" 
+               className="text-blue-600 hover:underline flex items-center gap-1 text-sm">
+              <LinkIcon className="w-4 h-4" />
+              Website
+            </a>
+          )}
+          {user.twitter && (
+            <a href={user.twitter} target="_blank" rel="noopener noreferrer" 
+               className="text-blue-500 hover:underline flex items-center gap-1 text-sm">
+              <Icons.twitter className="w-4 h-4" />
+              Twitter
+            </a>
+          )}
         </div>
 
-        <div className="mt-8">
+        <div className="mt-6">
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="flex w-full bg-transparent border-b h-auto">
-              <TabsTrigger value="overview" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Overview</TabsTrigger>
-              <TabsTrigger value="my-petitions" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Petitions</TabsTrigger>
-              <TabsTrigger value="my-campaigns" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Campaigns</TabsTrigger>
-              <TabsTrigger value="signed" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Signed Petitions</TabsTrigger>
-              <TabsTrigger value="supported" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Supports</TabsTrigger>
-              <TabsTrigger value="badges" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Badges</TabsTrigger>
+            <TabsList className="flex w-full overflow-x-auto bg-transparent border-b h-auto">
+              <TabsTrigger value="overview" className="flex-1 min-w-[120px] px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="my-petitions" className="flex-1 min-w-[120px] px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">
+                My Petitions
+              </TabsTrigger>
+              <TabsTrigger value="my-campaigns" className="flex-1 min-w-[120px] px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">
+                My Campaigns
+              </TabsTrigger>
+              <TabsTrigger value="signed" className="flex-1 min-w-[120px] px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">
+                Signed Petitions
+              </TabsTrigger>
+              <TabsTrigger value="my-supports" className="flex-1 min-w-[120px] px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">
+                My Supports
+              </TabsTrigger>
+              <TabsTrigger value="achievements" className="flex-1 min-w-[120px] px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">
+                Achievements
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="mt-6">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="p-6 border rounded-lg bg-gradient-to-br from-white to-gray-50">
                   <div className="flex items-center gap-3 mb-3">
                     <Trophy className="w-5 h-5 text-yellow-500" />
                     <h3 className="text-sm font-medium">Total Impact</h3>
                   </div>
-                  <p className="text-3xl font-bold text-gray-900">{user.stats.totalImpact.toLocaleString()}</p>
-                  <p className="text-sm text-muted-foreground mt-1">Lives impacted</p>
+                  <p className="text-3xl font-bold text-gray-900">{user.stats.achievements.impacts.toLocaleString()}</p>
+                  <p className="text-sm text-muted-foreground mt-1">Lives touched</p>
                 </div>
-                <div className="p-6 border rounded-lg bg-gradient-to-br from-white to-gray-50">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Target className="w-5 h-5 text-blue-500" />
-                    <h3 className="text-sm font-medium">Success Rate</h3>
-                  </div>
-                  <p className="text-3xl font-bold text-gray-900">{user.stats.successRate}%</p>
-                  <p className="text-sm text-muted-foreground mt-1">Campaign success</p>
-                </div>
-                <div className="p-6 border rounded-lg bg-gradient-to-br from-white to-gray-50">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Flame className="w-5 h-5 text-orange-500" />
-                    <h3 className="text-sm font-medium">Total Campaigns</h3>
-                  </div>
-                  <p className="text-3xl font-bold text-gray-900">{user.stats.campaignsCreated}</p>
-                  <p className="text-sm text-muted-foreground mt-1">Initiatives started</p>
-                </div>
+
                 <div className="p-6 border rounded-lg bg-gradient-to-br from-white to-gray-50">
                   <div className="flex items-center gap-3 mb-3">
                     <Award className="w-5 h-5 text-purple-500" />
-                    <h3 className="text-sm font-medium">Goal Achievement</h3>
+                    <h3 className="text-sm font-medium">Petitions Won</h3>
                   </div>
-                  <p className="text-3xl font-bold text-gray-900">{user.stats.goalAchievement}%</p>
-                  <p className="text-sm text-muted-foreground mt-1">Average completion</p>
+                  <p className="text-3xl font-bold text-gray-900">{user.stats.achievements.petitionsWon.toLocaleString()}</p>
+                  <p className="text-sm text-muted-foreground mt-1">Successful campaigns</p>
+                </div>
+
+                <div className="p-6 border rounded-lg bg-gradient-to-br from-white to-gray-50">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Heart className="w-5 h-5 text-red-500" />
+                    <h3 className="text-sm font-medium">Total Raised</h3>
+                  </div>
+                  <p className="text-3xl font-bold text-gray-900">${user.stats.achievements.fundingRaised.toLocaleString()}</p>
+                  <p className="text-sm text-muted-foreground mt-1">Funds generated</p>
                 </div>
               </div>
             </TabsContent>
 
             <TabsContent value="my-petitions" className="mt-6">
-              <div className="space-y-6">
+              <div className="grid gap-6">
                 {user.myPetitions.map((petition) => (
                   <div key={petition.id} className="p-6 border rounded-lg bg-white hover:bg-gray-50 transition-colors">
-                    <div className="flex justify-between items-start">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div>
                         <h3 className="font-semibold text-lg">{petition.title}</h3>
                         <p className="text-sm text-muted-foreground mt-1">{petition.summary}</p>
@@ -410,7 +269,7 @@ export default function ProfilePage() {
                       </div>
                       <Progress value={petition.goalReached} className="h-2" />
                     </div>
-                    <div className="mt-4 flex items-center gap-4">
+                    <div className="mt-4">
                       <Badge variant="outline" className="text-green-600">
                         {petition.signatures.toLocaleString()} signatures
                       </Badge>
@@ -421,10 +280,10 @@ export default function ProfilePage() {
             </TabsContent>
 
             <TabsContent value="my-campaigns" className="mt-6">
-              <div className="space-y-6">
+              <div className="grid gap-6">
                 {user.myCampaigns.map((campaign) => (
                   <div key={campaign.id} className="p-6 border rounded-lg bg-white hover:bg-gray-50 transition-colors">
-                    <div className="flex justify-between items-start">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div>
                         <h3 className="font-semibold text-lg">{campaign.title}</h3>
                         <p className="text-sm text-muted-foreground mt-1">{campaign.description}</p>
@@ -446,11 +305,11 @@ export default function ProfilePage() {
             </TabsContent>
 
             <TabsContent value="signed" className="mt-6">
-              <div className="space-y-4">
+              <div className="grid gap-4">
                 {user.signedPetitions.map((petition) => (
                   <div key={petition.id} className="p-4 border rounded-lg bg-white hover:bg-gray-50 transition-colors">
                     <h3 className="font-medium">{petition.title}</h3>
-                    <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
+                    <div className="flex flex-wrap items-center gap-2 mt-2 text-sm text-muted-foreground">
                       <span>Created by {petition.creator}</span>
                       <span>•</span>
                       <span>Signed on {petition.date}</span>
@@ -460,12 +319,12 @@ export default function ProfilePage() {
               </div>
             </TabsContent>
 
-            <TabsContent value="supported" className="mt-6">
-              <div className="space-y-4">
+            <TabsContent value="my-supports" className="mt-6">
+              <div className="grid gap-4">
                 {user.supportedCampaigns.map((campaign) => (
                   <div key={campaign.id} className="p-4 border rounded-lg bg-white hover:bg-gray-50 transition-colors">
                     <h3 className="font-medium">{campaign.title}</h3>
-                    <div className="flex items-center gap-2 mt-2">
+                    <div className="flex flex-wrap items-center gap-2 mt-2">
                       <Badge variant="outline" className="text-green-600">
                         Contributed ${campaign.amount}
                       </Badge>
@@ -476,8 +335,8 @@ export default function ProfilePage() {
               </div>
             </TabsContent>
 
-            <TabsContent value="badges" className="mt-6">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <TabsContent value="achievements" className="mt-6">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {user.badges.map((badge) => (
                   <div key={badge.id} className={`p-6 rounded-lg border ${
                     badge.level === 'Gold' ? 'bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200' :
