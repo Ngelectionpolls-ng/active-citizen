@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from './token-encryption';
 
-export const BASEURL = process.env.NEXT_PUBLIC_BASE_URL
+export const BASEURL = 'http://64.227.38.32/api'
 export const api = axios.create({
     baseURL: BASEURL,
     headers: {
