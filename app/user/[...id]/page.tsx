@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Icons } from "@/components/shared/icons"
@@ -23,12 +22,16 @@ const dummyUser = {
   following: 87,
   interests: ["Tech Innovation", "Climate Change", "Community Engagement", "Education", "Human Rights"],
   stats: {
-    totalImpact: 12450,
-    petitionsStarted: 8,
-    campaignsCreated: 5,
-    totalContributions: 15,
-    successRate: 85,
-    goalAchievement: 92
+    totalImpact: 1000000,
+    successRate: 95,
+    campaignsCreated: 100,
+    goalAchievement: 98,
+    achievements: {
+      signatures: 10000,
+      donations: 100000,
+      supporters: 1000,
+      impacts: 1000000
+    },
   },
   myPetitions: [
     {
@@ -54,6 +57,22 @@ const dummyUser = {
       signatures: 856,
       status: "Completed",
       goalReached: 100
+    },
+    {
+      id: "p4",
+      title: "Affordable Healthcare",
+      summary: "Making healthcare accessible to low-income families",
+      signatures: 3456,
+      status: "Active",
+      goalReached: 60
+    },
+    {
+      id: "p5",
+      title: "Environmental Conservation",
+      summary: "Protecting natural resources and wildlife habitats",
+      signatures: 4567,
+      status: "Active",
+      goalReached: 80
     }
   ],
   myCampaigns: [
@@ -72,34 +91,104 @@ const dummyUser = {
       raised: 8500,
       goal: 10000,
       status: "Active"
+    },
+    {
+      id: "c3",
+      title: "Job Creation Initiative",
+      description: "Supporting small businesses and startups",
+      raised: 5678,
+      goal: 7000,
+      status: "Active"
+    },
+    {
+      id: "c4",
+      title: "Clean Energy Campaign",
+      description: "Promoting renewable energy sources",
+      raised: 9012,
+      goal: 12000,
+      status: "Active"
+    },
+    {
+      id: "c5",
+      title: "Community Development Fund",
+      description: "Investing in local infrastructure projects",
+      raised: 6789,
+      goal: 8000,
+      status: "Active"
     }
   ],
   signedPetitions: [
     {
-      id: "sp1",
-      title: "Save Local Wildlife",
-      creator: "Wildlife Foundation",
-      date: "2024-02-15"
+      id: 1,
+      title: "Save Local Parks",
+      creator: "Jane Smith",
+      date: "2024-01-15",
+      impact: 10000
     },
     {
-      id: "sp2",
-      title: "Renewable Energy Initiative",
-      creator: "Green Earth NGO",
-      date: "2024-02-10"
+      id: 2,
+      title: "Education For All",
+      creator: "John Doe",
+      date: "2024-02-01",
+      impact: 100000
+    },
+    {
+      id: 3,
+      title: "Digital Rights Protection",
+      creator: "Sarah Wilson",
+      date: "2024-02-15",
+      impact: 50000
+    },
+    {
+      id: 4,
+      title: "Climate Action Now",
+      creator: "Michael Green",
+      date: "2024-02-28",
+      impact: 75000
+    },
+    {
+      id: 5,
+      title: "End World Hunger",
+      creator: "Global Relief",
+      date: "2024-03-10",
+      impact: 200000
     }
   ],
   supportedCampaigns: [
     {
-      id: "sc1",
-      title: "Food Bank Support",
-      amount: 500,
-      date: "2024-02-20"
+      id: 1,
+      title: "Clean Water Initiative",
+      amount: 1500,
+      date: "2024-01-20",
+      impact: 100000
     },
     {
-      id: "sc2",
-      title: "Emergency Relief Fund",
-      amount: 750,
-      date: "2024-02-18"
+      id: 2,
+      title: "Tech Education Fund",
+      amount: 2500,
+      date: "2024-02-05",
+      impact: 250000
+    },
+    {
+      id: 3,
+      title: "Healthcare Access",
+      amount: 3000,
+      date: "2024-02-10",
+      impact: 300000
+    },
+    {
+      id: 4,
+      title: "Youth Empowerment",
+      amount: 5000,
+      date: "2024-02-25",
+      impact: 500000
+    },
+    {
+      id: 5,
+      title: "Disaster Relief",
+      amount: 7500,
+      date: "2024-03-01",
+      impact: 750000
     }
   ],
   badges: [
@@ -134,6 +223,22 @@ const dummyUser = {
       level: "Bronze",
       description: "Initiated impactful changes",
       progress: 60
+    },
+    {
+      id: "b5",
+      name: "Signature Gatherer",
+      icon: "✍️",
+      level: "Silver",
+      description: "Collected 5000+ signatures",
+      progress: 90
+    },
+    {
+      id: "b6",
+      name: "Fundraising Whiz",
+      icon: "💰",
+      level: "Gold",
+      description: "Raised $50,000+ for causes",
+      progress: 100
     }
   ]
 }
@@ -244,7 +349,7 @@ export default function ProfilePage() {
               <TabsTrigger value="my-petitions" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Petitions</TabsTrigger>
               <TabsTrigger value="my-campaigns" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Campaigns</TabsTrigger>
               <TabsTrigger value="signed" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Signed Petitions</TabsTrigger>
-              <TabsTrigger value="supported" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Supported</TabsTrigger>
+              <TabsTrigger value="supported" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Supports</TabsTrigger>
               <TabsTrigger value="badges" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Badges</TabsTrigger>
             </TabsList>
 
