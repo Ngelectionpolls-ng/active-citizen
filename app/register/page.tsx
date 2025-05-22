@@ -117,23 +117,21 @@ const Register: React.FC = () => {
       </div>
 
       {/* Image Section - Fixed */}
-      <div className="hidden lg:block w-[40%] bg-gray-50">
-        <div className="relative w-full h-screen flex items-center justify-center p-8">
-          <div className="relative w-full max-w-md">
-            <img
-              src="/attached_assets/one-continent-one-future-symbol-unity-hope.jpg"
-              alt="One Continent One Future"
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 rounded-2xl"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <h3 className="text-white text-2xl font-bold mb-3">
-                One Continent, One Future
-              </h3>
-              <p className="text-white/90 text-lg">
-                Join us in building a unified vision for Africa's tomorrow.
-              </p>
-            </div>
+      <div className="hidden lg:flex w-[40%] items-center justify-center">
+        <div className="relative w-full h-screen">
+          <img
+            src="/attached_assets/one-continent-one-future-symbol-unity-hope.jpg"
+            alt="One Continent One Future"
+            className="w-full h-full object-cover rounded-lg shadow-xl"
+          />
+          <div className="absolute inset-0 bg-green-600 opacity-10 rounded-lg"></div>
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
+            <h3 className="text-white text-xl font-semibold">
+              Make Your Voice Count
+            </h3>
+            <p className="text-white/90 mt-2">
+              Join millions of people taking action to create positive change.
+            </p>
           </div>
         </div>
       </div>
