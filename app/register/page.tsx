@@ -120,8 +120,8 @@ const Register: React.FC = () => {
       <div className="hidden lg:flex w-[40%] items-center justify-center">
         <div className="relative w-full h-screen">
           <img
-            src="https://images.pexels.com/photos/7709287/pexels-photo-7709287.jpeg"
-            alt=" illustration"
+            src="/attached_assets/one-continent-one-future-symbol-unity-hope.jpg"
+            alt="One Continent One Future"
             className="w-full h-full object-cover rounded-lg shadow-xl"
           />
           <div className="absolute inset-0 bg-green-600 opacity-10 rounded-lg"></div>
