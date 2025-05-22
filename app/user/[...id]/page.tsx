@@ -13,6 +13,8 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 import { MapPin, Link as LinkIcon, User, Heart, Users, BookOpen, Lightbulb, Sprout, Home, Globe, Shield, Brain, HandHeart, GraduationCap } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Progress } from "@/components/ui/progress"
 
 const dummyUser = {
   name: "Adewale Johnson",
@@ -139,7 +141,7 @@ export default function ProfilePage() {
             GitHub
           </a>
         </div>
-        
+
         <div className="mt-4 text-muted-foreground flex items-center gap-4">
           <h3 className="text-sm font-medium whitespace-nowrap">Interests:</h3>
           <div className="flex flex-wrap gap-2">
@@ -155,80 +157,151 @@ export default function ProfilePage() {
           </div>
         </div>
 
-
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          <div className="bg-muted rounded-lg py-4">
-            <p className="text-xl font-bold">{user.following}</p>
-            <p className="text-xs text-muted-foreground">Following</p>
-          </div>
-          <div className="bg-muted rounded-lg py-4">
-            <p className="text-xl font-bold">{user.followers}</p>
-            <p className="text-xs text-muted-foreground">Followers</p>
-          </div>
-          <div className="bg-muted rounded-lg py-4">
-            <p className="text-xl font-bold">{user.created.length}</p>
-            <p className="text-xs text-muted-foreground">Campaigns Created</p>
-          </div>
-          <div className="bg-muted rounded-lg py-4">
-            <p className="text-xl font-bold">{user.supported.length}</p>
-            <p className="text-xs text-muted-foreground">Campaigns Supported</p>
-          </div>
+        <div className="flex items-center gap-5 mt-6 border-b pb-3">
+          <button className="hover:underline">
+            <span className="font-bold">{user.following}</span>{" "}
+            <span className="text-muted-foreground">Following</span>
+          </button>
+          <button className="hover:underline">
+            <span className="font-bold">{user.followers}</span>{" "}
+            <span className="text-muted-foreground">Followers</span>
+          </button>
         </div>
 
-        <div className="mt-10">
-          <h2 className="font-semibold text-lg mb-4">Pinned Posts</h2>
-          {user.pinnedPosts.length ? (
-            <ul className="space-y-4">
-              {user.pinnedPosts.map((post) => (
-                <li key={post.id} className="p-4 bg-white border rounded-lg shadow-sm">
-                  <h3 className="font-semibold text-lg">{post.title}</h3>
-                  <p className="text-sm text-muted-foreground">{post.summary}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-muted-foreground">No pinned posts yet.</p>
-          )}
-        </div>
-      </div>
+        <div className="mt-8">
+          <Tabs defaultValue="overview" className="w-full">
+            <TabsList className="grid w-full grid-cols-7 bg-muted h-auto p-1 gap-1">
+              <TabsTrigger value="overview" className="text-xs">Overview</TabsTrigger>
+              <TabsTrigger value="petitions" className="text-xs">Petitions</TabsTrigger>
+              <TabsTrigger value="campaigns" className="text-xs">Campaigns</TabsTrigger>
+              <TabsTrigger value="contributed" className="text-xs">Contributed</TabsTrigger>
+              <TabsTrigger value="signed" className="text-xs">Signed</TabsTrigger>
+              <TabsTrigger value="impacts" className="text-xs">Impacts</TabsTrigger>
+              <TabsTrigger value="stats" className="text-xs">Stats</TabsTrigger>
+            </TabsList>
 
-      <div className="mt-10 px-6 sm:px-8">
-        <Tabs defaultValue="created" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 bg-muted">
-            <TabsTrigger value="created">Campaigns Created</TabsTrigger>
-            <TabsTrigger value="supported">Campaigns Supported</TabsTrigger>
-          </TabsList>
+            <TabsContent value="overview" className="mt-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="p-4 border rounded-lg">
+                  <h3 className="text-sm font-medium mb-2">Total Impact</h3>
+                  <p className="text-2xl font-bold">12,450</p>
+                  <p className="text-xs text-muted-foreground">Lives impacted</p>
+                </div>
+                <div className="p-4 border rounded-lg">
+                  <h3 className="text-sm font-medium mb-2">Campaigns</h3>
+                  <p className="text-2xl font-bold">{user.created.length}</p>
+                  <p className="text-xs text-muted-foreground">Created</p>
+                </div>
+                <div className="p-4 border rounded-lg">
+                  <h3 className="text-sm font-medium mb-2">Petitions</h3>
+                  <p className="text-2xl font-bold">8</p>
+                  <p className="text-xs text-muted-foreground">Started</p>
+                </div>
+                <div className="p-4 border rounded-lg">
+                  <h3 className="text-sm font-medium mb-2">Contributions</h3>
+                  <p className="text-2xl font-bold">{user.supported.length}</p>
+                  <p className="text-xs text-muted-foreground">Total</p>
+                </div>
+              </div>
 
-          <TabsContent value="created" className="mt-6">
-            {user.created.length > 0 ? (
-              <ul className="space-y-4">
+              <div className="mt-8">
+                <h2 className="text-lg font-semibold mb-4">Achievement Badges</h2>
+                <div className="grid grid-cols-5 gap-4">
+                  {[
+                    { name: "First Impact", icon: "🌟", unlocked: true },
+                    { name: "Community Builder", icon: "👥", unlocked: true },
+                    { name: "Change Maker", icon: "🌍", unlocked: true },
+                    { name: "Voice of Many", icon: "📢", unlocked: false },
+                    { name: "Rising Star", icon: "⭐", unlocked: false },
+                  ].map((badge) => (
+                    <div key={badge.name} className={`flex flex-col items-center p-4 rounded-lg border ${badge.unlocked ? 'bg-white' : 'bg-gray-50 opacity-50'}`}>
+                      <span className="text-2xl mb-2">{badge.icon}</span>
+                      <p className="text-xs text-center font-medium">{badge.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="petitions" className="mt-6">
+              <h2 className="text-lg font-semibold mb-4">My Petitions</h2>
+              <div className="space-y-4">
+                {user.pinnedPosts.map((post) => (
+                  <div key={post.id} className="p-4 border rounded-lg">
+                    <h3 className="font-medium">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{post.summary}</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <Badge variant="secondary">1,234 signatures</Badge>
+                      <Badge variant="outline">Active</Badge>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="campaigns" className="mt-6">
+              <h2 className="text-lg font-semibold mb-4">My Campaigns</h2>
+              <div className="space-y-4">
                 {user.created.map((campaign) => (
-                  <li key={campaign.id} className="p-4 rounded-lg border bg-white shadow-sm">
-                    <h3 className="font-semibold text-lg">{campaign.title}</h3>
-                    <p className="text-sm text-muted-foreground">{campaign.description}</p>
-                  </li>
+                  <div key={campaign.id} className="p-4 border rounded-lg">
+                    <h3 className="font-medium">{campaign.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{campaign.description}</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <Badge variant="secondary">$12,345 raised</Badge>
+                      <Badge variant="outline">Ongoing</Badge>
+                    </div>
+                  </div>
                 ))}
-              </ul>
-            ) : (
-              <p className="text-muted-foreground">No campaigns created yet.</p>
-            )}
-          </TabsContent>
+              </div>
+            </TabsContent>
 
-          <TabsContent value="supported" className="mt-6">
-            {user.supported.length > 0 ? (
-              <ul className="space-y-4">
-                {user.supported.map((campaign) => (
-                  <li key={campaign.id} className="p-4 rounded-lg border bg-white shadow-sm">
-                    <h3 className="font-semibold text-lg">{campaign.title}</h3>
-                    <p className="text-sm text-muted-foreground">{campaign.description}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-muted-foreground">No campaigns supported yet.</p>
-            )}
-          </TabsContent>
-        </Tabs>
+            <TabsContent value="impacts" className="mt-6">
+              <div className="mb-8">
+                <h2 className="text-lg font-semibold mb-4">Impact Achievements</h2>
+                <div className="grid grid-cols-5 gap-4">
+                  {[
+                    { name: "100 Lives", icon: "💖", count: "100", unlocked: true },
+                    { name: "Earth Guardian", icon: "🌍", count: "500", unlocked: true },
+                    { name: "Hope Bearer", icon: "🕊️", count: "1000", unlocked: true },
+                    { name: "Community Hero", icon: "👑", count: "5000", unlocked: false },
+                    { name: "Legend", icon: "⚡", count: "10000", unlocked: false },
+                  ].map((badge) => (
+                    <div key={badge.name} className={`flex flex-col items-center p-4 rounded-lg border ${badge.unlocked ? 'bg-white' : 'bg-gray-50 opacity-50'}`}>
+                      <span className="text-2xl mb-2">{badge.icon}</span>
+                      <p className="text-xs text-center font-medium">{badge.name}</p>
+                      <p className="text-xs text-muted-foreground">{badge.count} lives</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="stats" className="mt-6">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h3 className="font-medium">Campaign Performance</h3>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Success Rate</span>
+                      <span className="font-medium">85%</span>
+                    </div>
+                    <Progress value={85} />
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="font-medium">Petition Success</h3>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Goal Achievement</span>
+                      <span className="font-medium">92%</span>
+                    </div>
+                    <Progress value={92} />
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </div>
   )
