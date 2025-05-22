@@ -146,9 +146,9 @@ export default function ProfilePage() {
             {user.interests.map((interest) => {
               const Icon = interestIcons[interest as keyof typeof interestIcons] || User
               return (
-                <span key={interest} className="bg-white shadow-sm p-1 flex rounded-[4px] items-center">
-                  <Icon className="size-4" />
-                  <p className='text-sm ml-1'>{interest}</p>
+                <span key={interest} className="bg-white shadow-md p-2 flex rounded-[6px] items-center gap-2 hover:bg-gray-50 transition-colors">
+                  <Icon className="size-5 text-brandgreen" />
+                  <p className='text-sm'>{interest}</p>
                 </span>
               )
             })}
