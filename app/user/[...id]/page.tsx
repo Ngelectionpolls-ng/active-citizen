@@ -239,13 +239,13 @@ export default function ProfilePage() {
 
         <div className="mt-8">
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-6 bg-muted h-auto p-1 gap-1">
-              <TabsTrigger value="overview" className="text-xs">Overview</TabsTrigger>
-              <TabsTrigger value="my-petitions" className="text-xs">My Petitions</TabsTrigger>
-              <TabsTrigger value="my-campaigns" className="text-xs">My Campaigns</TabsTrigger>
-              <TabsTrigger value="signed" className="text-xs">Signed Petitions</TabsTrigger>
-              <TabsTrigger value="supported" className="text-xs">Supported</TabsTrigger>
-              <TabsTrigger value="badges" className="text-xs">Badges</TabsTrigger>
+            <TabsList className="flex w-full bg-transparent border-b h-auto">
+              <TabsTrigger value="overview" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Overview</TabsTrigger>
+              <TabsTrigger value="my-petitions" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Petitions</TabsTrigger>
+              <TabsTrigger value="my-campaigns" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">My Campaigns</TabsTrigger>
+              <TabsTrigger value="signed" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Signed Petitions</TabsTrigger>
+              <TabsTrigger value="supported" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Supported</TabsTrigger>
+              <TabsTrigger value="badges" className="flex-1 px-4 py-3 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-brandgreen data-[state=active]:text-brandgreen rounded-none hover:bg-gray-50">Badges</TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="mt-6">
