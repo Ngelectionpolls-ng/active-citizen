@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { v4 as uuidv4 } from "uuid";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,6 +21,9 @@ import {
   Globe,
   Building2,
   HomeIcon,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import {
   Dialog,
@@ -52,13 +54,14 @@ const Icons = {
   judiciary: Building2,
 };
 
-
-
 const formSchema = z.object({
   scope: z.enum(["local", "national", "global"]),
   title: z.string().min(5, "Title must be at least 5 characters"),
   story: z.string().min(100, "Please tell a more detailed story (min 100 characters)"),
-  coverImage: z.string().optional(),
+  images: z
+    .array(z.string().optional())
+    .length(5, "Please provide exactly 5 image slots")
+    .optional(),
   targetSignatures: z.number().min(100, "Target signatures must be at least 100"),
   course: z.string().min(1, "Please select a course"),
 });
@@ -71,7 +74,8 @@ export default function CreatePetition() {
   const [step, setStep] = useState(1);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
-  const [coverImagePreview, setCoverImagePreview] = useState<string | null>(null);
+  const [imagePreviews, setImagePreviews] = useState<(string | null)[]>([null, null, null, null, null]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const maxSteps = 5;
 
   const form = useForm({
@@ -80,7 +84,7 @@ export default function CreatePetition() {
       scope: "local",
       title: "",
       story: "",
-      coverImage: "",
+      images: [undefined, undefined, undefined, undefined, undefined],
       targetSignatures: 1000,
       course: "",
     },
@@ -93,6 +97,36 @@ export default function CreatePetition() {
       return;
     }
     console.log(data);
+  };
+
+  const handleImageUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreviews((prev) => {
+        const newPreviews = [...prev];
+        newPreviews[index] = imageUrl;
+        return newPreviews;
+      });
+      form.setValue(`images.${index}`, imageUrl);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setImagePreviews((prev) => {
+      const newPreviews = [...prev];
+      newPreviews[index] = null;
+      return newPreviews;
+    });
+    form.setValue(`images.${index}`, undefined);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % imagePreviews.filter((img) => img).length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + imagePreviews.filter((img) => img).length) % imagePreviews.filter((img) => img).length);
   };
 
   const renderStep = () => {
@@ -236,42 +270,53 @@ export default function CreatePetition() {
       case 4:
         return (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold">Add a cover image</h2>
-            <p className="text-gray-600">Petitions with an image get six times more signatures.</p>
-            <Card className="p-8 text-center border-dashed hover:bg-gray-50">
-              <div className="flex flex-col items-center space-y-4">
-                <ImageIcon className="w-12 h-12 text-gray-400" />
-                <div>
-                  <p className="font-medium">Upload an image</p>
-                  <p className="text-sm text-gray-500">Recommended size: 1200 x 675 pixels</p>
-                </div>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      const imageUrl = URL.createObjectURL(file);
-                      setCoverImagePreview(imageUrl);
-                      form.setValue("coverImage", imageUrl);
-                    }
-                  }}
-                />
-                {coverImagePreview && (
-                  <img
-                    src={coverImagePreview}
-                    alt="Cover Preview"
-                    className="mt-4 w-full max-w-md h-auto rounded-lg border"
-                  />
-                )}
+            <h2 className="text-2xl font-bold">Add images</h2>
+            <p className="text-gray-600">Petitions with images get six times more signatures. Upload up to 5 images.</p>
+            <Card className="p-8 border-dashed hover:bg-gray-50">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <div key={index} className="flex flex-col items-center space-y-2">
+                    <div className="relative w-full aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
+                      {imagePreviews[index] ? (
+                        <>
+                          <img
+                            src={imagePreviews[index]!}
+                            alt={`Preview ${index + 1}`}
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                          <Button
+                            variant="destructive"
+                            size="icon"
+                            className="absolute top-2 right-2"
+                            onClick={() => removeImage(index)}
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
+                        </>
+                      ) : (
+                        <ImageIcon className="w-12 h-12 text-gray-400" />
+                      )}
+                    </div>
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(index, e)}
+                      disabled={!!imagePreviews[index]}
+                      className="w-full"
+                    />
+                  </div>
+                ))}
               </div>
+              {form.formState.errors.images && (
+                <p className="text-sm text-red-500 mt-2">{form.formState.errors.images.message}</p>
+              )}
             </Card>
             <Card className="bg-gray-50 border-none">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Image Tips</h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-sm mb-2">Do:</h4>
+                    
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Use close-up images that convey emotion</li>
                       <li>• Choose simple images with good contrast</li>
@@ -293,7 +338,8 @@ export default function CreatePetition() {
         );
 
       case 5:
-        const { scope, title, story, coverImage, targetSignatures, course } = form.getValues();
+        const { scope, title, story, images, targetSignatures, course } = form.getValues();
+        const validImages = images?.filter((img): img is string => !!img) || [];
         return (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold">Review your petition</h2>
@@ -305,12 +351,46 @@ export default function CreatePetition() {
                 <CardTitle>Petition Preview</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {coverImage && (
-                  <img
-                    src={coverImage}
-                    alt="Cover Preview"
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
+                {validImages.length > 0 && (
+                  <div className="relative">
+                    <div className="w-full h-48 overflow-hidden rounded-lg">
+                      <img
+                        src={validImages[currentSlide]}
+                        alt={`Petition image ${currentSlide + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {validImages.length > 1 && (
+                      <>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-1/2 left-2 transform -translate-y-1/2"
+                          onClick={prevSlide}
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-1/2 right-2 transform -translate-y-1/2"
+                          onClick={nextSlide}
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </Button>
+                        <div className="flex justify-center mt-2 space-x-2">
+                          {validImages.map((_, index) => (
+                            <div
+                              key={index}
+                              className={`w-2 h-2 rounded-full ${
+                                index === currentSlide ? "bg-gray-800" : "bg-gray-300"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
                 )}
                 <div>
                   <h3 className="font-semibold">Scope</h3>
@@ -340,9 +420,9 @@ export default function CreatePetition() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="flex  min-h-screen">
-        <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="h-screen bg-gray-50">
+      <div className="flex w-full h-full ">
+        <div className="flex-1 overflow-y-scroll py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="mb-6">
               <Button variant="ghost" onClick={() => setIsLeaveDialogOpen(true)}>
@@ -384,7 +464,7 @@ export default function CreatePetition() {
           </div>
         </div>
 
-        <div className="hidden lg:block lg:w-1/2 relative">
+        <div className="hidden  lg:block lg:w-1/2 relative">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{

@@ -103,18 +103,7 @@ const SignupForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
         <InputField
           name="terms"
           label="I agree to the Terms of Service and Privacy Policy"
-          // label={
-          //   <>
-          //     I agree to the{" "}
-          //     <a href="#" className="text-brandgreen hover:text-blue-500">
-          //       Terms of Service
-          //     </a>{" "}
-          //     and{" "}
-          //     <a href="#" className="text-brandgreen hover:text-blue-500">
-          //       Privacy Policy
-          //     </a>
-          //   </>
-          // }
+        
           type="checkbox"
           containerClassName="flex items-center"
           required

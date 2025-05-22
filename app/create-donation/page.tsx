@@ -21,6 +21,9 @@ import {
   ArrowRight,
   Image as ImageIcon,
   Home,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import {
   Dialog,
@@ -43,7 +46,10 @@ const formSchema = z.object({
   story: z
     .string()
     .min(50, "Please tell a more detailed story (min 50 characters)"),
-  coverImage: z.string().optional(),
+  images: z
+    .array(z.string().optional())
+    .length(5, "Please provide exactly 5 image slots")
+    .optional(),
   category: z.string().min(1, "Please select a category"),
   goal: z.number().min(1, "Goal amount must be greater than 0"),
 });
@@ -56,9 +62,14 @@ export default function CreateDonation() {
   const [step, setStep] = useState(1);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
-  const [coverImagePreview, setCoverImagePreview] = useState<string | null>(
-    null
-  );
+  const [imagePreviews, setImagePreviews] = useState<(string | null)[]>([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const maxSteps = 5;
 
   const form = useForm({
@@ -67,7 +78,7 @@ export default function CreateDonation() {
       fundraisingType: "self",
       title: "",
       story: "",
-      coverImage: "",
+      images: [undefined, undefined, undefined, undefined, undefined],
       category: "",
       goal: 0,
     },
@@ -80,6 +91,45 @@ export default function CreateDonation() {
       return;
     }
     console.log(data);
+  };
+
+  const handleImageUpload = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreviews((prev) => {
+        const newPreviews = [...prev];
+        newPreviews[index] = imageUrl;
+        return newPreviews;
+      });
+      form.setValue(`images.${index}`, imageUrl);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setImagePreviews((prev) => {
+      const newPreviews = [...prev];
+      newPreviews[index] = null;
+      return newPreviews;
+    });
+    form.setValue(`images.${index}`, undefined);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev + 1) % imagePreviews.filter((img) => img).length
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) =>
+        (prev - 1 + imagePreviews.filter((img) => img).length) %
+        imagePreviews.filter((img) => img).length
+    );
   };
 
   const renderStep = () => {
@@ -99,9 +149,9 @@ export default function CreateDonation() {
                 <RadioGroupItem value="self" />
                 <User className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">A Citizen in Need</p>
+                  <p className="font-medium">Yourself</p>
                   <p className="text-sm text-gray-500">
-                    Help a Citizen in Need{" "}
+                    Raise funds for your personal needs
                   </p>
                 </div>
               </Label>
@@ -109,9 +159,9 @@ export default function CreateDonation() {
                 <RadioGroupItem value="other" />
                 <Users className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">A Local Community</p>
+                  <p className="font-medium">Someone Else</p>
                   <p className="text-sm text-gray-500">
-                    Help a Local Community
+                    Raise funds for another individual or group
                   </p>
                 </div>
               </Label>
@@ -119,7 +169,10 @@ export default function CreateDonation() {
                 <RadioGroupItem value="charity" />
                 <Heart className="w-6 h-6" />
                 <div>
-                  <p className="font-medium">A National Interest</p>
+                  <p className="font-medium">A Charity</p>
+                  <p className="text-sm text-gray-500">
+                    Raise funds for a charitable organization
+                  </p>
                 </div>
               </Label>
             </RadioGroup>
@@ -181,6 +234,16 @@ export default function CreateDonation() {
                   </p>
                 )}
               </div>
+              <Card className="bg-gray-50 border-none">
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold mb-2">Tips</h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Use a clear, compelling title</li>
+                    <li>• Choose a category that matches your cause</li>
+                    <li>• Share a personal story to connect with donors</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
         );
@@ -188,36 +251,77 @@ export default function CreateDonation() {
       case 3:
         return (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold">Add a cover photo</h2>
-            <Card className="p-8 text-center hover:bg-gray-50">
-              <div className="flex flex-col items-center space-y-4">
-                <ImageIcon className="w-12 h-12 text-gray-400" />
-                <div>
-                  <p className="font-medium">Upload a photo</p>
-                  <p className="text-sm text-gray-500">
-                    Bring your story to life with an image
-                  </p>
-                </div>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      const imageUrl = URL.createObjectURL(file);
-                      setCoverImagePreview(imageUrl);
-                      form.setValue("coverImage", imageUrl);
-                    }
-                  }}
-                />
-                {coverImagePreview && (
-                  <img
-                    src={coverImagePreview}
-                    alt="Cover Preview"
-                    className="mt-4 w-full max-w-md h-auto rounded-lg border"
-                  />
-                )}
+            <h2 className="text-2xl font-bold">Add images</h2>
+            <p className="text-gray-600">
+              Fundraisers with images attract more donations. Upload up to 5
+              images.
+            </p>
+            <Card className="p-8 border-dashed hover:bg-gray-50">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center space-y-2"
+                  >
+                    <div className="relative w-full aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
+                      {imagePreviews[index] ? (
+                        <>
+                          <img
+                            src={imagePreviews[index]!}
+                            alt={`Preview ${index + 1}`}
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                          <Button
+                            variant="destructive"
+                            size="icon"
+                            className="absolute top-2 right-2"
+                            onClick={() => removeImage(index)}
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
+                        </>
+                      ) : (
+                        <ImageIcon className="w-12 h-12 text-gray-400" />
+                      )}
+                    </div>
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(index, e)}
+                      disabled={!!imagePreviews[index]}
+                      className="w-full"
+                    />
+                  </div>
+                ))}
               </div>
+              {form.formState.errors.images && (
+                <p className="text-sm text-red-500 mt-2">
+                  {form.formState.errors.images.message}
+                </p>
+              )}
+            </Card>
+            <Card className="bg-gray-50 border-none">
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-2">Image Tips</h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium text-sm mb-2">Do:</h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Use close-up images that convey emotion</li>
+                      <li>• Choose simple images with good contrast</li>
+                      <li>• Include relevant landmarks or people</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-sm mb-2">Don't:</h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Use images with text</li>
+                      <li>• Use busy or cluttered images</li>
+                      <li>• Include graphic or inappropriate content</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
           </div>
         );
@@ -240,41 +344,100 @@ export default function CreateDonation() {
                   {form.formState.errors.goal.message}
                 </p>
               )}
+              <Card className="bg-gray-50 border-none mt-4">
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold mb-2">Tips</h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Set a realistic but ambitious goal</li>
+                    <li>• Consider fees and expenses when setting your goal</li>
+                    <li>• Be transparent about how funds will be used</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
         );
 
       case 5:
+        const { fundraisingType, title, story, images, category, goal } =
+          form.getValues();
+        const validImages = images?.filter((img): img is string => !!img) || [];
         return (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold">Preview Your Fundraiser</h2>
+            <p className="text-gray-600">
+              Review how your fundraiser will look to donors. Make any final
+              edits before publishing.
+            </p>
             <Card>
               <CardHeader>
-                <CardTitle>{form.getValues("title")}</CardTitle>
+                <CardTitle>{title || "Your Fundraiser Title"}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {coverImagePreview && (
-                  <img
-                    src={coverImagePreview}
-                    alt="Preview"
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
+                {validImages.length > 0 && (
+                  <div className="relative">
+                    <div className="w-full h-48 overflow-hidden rounded-lg">
+                      <img
+                        src={validImages[currentSlide]}
+                        alt={`Fundraiser image ${currentSlide + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {validImages.length > 1 && (
+                      <>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-1/2 left-2 transform -translate-y-1/2"
+                          onClick={prevSlide}
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-1/2 right-2 transform -translate-y-1/2"
+                          onClick={nextSlide}
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </Button>
+                        <div className="flex justify-center mt-2 space-x-2">
+                          {validImages.map((_, index) => (
+                            <div
+                              key={index}
+                              className={`w-2 h-2 rounded-full ${
+                                index === currentSlide
+                                  ? "bg-gray-800"
+                                  : "bg-gray-300"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
                 )}
                 <div>
                   <h3 className="font-semibold">Fundraising For</h3>
-                  <p>{form.getValues("fundraisingType")}</p>
+                  <p className="text-gray-600 capitalize">
+                    {fundraisingType || "Not selected"}
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Category</h3>
-                  <p>{form.getValues("category") || "Not selected"}</p>
+                  <p className="text-gray-600">{category || "Not selected"}</p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Goal</h3>
-                  <p>${form.getValues("goal").toLocaleString()}</p>
+                  <p className="text-gray-600">
+                    {goal ? `$${goal.toLocaleString()}` : "Not set"}
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Story</h3>
-                  <p className="text-gray-600">{form.getValues("story")}</p>
+                  <p className="text-gray-600 line-clamp-3">
+                    {story || "Your story will appear here"}
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -284,69 +447,67 @@ export default function CreateDonation() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8 overflow-y-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-6">
-              <Button
-                variant="ghost"
-                onClick={() => setIsLeaveDialogOpen(true)}
-              >
-                <Home className="w-4 h-4 mr-2" />
-                Back to Homepage
-              </Button>
-            </div>
+    <div className="h-screen bg-gray-50 flex flex-col lg:flex-row">
+      <div className="lg:flex-1 py-8 px-4 sm:px-6 lg:px-8 overflow-y-auto h-screen ">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-6">
+            <Button variant="ghost" onClick={() => setIsLeaveDialogOpen(true)}>
+              <Home className="w-4 h-4 mr-2" />
+              Back to Homepage
+            </Button>
+          </div>
 
-            <Progress value={(step / maxSteps) * 100} className="mb-8" />
+          <Progress value={(step / maxSteps) * 100} className="mb-8" />
 
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <Card className="p-6">
-                {renderStep()}
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <Card className="p-6">
+              {renderStep()}
 
-                <div className="flex justify-between mt-8">
+              <div className="flex justify-between mt-8">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setStep(step - 1)}
+                  disabled={step === 1}
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back
+                </Button>
+
+                {step === maxSteps ? (
                   <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setStep(step - 1)}
-                    disabled={step === 1}
+                    type="submit"
+                    className="bg-green-500 hover:bg-green-600"
                   >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back
+                    Create Fundraiser
                   </Button>
-
-                  {step === maxSteps ? (
-                    <Button type="submit">Create Fundraiser</Button>
-                  ) : (
-                    <Button type="button" onClick={() => setStep(step + 1)}>
-                      Continue
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  )}
-                </div>
-              </Card>
-            </form>
-          </div>
+                ) : (
+                  <Button type="button" onClick={() => setStep(step + 1)}>
+                    Continue
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                )}
+              </div>
+            </Card>
+          </form>
         </div>
+      </div>
 
-        <div className="hidden lg:block lg:w-1/2 relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070&auto=format&fit=crop')",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex flex-col justify-end p-12">
-              <h2 className="text-white text-3xl font-bold mb-4">
-                Make a Difference Today
-              </h2>
-              <p className="text-white/90 text-lg">
-                Join thousands of people who are creating positive change
-                through fundraising. Your story matters.
-              </p>
-            </div>
-          </div>
+      <div
+        className="lg:w-1/2 lg:flex lg:items-center lg:justify-center bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070&auto=format&fit=crop')",
+        }}
+      >
+        <div className="w-full h-full  bg-gradient-to-b from-transparent to-black/60 flex flex-col justify-end p-6 lg:p-12">
+          <h2 className="text-white text-3xl font-bold mb-4">
+            Make a Difference Today
+          </h2>
+          <p className="text-white/90 text-lg">
+            Join thousands of people who are creating positive change through
+            fundraising. Your story matters.
+          </p>
         </div>
       </div>
 
