@@ -38,6 +38,7 @@ const mockUser = {
   location: "San Francisco, CA",
   avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
   joinDate: "January 2024",
+  isActive: true,
   stats: {
     petitionsSigned: 28,
     petitionsCreated: 3,
@@ -170,12 +171,15 @@ export default function ProfilePage() {
         {/* Profile Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            <Avatar className="w-24 h-24">
-              <AvatarImage src={userData.avatar} alt={userData.name} />
-              <AvatarFallback>
-                <User className="w-12 h-12" />
-              </AvatarFallback>
-            </Avatar>
+            <div className="relative">
+              <Avatar className="w-24 h-24">
+                <AvatarImage src={userData.avatar} alt={userData.name} />
+                <AvatarFallback>
+                  <User className="w-12 h-12" />
+                </AvatarFallback>
+              </Avatar>
+              <span className={`absolute top-1 right-1 w-3.5 h-3.5 rounded-full ${userData.isActive ? 'bg-green-500' : 'bg-red-500'} border-2 border-white`}></span>
+            </div>
             <div className="flex-grow">
               <div className="flex items-start justify-between">
                 <div>
