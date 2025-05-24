@@ -27,6 +27,7 @@ const RegisterSchema = z.object({
   yearOfIncorporation: z.string(),
   officeAddress: z.string().min(1, "Office address is required"),
   overseerName: z.string().min(1, "Overseer name is required"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
   OrganisationDoc: z.instanceof(File, {
     message: "Organisation Document is required",
   }),
@@ -98,44 +99,33 @@ const RegisterForm = () => {
     // });
   };
 
-  const onSubmit = async (data: RegisterFormData) => {
-    console.log("Form submitted:", data);
-    // Commented out for demo
-    // handleFileUpload(
-    //   data,
-    //   (res) => {
-    //     setUploadResponse(res);
-    //     toast({ title: "Image upload successful", description: "" });
+  const { mutate: registerOrganization, isPending } = useSignupOrganization();
 
-    //     handleUserRegistration(
-    //       data,
-    //       res.data.id,
-    //       () => {
-    //         toast({
-    //           title: "Registration successful",
-    //           description: "User registered successfully",
-    //         });
-    //         setOrganisationName(data.co_operativeName);
-    //         setDialogOpen(true);
-    //       },
-    //       (error) => {
-    //         console.log(error);
-    //         toast({
-    //           title: `${error?.response?.data.message?.message}`,
-    //           description: "User registration failed",
-    //           variant: "destructive",
-    //         });
-    //       }
-    //     );
-    //   },
-    //   (error) => {
-    //     toast({
-    //       title: "Image upload failed",
-    //       description: "Please try again later",
-    //       variant: "destructive",
-    //     });
-    //   }
-    // );
+  const onSubmit = async (data: RegisterFormData) => {
+    const formData = {
+      organization_name: data.co_operativeName,
+      email: data.overseerEmail,
+      password: data.password,
+      year_of_registration: data.yearOfIncorporation,
+      address: data.officeAddress,
+      industry_id: data.co_operativeIndustry,
+      contact_person: data.overseerName,
+      contact_designation: data.overseerDesignation,
+      country_id: data.location,
+      organization_document: data.OrganisationDoc
+    };
+
+    registerOrganization(formData, {
+      onSuccess: (res) => {
+        toast.success("Organization registered successfully!");
+        setOrganisationName(data.co_operativeName);
+        setDialogOpen(true);
+        methods.reset();
+      },
+      onError: (err: any) => {
+        toast.error(err?.response?.data?.message || "Registration failed");
+      }
+    });
   };
 
   return (
@@ -179,6 +169,15 @@ const RegisterForm = () => {
             required={true}
             placeholder="Enter email address"
             type="text"
+          />
+
+          <InputField
+            name="password"
+            icon={<Eye className="text-primary100" />}
+            label="Password "
+            required={true}
+            placeholder="Enter password"
+            type="password"
           />
 
           <InputField
