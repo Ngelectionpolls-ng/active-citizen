@@ -1,0 +1,1393 @@
+{
+	"info": {
+		"_postman_id": "7cc98af8-c056-40b9-876e-1d9d9fe5a045",
+		"name": "Active Citizens",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28112373",
+		"_collection_link": "https://red-meteor-503207.postman.co/workspace/Revamped-Partner-Portal~80a4e172-e210-4e80-abdf-d44f911bc3b1/collection/28112373-7cc98af8-c056-40b9-876e-1d9d9fe5a045?action=share&source=collection_link&creator=28112373"
+	},
+	"item": [
+		{
+			"name": "Registrations",
+			"item": [
+				{
+					"name": "Register Individual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"John Doe\",\r\n    \"email\" : \"mosesocho+2@gmail.com\",\r\n    \"password\" : \"rherhre633y34hj\",\r\n    \"dob\" : \"2000-05-05\", //Must be at least 18\r\n    \"gender\" : \"male\" // any of \"male\", \"female\", \"other\", \"prefer_not_to_say\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register-individual",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register-individual"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Individual",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"John Doe\",\r\n    \"email\" : \"abc@example.com\",\r\n    \"password\" : \"rherhre633y34hj\",\r\n    \"dob\" : \"2000-05-05\", //Must be at least 18\r\n    \"gender\" : \"male\" // any of \"male\", \"female\", \"other\", \"prefer_not_to_say\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://64.227.38.32/api/register-individual",
+									"protocol": "http",
+									"host": [
+										"64",
+										"227",
+										"38",
+										"32"
+									],
+									"path": [
+										"api",
+										"register-individual"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Registration successful\",\n    \"data\": {\n        \"user\": {\n            \"name\": \"Gwen Feil\",\n            \"email\": \"hollis38@legros.com\",\n            \"dob\": \"2007-05-14\",\n            \"gender\": \"prefer_not_to_say\",\n            \"verification_code\": \"Dt5jzyQ5kacQKbyFjBSDBWmFGUCNjHS4\",\n            \"user_type\": \"individual\",\n            \"updated_at\": \"2025-05-14T09:21:17.000000Z\",\n            \"created_at\": \"2025-05-14T09:21:17.000000Z\",\n            \"id\": 1\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Organization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "organization_name",
+									"value": "ABC Corporation",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "example@abc.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "25456ghherurere",
+									"type": "text"
+								},
+								{
+									"key": "year_of_registration",
+									"value": "2020",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "abg close fdt35343 ",
+									"type": "text"
+								},
+								{
+									"key": "industry_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "contact_person",
+									"value": "Jane Doe",
+									"type": "text"
+								},
+								{
+									"key": "contact_designation",
+									"value": "Director",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "organization_document",
+									"value": "",
+									"description": "A pdf less than 5mb. Not required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/api/register-organization",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"register-organization"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Organization",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "organization_name",
+											"value": "ABC Corporation",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "example@abc.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "25456ghherurere",
+											"type": "text"
+										},
+										{
+											"key": "year_of_registration",
+											"value": "2020",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "abg close fdt35343 ",
+											"type": "text"
+										},
+										{
+											"key": "industry_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "contact_person",
+											"value": "Jane Doe",
+											"type": "text"
+										},
+										{
+											"key": "contact_designation",
+											"value": "Director",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "organization_document",
+											"value": "",
+											"description": "A pdf less than 5mb. Not required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/register-organization",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"register-organization"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Registration successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": 2,\n            \"name\": null,\n            \"email\": \"sheila.parisian@hotmail.com\",\n            \"phone\": null,\n            \"email_verified_at\": null,\n            \"dob\": null,\n            \"gender\": null,\n            \"verification_code\": \"5bPlYSyd7WFwX4TfaEnPd9rw16pZ8wbe\",\n            \"otp\": null,\n            \"otp_failures\": 0,\n            \"account_status\": \"unverified\",\n            \"user_type\": \"organization\",\n            \"deleted_at\": null,\n            \"created_at\": \"2025-05-14T09:21:17.000000Z\",\n            \"updated_at\": \"2025-05-14T09:21:17.000000Z\",\n            \"organization_details\": {\n                \"organization_name\": \"Lebsack-Moen\",\n                \"year_of_registration\": \"1971\",\n                \"address\": \"839 Sauer Villages\\nLake Deshawn, MA 75263-3848\",\n                \"contact_person\": \"Brielle Barton\",\n                \"contact_designation\": \"ut\",\n                \"organization_document\": \"https://via.placeholder.com/640x480.png/007733?text=cum\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-14T09:21:17.000000Z\",\n                \"updated_at\": \"2025-05-14T09:21:17.000000Z\",\n                \"country\": {\n                    \"id\": 40,\n                    \"country_name\": \"China\",\n                    \"dial_code\": \"+86\",\n                    \"country_code\": \"CN\",\n                    \"comment\": null,\n                    \"deleted_at\": null,\n                    \"created_at\": null,\n                    \"updated_at\": null\n                },\n                \"industry\": {\n                    \"id\": 6,\n                    \"name\": \"Healthcare\",\n                    \"active\": 1,\n                    \"deleted_at\": null,\n                    \"created_at\": null,\n                    \"updated_at\": null\n                }\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify account for individual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "organization_name",
+									"value": "ABC Corporation",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "example@abc.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "25456ghherurere",
+									"type": "text"
+								},
+								{
+									"key": "year_of_registration",
+									"value": "2020",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "abg close fdt35343 ",
+									"type": "text"
+								},
+								{
+									"key": "industry_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "contact_person",
+									"value": "Jane Doe",
+									"type": "text"
+								},
+								{
+									"key": "contact_designation",
+									"value": "Director",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "organization_document",
+									"value": "",
+									"description": "A pdf less than 5mb. Not required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/api/verify-account",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"verify-account"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verify account for individual",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "organization_name",
+											"value": "ABC Corporation",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "example@abc.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "25456ghherurere",
+											"type": "text"
+										},
+										{
+											"key": "year_of_registration",
+											"value": "2020",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "abg close fdt35343 ",
+											"type": "text"
+										},
+										{
+											"key": "industry_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "contact_person",
+											"value": "Jane Doe",
+											"type": "text"
+										},
+										{
+											"key": "contact_designation",
+											"value": "Director",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "organization_document",
+											"value": "",
+											"description": "A pdf less than 5mb. Not required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/verify-account",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"verify-account"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Email verified successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Attempt Signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"anc@exam-ple.com\",\r\n    \"password\": \"hjhjruirne\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/signin",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Attempt Signin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anc@exam-ple.com\",\r\n    \"password\": \"hjhjruirne\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/signin",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"signin"
+									]
+								}
+							},
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Please check your email for OTP\",\n    \"data\": {\n        \"otp\": \"814504\"\n    }\n}"
+						},
+						{
+							"name": "Attempt Signin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anc@exam-ple.com\",\r\n    \"password\": \"hjhjruirne\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/signin",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"signin"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Sorry, your account is unverified\"\n}"
+						},
+						{
+							"name": "Attempt Signin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anc@exam-ple.com\",\r\n    \"password\": \"hjhjruirne\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/signin",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"signin"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Invalid credentials\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"anc@exam-ple.com\",\r\n    \"otp\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/verify-otp",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"verify-otp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verify OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/verify-otp",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Signin successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"Dr. Rosemary Harris\",\n            \"email\": \"dupton@gmail.com\",\n            \"phone\": null,\n            \"email_verified_at\": null,\n            \"dob\": \"2007-05-14\",\n            \"gender\": \"female\",\n            \"account_status\": \"active\",\n            \"user_type\": \"individual\",\n            \"deleted_at\": null,\n            \"created_at\": \"2025-05-14T22:48:13.000000Z\",\n            \"updated_at\": \"2025-05-14T22:48:13.000000Z\"\n        },\n        \"token\": \"1|MgvUbcsNHPSoJkFlIu66aq8FsafjCR07NvPopnQq3ab50cbb\",\n        \"token_type\": \"bearer\"\n    }\n}"
+						},
+						{
+							"name": "Verify OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/verify-otp",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"OTP is incorrect. 4 tries left\"\n}"
+						},
+						{
+							"name": "Verify OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/verify-otp",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"verify-otp"
+									]
+								}
+							},
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Your account has been suspended\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mosesocho@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"forgot-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Forgot Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anc@exam-ple.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/forgot-password",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"forgot-password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Check your email for a password reset link\",\n    \"data\": {\n        \"password_reset_code\": \"fWPZwb8kAfsVEG6nmS6Yo4pL9ZBp\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password_reset_code\": \"78348h4uiru9rejrtjr\",\r\n    \"password\": \"845u489j5454\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/reset-password",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password_reset_code\": \"78348h4uiru9rejrtjr\",\r\n    \"password\": \"845u489j5454\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/reset-password",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"reset-password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Password was reset successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Settings",
+			"item": [
+				{
+					"name": "Get settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/user-settings",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user-settings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/api/user-settings",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-settings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Settings retrieved successfully\",\n    \"data\": {\n        \"settings\": {\n            \"lang\": \"en\",\n            \"currency_id\": 1,\n            \"mode_preference\": \"light\",\n            \"deleted_at\": null,\n            \"created_at\": \"2025-05-19T20:04:41.000000Z\",\n            \"updated_at\": \"2025-05-19T20:04:41.000000Z\",\n            \"currency\": {\n                \"id\": 1,\n                \"name\": \"Naira\",\n                \"symbol\": \"₦\",\n                \"abbreviation\": \"NGN\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T20:04:41.000000Z\",\n                \"updated_at\": \"2025-05-19T20:04:41.000000Z\"\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update settings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_uuid\": \"798-j5i4-59045-545r\", //required\r\n    \"lang\" : \"en\", //'optional\r\n    \"currency_id\": 1, // optional,\r\n    \"mode_preference\": \"light\" // optional (light or dark)\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/user-settings",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user-settings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update settings",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_uuid\": \"798-j5i4-59045-545r\", //required\r\n    \"lang\" : \"en\", //'optional\r\n    \"currency_id\": 1, // optional,\r\n    \"mode_preference\": \"light\" // optional (light or dark)\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/user-settings",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-settings"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Settings updated successfully\",\n    \"data\": {\n        \"settings\": {\n            \"lang\": \"fr\",\n            \"currency_id\": 1,\n            \"mode_preference\": \"light\",\n            \"deleted_at\": null,\n            \"created_at\": \"2025-05-19T20:10:56.000000Z\",\n            \"updated_at\": \"2025-05-19T20:10:56.000000Z\",\n            \"currency\": {\n                \"id\": 1,\n                \"name\": \"Naira\",\n                \"symbol\": \"₦\",\n                \"abbreviation\": \"NGN\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T20:10:55.000000Z\",\n                \"updated_at\": \"2025-05-19T20:10:55.000000Z\"\n            }\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/user-management",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user-management"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/api/user-management",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-management"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Users retrieved successfully\",\n    \"data\": {\n        \"users\": {\n            \"current_page\": 1,\n            \"data\": [\n                {\n                    \"uuid\": \"478e9cbb-6691-4804-ac24-5fb9ca6ecb0c\",\n                    \"name\": \"Kyra Ward\",\n                    \"email\": \"maxime80@example.com\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"female\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"1e9c6a6e-1fb2-462c-92de-4df42f0317ad\",\n                    \"name\": \"Joseph Beer\",\n                    \"email\": \"qmuller@example.com\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"prefer_not_to_say\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"75f53070-2bc2-4a03-b12e-2b05d72fb4b9\",\n                    \"name\": \"Zakary Boyer\",\n                    \"email\": \"schaefer.alycia@example.com\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"male\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"70429999-0e57-470c-bb51-ca3659b629ea\",\n                    \"name\": \"Vernie Ankunding\",\n                    \"email\": \"skreiger@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"male\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"b2783d04-4072-46fa-90de-075dceeee2f4\",\n                    \"name\": \"Opal Pfannerstill\",\n                    \"email\": \"bell48@example.net\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"prefer_not_to_say\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"989eb709-6adb-4fc6-9fc4-35e26f595aaf\",\n                    \"name\": \"Clint Hills\",\n                    \"email\": \"milan05@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"male\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"27139fd7-5fc6-40e3-9857-ffa949d9fc98\",\n                    \"name\": \"Mrs. Yasmeen Moore\",\n                    \"email\": \"presley.becker@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"male\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"676066a1-adb0-4de2-a117-726a3d73623c\",\n                    \"name\": \"Dr. Scot Crooks\",\n                    \"email\": \"myra80@example.net\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"female\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"cd9658ac-0f38-4105-82d5-43cc95d402eb\",\n                    \"name\": \"Dr. Nicolas Mayer MD\",\n                    \"email\": \"littel.dakota@example.net\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"other\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"f7d384d7-0360-4051-ab93-15bd4f66b732\",\n                    \"name\": \"Devonte Wunsch\",\n                    \"email\": \"waelchi.stuart@example.com\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"other\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"4fd4562f-22d6-4d53-b46e-9b4cd46a2541\",\n                    \"name\": \"Dr. Maurice Bosco\",\n                    \"email\": \"horacio.damore@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"other\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"a1b4a1b3-3a4e-4176-ac0f-d6bf7ecf74bb\",\n                    \"name\": \"Paris Farrell I\",\n                    \"email\": \"erling.boyle@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"prefer_not_to_say\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"09e2ee83-2f96-4476-a948-0339d93df9e9\",\n                    \"name\": \"Christy Hirthe\",\n                    \"email\": \"shayne58@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"female\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"3618ab2f-0d01-428c-8a3c-eab18aa07af5\",\n                    \"name\": \"Concepcion Monahan\",\n                    \"email\": \"nathen.kuvalis@example.org\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"other\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                },\n                {\n                    \"uuid\": \"afdb3f1f-b208-43bc-9cf7-c373fe2dd571\",\n                    \"name\": \"Mr. Milo VonRueden\",\n                    \"email\": \"roberts.telly@example.net\",\n                    \"phone\": null,\n                    \"email_verified_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"dob\": \"2007-05-19\",\n                    \"gender\": \"female\",\n                    \"account_status\": \"active\",\n                    \"user_type\": \"individual\",\n                    \"deleted_at\": null,\n                    \"created_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:23.000000Z\",\n                    \"settings\": null,\n                    \"organization_details\": null\n                }\n            ],\n            \"first_page_url\": \"http://localhost:8000/user-management?page=1\",\n            \"from\": 1,\n            \"last_page\": 2,\n            \"last_page_url\": \"http://localhost:8000/user-management?page=2\",\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"&laquo; Previous\",\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/user-management?page=1\",\n                    \"label\": \"1\",\n                    \"active\": true\n                },\n                {\n                    \"url\": \"http://localhost:8000/user-management?page=2\",\n                    \"label\": \"2\",\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/user-management?page=2\",\n                    \"label\": \"Next &raquo;\",\n                    \"active\": false\n                }\n            ],\n            \"next_page_url\": \"http://localhost:8000/user-management?page=2\",\n            \"path\": \"http://localhost:8000/user-management\",\n            \"per_page\": 15,\n            \"prev_page_url\": null,\n            \"to\": 15,\n            \"total\": 16\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate organization account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/user-management/activate-organization/{user_uuid}",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user-management",
+								"activate-organization",
+								"{user_uuid}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Activate organization account",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/api/user-management/activate-organization/{user_uuid}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-management",
+										"activate-organization",
+										"{user_uuid}"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Suspend account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_uuid\": \"67547-hdfh5-487dg-3487re\",\r\n    \"suspension_reason\": \"I don't trust the guy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/user-management/suspend-account",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user-management",
+								"suspend-account"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Suspend account",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_uuid\": \"67547-hdfh5-487dg-3487re\",\r\n    \"suspension_reason\": \"I don't trust the guy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/user-management/suspend-account",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-management",
+										"suspend-account"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Account already activated\"\n}"
+						},
+						{
+							"name": "Suspend account",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_uuid\": \"67547-hdfh5-487dg-3487re\",\r\n    \"suspension_reason\": \"I don't trust the guy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/user-management/suspend-account",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-management",
+										"suspend-account"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Account suspended successfully\",\n    \"data\": {\n        \"user\": {\n            \"uuid\": \"e9374d11-a4b5-42a3-81f4-b90230924970\",\n            \"name\": null,\n            \"email\": \"tlarkin@yahoo.com\",\n            \"phone\": null,\n            \"email_verified_at\": null,\n            \"dob\": null,\n            \"gender\": null,\n            \"account_status\": \"suspended\",\n            \"user_type\": \"organization\",\n            \"deleted_at\": null,\n            \"created_at\": \"2025-05-19T20:15:24.000000Z\",\n            \"updated_at\": \"2025-05-19T20:15:24.000000Z\",\n            \"settings\": {\n                \"lang\": \"en\",\n                \"currency_id\": 1,\n                \"mode_preference\": \"light\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T20:15:24.000000Z\",\n                \"updated_at\": \"2025-05-19T20:15:24.000000Z\"\n            },\n            \"roles\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"client\",\n                    \"guard_name\": \"web\",\n                    \"created_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"updated_at\": \"2025-05-19T20:15:22.000000Z\",\n                    \"pivot\": {\n                        \"model_type\": \"App\\\\Models\\\\User\",\n                        \"model_id\": 19,\n                        \"role_id\": 1\n                    }\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/user-management/aactivate-account/{user_uuid}",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"user-management",
+								"aactivate-account",
+								"{user_uuid}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Activate account",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/user-management/aactivate-account/{user_uuid}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user-management",
+										"aactivate-account",
+										"{user_uuid}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Account activated successfully\",\n    \"data\": {\n        \"user\": {\n            \"uuid\": \"c297e6a5-eb6b-4a87-b02f-2879d3964efe\",\n            \"name\": \"Prof. Jackeline Kuphal Sr.\",\n            \"email\": \"rodrigo04@example.com\",\n            \"phone\": null,\n            \"email_verified_at\": \"2025-05-19T20:15:25.000000Z\",\n            \"dob\": \"2007-05-19\",\n            \"gender\": \"male\",\n            \"account_status\": \"active\",\n            \"user_type\": \"individual\",\n            \"deleted_at\": null,\n            \"created_at\": \"2025-05-19T20:15:25.000000Z\",\n            \"updated_at\": \"2025-05-19T20:15:25.000000Z\",\n            \"settings\": null,\n            \"roles\": []\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get industries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/api/indstries",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"indstries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get industries",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/indstries",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"indstries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Industries retrieved successfully\",\n    \"data\": {\n        \"industries\": [\n            {\n                \"id\": 1,\n                \"name\": \"Agriculture\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Manufacturing\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Retail\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Financial Services\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 5,\n                \"name\": \"Technology\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 6,\n                \"name\": \"Healthcare\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 7,\n                \"name\": \"Education\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 8,\n                \"name\": \"Transportation\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 9,\n                \"name\": \"Construction\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 10,\n                \"name\": \"Mining\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 11,\n                \"name\": \"Energy\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 12,\n                \"name\": \"Tourism\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 13,\n                \"name\": \"Other\",\n                \"active\": 1,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/api/countries",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"countries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get countries",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/countries",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"countries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Countries retrieved successfully\",\n    \"data\": {\n        \"countries\": [\n            {\n                \"id\": 1,\n                \"country_name\": \"Afghanistan\",\n                \"dial_code\": \"+93\",\n                \"country_code\": \"AF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 2,\n                \"country_name\": \"Albania\",\n                \"dial_code\": \"+355\",\n                \"country_code\": \"AL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 3,\n                \"country_name\": \"Algeria\",\n                \"dial_code\": \"+213\",\n                \"country_code\": \"DZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 4,\n                \"country_name\": \"AmericanSamoa\",\n                \"dial_code\": \"+1 684\",\n                \"country_code\": \"AS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 5,\n                \"country_name\": \"Andorra\",\n                \"dial_code\": \"+376\",\n                \"country_code\": \"AD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 6,\n                \"country_name\": \"Angola\",\n                \"dial_code\": \"+244\",\n                \"country_code\": \"AO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 7,\n                \"country_name\": \"Anguilla\",\n                \"dial_code\": \"+1 264\",\n                \"country_code\": \"AI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 8,\n                \"country_name\": \"Antigua and Barbuda\",\n                \"dial_code\": \"+1268\",\n                \"country_code\": \"AG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 9,\n                \"country_name\": \"Argentina\",\n                \"dial_code\": \"+54\",\n                \"country_code\": \"AR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 10,\n                \"country_name\": \"Armenia\",\n                \"dial_code\": \"+374\",\n                \"country_code\": \"AM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 11,\n                \"country_name\": \"Aruba\",\n                \"dial_code\": \"+297\",\n                \"country_code\": \"AW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 12,\n                \"country_name\": \"Australia\",\n                \"dial_code\": \"+61\",\n                \"country_code\": \"AU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 13,\n                \"country_name\": \"Austria\",\n                \"dial_code\": \"+43\",\n                \"country_code\": \"AT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 14,\n                \"country_name\": \"Azerbaijan\",\n                \"dial_code\": \"+994\",\n                \"country_code\": \"AZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 15,\n                \"country_name\": \"Bahamas\",\n                \"dial_code\": \"+1 242\",\n                \"country_code\": \"BS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 16,\n                \"country_name\": \"Bahrain\",\n                \"dial_code\": \"+973\",\n                \"country_code\": \"BH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 17,\n                \"country_name\": \"Bangladesh\",\n                \"dial_code\": \"+880\",\n                \"country_code\": \"BD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 18,\n                \"country_name\": \"Barbados\",\n                \"dial_code\": \"+1 246\",\n                \"country_code\": \"BB\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 19,\n                \"country_name\": \"Belarus\",\n                \"dial_code\": \"+375\",\n                \"country_code\": \"BY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 20,\n                \"country_name\": \"Belgium\",\n                \"dial_code\": \"+32\",\n                \"country_code\": \"BE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 21,\n                \"country_name\": \"Belize\",\n                \"dial_code\": \"+501\",\n                \"country_code\": \"BZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 22,\n                \"country_name\": \"Benin\",\n                \"dial_code\": \"+229\",\n                \"country_code\": \"BJ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 23,\n                \"country_name\": \"Bermuda\",\n                \"dial_code\": \"+1 441\",\n                \"country_code\": \"BM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 24,\n                \"country_name\": \"Bhutan\",\n                \"dial_code\": \"+975\",\n                \"country_code\": \"BT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 25,\n                \"country_name\": \"Bosnia and Herzegovina\",\n                \"dial_code\": \"+387\",\n                \"country_code\": \"BA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 26,\n                \"country_name\": \"Botswana\",\n                \"dial_code\": \"+267\",\n                \"country_code\": \"BW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 27,\n                \"country_name\": \"Brazil\",\n                \"dial_code\": \"+55\",\n                \"country_code\": \"BR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 28,\n                \"country_name\": \"British Indian Ocean Territory\",\n                \"dial_code\": \"+246\",\n                \"country_code\": \"IO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 29,\n                \"country_name\": \"Bulgaria\",\n                \"dial_code\": \"+359\",\n                \"country_code\": \"BG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 30,\n                \"country_name\": \"Burkina Faso\",\n                \"dial_code\": \"+226\",\n                \"country_code\": \"BF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 31,\n                \"country_name\": \"Burundi\",\n                \"dial_code\": \"+257\",\n                \"country_code\": \"BI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 32,\n                \"country_name\": \"Cambodia\",\n                \"dial_code\": \"+855\",\n                \"country_code\": \"KH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 33,\n                \"country_name\": \"Cameroon\",\n                \"dial_code\": \"+237\",\n                \"country_code\": \"CM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 34,\n                \"country_name\": \"Canada\",\n                \"dial_code\": \"+1\",\n                \"country_code\": \"CA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 35,\n                \"country_name\": \"Cape Verde\",\n                \"dial_code\": \"+238\",\n                \"country_code\": \"CV\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 36,\n                \"country_name\": \"Cayman Islands\",\n                \"dial_code\": \"+ 345\",\n                \"country_code\": \"KY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 37,\n                \"country_name\": \"Central African Republic\",\n                \"dial_code\": \"+236\",\n                \"country_code\": \"CF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 38,\n                \"country_name\": \"Chad\",\n                \"dial_code\": \"+235\",\n                \"country_code\": \"TD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 39,\n                \"country_name\": \"Chile\",\n                \"dial_code\": \"+56\",\n                \"country_code\": \"CL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 40,\n                \"country_name\": \"China\",\n                \"dial_code\": \"+86\",\n                \"country_code\": \"CN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 41,\n                \"country_name\": \"Christmas Island\",\n                \"dial_code\": \"+61\",\n                \"country_code\": \"CX\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 42,\n                \"country_name\": \"Colombia\",\n                \"dial_code\": \"+57\",\n                \"country_code\": \"CO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 43,\n                \"country_name\": \"Comoros\",\n                \"dial_code\": \"+269\",\n                \"country_code\": \"KM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 44,\n                \"country_name\": \"Congo\",\n                \"dial_code\": \"+242\",\n                \"country_code\": \"CG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 45,\n                \"country_name\": \"Cook Islands\",\n                \"dial_code\": \"+682\",\n                \"country_code\": \"CK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 46,\n                \"country_name\": \"Costa Rica\",\n                \"dial_code\": \"+506\",\n                \"country_code\": \"CR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 47,\n                \"country_name\": \"Croatia\",\n                \"dial_code\": \"+385\",\n                \"country_code\": \"HR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 48,\n                \"country_name\": \"Cuba\",\n                \"dial_code\": \"+53\",\n                \"country_code\": \"CU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 49,\n                \"country_name\": \"Cyprus\",\n                \"dial_code\": \"+537\",\n                \"country_code\": \"CY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 50,\n                \"country_name\": \"Czech Republic\",\n                \"dial_code\": \"+420\",\n                \"country_code\": \"CZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 51,\n                \"country_name\": \"Denmark\",\n                \"dial_code\": \"+45\",\n                \"country_code\": \"DK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 52,\n                \"country_name\": \"Djibouti\",\n                \"dial_code\": \"+253\",\n                \"country_code\": \"DJ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 53,\n                \"country_name\": \"Dominica\",\n                \"dial_code\": \"+1 767\",\n                \"country_code\": \"DM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 54,\n                \"country_name\": \"Dominican Republic\",\n                \"dial_code\": \"+1 849\",\n                \"country_code\": \"DO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 55,\n                \"country_name\": \"Ecuador\",\n                \"dial_code\": \"+593\",\n                \"country_code\": \"EC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 56,\n                \"country_name\": \"Egypt\",\n                \"dial_code\": \"+20\",\n                \"country_code\": \"EG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 57,\n                \"country_name\": \"El Salvador\",\n                \"dial_code\": \"+503\",\n                \"country_code\": \"SV\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 58,\n                \"country_name\": \"Equatorial Guinea\",\n                \"dial_code\": \"+240\",\n                \"country_code\": \"GQ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 59,\n                \"country_name\": \"Eritrea\",\n                \"dial_code\": \"+291\",\n                \"country_code\": \"ER\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 60,\n                \"country_name\": \"Estonia\",\n                \"dial_code\": \"+372\",\n                \"country_code\": \"EE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 61,\n                \"country_name\": \"Ethiopia\",\n                \"dial_code\": \"+251\",\n                \"country_code\": \"ET\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 62,\n                \"country_name\": \"Faroe Islands\",\n                \"dial_code\": \"+298\",\n                \"country_code\": \"FO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 63,\n                \"country_name\": \"Fiji\",\n                \"dial_code\": \"+679\",\n                \"country_code\": \"FJ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 64,\n                \"country_name\": \"Finland\",\n                \"dial_code\": \"+358\",\n                \"country_code\": \"FI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 65,\n                \"country_name\": \"France\",\n                \"dial_code\": \"+33\",\n                \"country_code\": \"FR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 66,\n                \"country_name\": \"French Guiana\",\n                \"dial_code\": \"+594\",\n                \"country_code\": \"GF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 67,\n                \"country_name\": \"French Polynesia\",\n                \"dial_code\": \"+689\",\n                \"country_code\": \"PF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 68,\n                \"country_name\": \"Gabon\",\n                \"dial_code\": \"+241\",\n                \"country_code\": \"GA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 69,\n                \"country_name\": \"Gambia\",\n                \"dial_code\": \"+220\",\n                \"country_code\": \"GM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 70,\n                \"country_name\": \"Georgia\",\n                \"dial_code\": \"+995\",\n                \"country_code\": \"GE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 71,\n                \"country_name\": \"Germany\",\n                \"dial_code\": \"+49\",\n                \"country_code\": \"DE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 72,\n                \"country_name\": \"Ghana\",\n                \"dial_code\": \"+233\",\n                \"country_code\": \"GH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 73,\n                \"country_name\": \"Gibraltar\",\n                \"dial_code\": \"+350\",\n                \"country_code\": \"GI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 74,\n                \"country_name\": \"Greece\",\n                \"dial_code\": \"+30\",\n                \"country_code\": \"GR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 75,\n                \"country_name\": \"Greenland\",\n                \"dial_code\": \"+299\",\n                \"country_code\": \"GL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 76,\n                \"country_name\": \"Grenada\",\n                \"dial_code\": \"+1 473\",\n                \"country_code\": \"GD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 77,\n                \"country_name\": \"Guadeloupe\",\n                \"dial_code\": \"+590\",\n                \"country_code\": \"GP\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 78,\n                \"country_name\": \"Guam\",\n                \"dial_code\": \"+1 671\",\n                \"country_code\": \"GU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 79,\n                \"country_name\": \"Guatemala\",\n                \"dial_code\": \"+502\",\n                \"country_code\": \"GT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 80,\n                \"country_name\": \"Guinea\",\n                \"dial_code\": \"+224\",\n                \"country_code\": \"GN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 81,\n                \"country_name\": \"Guinea-Bissau\",\n                \"dial_code\": \"+245\",\n                \"country_code\": \"GW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 82,\n                \"country_name\": \"Guyana\",\n                \"dial_code\": \"+595\",\n                \"country_code\": \"GY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 83,\n                \"country_name\": \"Haiti\",\n                \"dial_code\": \"+509\",\n                \"country_code\": \"HT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 84,\n                \"country_name\": \"Honduras\",\n                \"dial_code\": \"+504\",\n                \"country_code\": \"HN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 85,\n                \"country_name\": \"Hungary\",\n                \"dial_code\": \"+36\",\n                \"country_code\": \"HU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 86,\n                \"country_name\": \"Iceland\",\n                \"dial_code\": \"+354\",\n                \"country_code\": \"IS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 87,\n                \"country_name\": \"India\",\n                \"dial_code\": \"+91\",\n                \"country_code\": \"IN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 88,\n                \"country_name\": \"Indonesia\",\n                \"dial_code\": \"+62\",\n                \"country_code\": \"ID\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 89,\n                \"country_name\": \"Iraq\",\n                \"dial_code\": \"+964\",\n                \"country_code\": \"IQ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 90,\n                \"country_name\": \"Ireland\",\n                \"dial_code\": \"+353\",\n                \"country_code\": \"IE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 91,\n                \"country_name\": \"Israel\",\n                \"dial_code\": \"+972\",\n                \"country_code\": \"IL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 92,\n                \"country_name\": \"Italy\",\n                \"dial_code\": \"+39\",\n                \"country_code\": \"IT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 93,\n                \"country_name\": \"Jamaica\",\n                \"dial_code\": \"+1 876\",\n                \"country_code\": \"JM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 94,\n                \"country_name\": \"Japan\",\n                \"dial_code\": \"+81\",\n                \"country_code\": \"JP\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 95,\n                \"country_name\": \"Jordan\",\n                \"dial_code\": \"+962\",\n                \"country_code\": \"JO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 96,\n                \"country_name\": \"Kazakhstan\",\n                \"dial_code\": \"+7 7\",\n                \"country_code\": \"KZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 97,\n                \"country_name\": \"Kenya\",\n                \"dial_code\": \"+254\",\n                \"country_code\": \"KE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 98,\n                \"country_name\": \"Kiribati\",\n                \"dial_code\": \"+686\",\n                \"country_code\": \"KI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 99,\n                \"country_name\": \"Kuwait\",\n                \"dial_code\": \"+965\",\n                \"country_code\": \"KW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 100,\n                \"country_name\": \"Kyrgyzstan\",\n                \"dial_code\": \"+996\",\n                \"country_code\": \"KG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 101,\n                \"country_name\": \"Latvia\",\n                \"dial_code\": \"+371\",\n                \"country_code\": \"LV\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 102,\n                \"country_name\": \"Lebanon\",\n                \"dial_code\": \"+961\",\n                \"country_code\": \"LB\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 103,\n                \"country_name\": \"Lesotho\",\n                \"dial_code\": \"+266\",\n                \"country_code\": \"LS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 104,\n                \"country_name\": \"Liberia\",\n                \"dial_code\": \"+231\",\n                \"country_code\": \"LR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 105,\n                \"country_name\": \"Liechtenstein\",\n                \"dial_code\": \"+423\",\n                \"country_code\": \"LI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 106,\n                \"country_name\": \"Lithuania\",\n                \"dial_code\": \"+370\",\n                \"country_code\": \"LT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 107,\n                \"country_name\": \"Luxembourg\",\n                \"dial_code\": \"+352\",\n                \"country_code\": \"LU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 108,\n                \"country_name\": \"Madagascar\",\n                \"dial_code\": \"+261\",\n                \"country_code\": \"MG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 109,\n                \"country_name\": \"Malawi\",\n                \"dial_code\": \"+265\",\n                \"country_code\": \"MW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 110,\n                \"country_name\": \"Malaysia\",\n                \"dial_code\": \"+60\",\n                \"country_code\": \"MY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 111,\n                \"country_name\": \"Maldives\",\n                \"dial_code\": \"+960\",\n                \"country_code\": \"MV\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 112,\n                \"country_name\": \"Mali\",\n                \"dial_code\": \"+223\",\n                \"country_code\": \"ML\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 113,\n                \"country_name\": \"Malta\",\n                \"dial_code\": \"+356\",\n                \"country_code\": \"MT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 114,\n                \"country_name\": \"Marshall Islands\",\n                \"dial_code\": \"+692\",\n                \"country_code\": \"MH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 115,\n                \"country_name\": \"Martinique\",\n                \"dial_code\": \"+596\",\n                \"country_code\": \"MQ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 116,\n                \"country_name\": \"Mauritania\",\n                \"dial_code\": \"+222\",\n                \"country_code\": \"MR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 117,\n                \"country_name\": \"Mauritius\",\n                \"dial_code\": \"+230\",\n                \"country_code\": \"MU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 118,\n                \"country_name\": \"Mayotte\",\n                \"dial_code\": \"+262\",\n                \"country_code\": \"YT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 119,\n                \"country_name\": \"Mexico\",\n                \"dial_code\": \"+52\",\n                \"country_code\": \"MX\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 120,\n                \"country_name\": \"Monaco\",\n                \"dial_code\": \"+377\",\n                \"country_code\": \"MC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 121,\n                \"country_name\": \"Mongolia\",\n                \"dial_code\": \"+976\",\n                \"country_code\": \"MN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 122,\n                \"country_name\": \"Montenegro\",\n                \"dial_code\": \"+382\",\n                \"country_code\": \"ME\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 123,\n                \"country_name\": \"Montserrat\",\n                \"dial_code\": \"+1664\",\n                \"country_code\": \"MS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 124,\n                \"country_name\": \"Morocco\",\n                \"dial_code\": \"+212\",\n                \"country_code\": \"MA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 125,\n                \"country_name\": \"Myanmar\",\n                \"dial_code\": \"+95\",\n                \"country_code\": \"MM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 126,\n                \"country_name\": \"Namibia\",\n                \"dial_code\": \"+264\",\n                \"country_code\": \"NA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 127,\n                \"country_name\": \"Nauru\",\n                \"dial_code\": \"+674\",\n                \"country_code\": \"NR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 128,\n                \"country_name\": \"Nepal\",\n                \"dial_code\": \"+977\",\n                \"country_code\": \"NP\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 129,\n                \"country_name\": \"Netherlands\",\n                \"dial_code\": \"+31\",\n                \"country_code\": \"NL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 130,\n                \"country_name\": \"Netherlands Antilles\",\n                \"dial_code\": \"+599\",\n                \"country_code\": \"AN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 131,\n                \"country_name\": \"New Caledonia\",\n                \"dial_code\": \"+687\",\n                \"country_code\": \"NC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 132,\n                \"country_name\": \"New Zealand\",\n                \"dial_code\": \"+64\",\n                \"country_code\": \"NZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 133,\n                \"country_name\": \"Nicaragua\",\n                \"dial_code\": \"+505\",\n                \"country_code\": \"NI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 134,\n                \"country_name\": \"Niger\",\n                \"dial_code\": \"+227\",\n                \"country_code\": \"NE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 135,\n                \"country_name\": \"Nigeria\",\n                \"dial_code\": \"+234\",\n                \"country_code\": \"NG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 136,\n                \"country_name\": \"Niue\",\n                \"dial_code\": \"+683\",\n                \"country_code\": \"NU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 137,\n                \"country_name\": \"Norfolk Island\",\n                \"dial_code\": \"+672\",\n                \"country_code\": \"NF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 138,\n                \"country_name\": \"Northern Mariana Islands\",\n                \"dial_code\": \"+1 670\",\n                \"country_code\": \"MP\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 139,\n                \"country_name\": \"Norway\",\n                \"dial_code\": \"+47\",\n                \"country_code\": \"NO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 140,\n                \"country_name\": \"Oman\",\n                \"dial_code\": \"+968\",\n                \"country_code\": \"OM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 141,\n                \"country_name\": \"Pakistan\",\n                \"dial_code\": \"+92\",\n                \"country_code\": \"PK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 142,\n                \"country_name\": \"Palau\",\n                \"dial_code\": \"+680\",\n                \"country_code\": \"PW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 143,\n                \"country_name\": \"Panama\",\n                \"dial_code\": \"+507\",\n                \"country_code\": \"PA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 144,\n                \"country_name\": \"Papua New Guinea\",\n                \"dial_code\": \"+675\",\n                \"country_code\": \"PG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 145,\n                \"country_name\": \"Paraguay\",\n                \"dial_code\": \"+595\",\n                \"country_code\": \"PY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 146,\n                \"country_name\": \"Peru\",\n                \"dial_code\": \"+51\",\n                \"country_code\": \"PE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 147,\n                \"country_name\": \"Philippines\",\n                \"dial_code\": \"+63\",\n                \"country_code\": \"PH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 148,\n                \"country_name\": \"Poland\",\n                \"dial_code\": \"+48\",\n                \"country_code\": \"PL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 149,\n                \"country_name\": \"Portugal\",\n                \"dial_code\": \"+351\",\n                \"country_code\": \"PT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 150,\n                \"country_name\": \"Puerto Rico\",\n                \"dial_code\": \"+1 939\",\n                \"country_code\": \"PR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 151,\n                \"country_name\": \"Qatar\",\n                \"dial_code\": \"+974\",\n                \"country_code\": \"QA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 152,\n                \"country_name\": \"Romania\",\n                \"dial_code\": \"+40\",\n                \"country_code\": \"RO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 153,\n                \"country_name\": \"Rwanda\",\n                \"dial_code\": \"+250\",\n                \"country_code\": \"RW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 154,\n                \"country_name\": \"Samoa\",\n                \"dial_code\": \"+685\",\n                \"country_code\": \"WS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 155,\n                \"country_name\": \"San Marino\",\n                \"dial_code\": \"+378\",\n                \"country_code\": \"SM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 156,\n                \"country_name\": \"Saudi Arabia\",\n                \"dial_code\": \"+966\",\n                \"country_code\": \"SA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 157,\n                \"country_name\": \"Senegal\",\n                \"dial_code\": \"+221\",\n                \"country_code\": \"SN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 158,\n                \"country_name\": \"Serbia\",\n                \"dial_code\": \"+381\",\n                \"country_code\": \"RS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 159,\n                \"country_name\": \"Seychelles\",\n                \"dial_code\": \"+248\",\n                \"country_code\": \"SC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 160,\n                \"country_name\": \"Sierra Leone\",\n                \"dial_code\": \"+232\",\n                \"country_code\": \"SL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 161,\n                \"country_name\": \"Singapore\",\n                \"dial_code\": \"+65\",\n                \"country_code\": \"SG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 162,\n                \"country_name\": \"Slovakia\",\n                \"dial_code\": \"+421\",\n                \"country_code\": \"SK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 163,\n                \"country_name\": \"Slovenia\",\n                \"dial_code\": \"+386\",\n                \"country_code\": \"SI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 164,\n                \"country_name\": \"Solomon Islands\",\n                \"dial_code\": \"+677\",\n                \"country_code\": \"SB\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 165,\n                \"country_name\": \"South Africa\",\n                \"dial_code\": \"+27\",\n                \"country_code\": \"ZA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 166,\n                \"country_name\": \"South Georgia and the South Sandwich Islands\",\n                \"dial_code\": \"+500\",\n                \"country_code\": \"GS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 167,\n                \"country_name\": \"Spain\",\n                \"dial_code\": \"+34\",\n                \"country_code\": \"ES\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 168,\n                \"country_name\": \"Sri Lanka\",\n                \"dial_code\": \"+94\",\n                \"country_code\": \"LK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 169,\n                \"country_name\": \"Sudan\",\n                \"dial_code\": \"+249\",\n                \"country_code\": \"SD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 170,\n                \"country_name\": \"Suricountry_name\",\n                \"dial_code\": \"+597\",\n                \"country_code\": \"SR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 171,\n                \"country_name\": \"Swaziland\",\n                \"dial_code\": \"+268\",\n                \"country_code\": \"SZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 172,\n                \"country_name\": \"Sweden\",\n                \"dial_code\": \"+46\",\n                \"country_code\": \"SE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 173,\n                \"country_name\": \"Switzerland\",\n                \"dial_code\": \"+41\",\n                \"country_code\": \"CH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 174,\n                \"country_name\": \"Tajikistan\",\n                \"dial_code\": \"+992\",\n                \"country_code\": \"TJ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 175,\n                \"country_name\": \"Thailand\",\n                \"dial_code\": \"+66\",\n                \"country_code\": \"TH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 176,\n                \"country_name\": \"Togo\",\n                \"dial_code\": \"+228\",\n                \"country_code\": \"TG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 177,\n                \"country_name\": \"Tokelau\",\n                \"dial_code\": \"+690\",\n                \"country_code\": \"TK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 178,\n                \"country_name\": \"Tonga\",\n                \"dial_code\": \"+676\",\n                \"country_code\": \"TO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 179,\n                \"country_name\": \"Trinidad and Tobago\",\n                \"dial_code\": \"+1 868\",\n                \"country_code\": \"TT\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 180,\n                \"country_name\": \"Tunisia\",\n                \"dial_code\": \"+216\",\n                \"country_code\": \"TN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 181,\n                \"country_name\": \"Turkey\",\n                \"dial_code\": \"+90\",\n                \"country_code\": \"TR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 182,\n                \"country_name\": \"Turkmenistan\",\n                \"dial_code\": \"+993\",\n                \"country_code\": \"TM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 183,\n                \"country_name\": \"Turks and Caicos Islands\",\n                \"dial_code\": \"+1 649\",\n                \"country_code\": \"TC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 184,\n                \"country_name\": \"Tuvalu\",\n                \"dial_code\": \"+688\",\n                \"country_code\": \"TV\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 185,\n                \"country_name\": \"Uganda\",\n                \"dial_code\": \"+256\",\n                \"country_code\": \"UG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 186,\n                \"country_name\": \"Ukraine\",\n                \"dial_code\": \"+380\",\n                \"country_code\": \"UA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 187,\n                \"country_name\": \"United Arab Emirates\",\n                \"dial_code\": \"+971\",\n                \"country_code\": \"AE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 188,\n                \"country_name\": \"United Kingdom\",\n                \"dial_code\": \"+44\",\n                \"country_code\": \"GB\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 189,\n                \"country_name\": \"United States\",\n                \"dial_code\": \"+1\",\n                \"country_code\": \"US\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 190,\n                \"country_name\": \"Uruguay\",\n                \"dial_code\": \"+598\",\n                \"country_code\": \"UY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 191,\n                \"country_name\": \"Uzbekistan\",\n                \"dial_code\": \"+998\",\n                \"country_code\": \"UZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 192,\n                \"country_name\": \"Vanuatu\",\n                \"dial_code\": \"+678\",\n                \"country_code\": \"VU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 193,\n                \"country_name\": \"Wallis and Futuna\",\n                \"dial_code\": \"+681\",\n                \"country_code\": \"WF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 194,\n                \"country_name\": \"Yemen\",\n                \"dial_code\": \"+967\",\n                \"country_code\": \"YE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 195,\n                \"country_name\": \"Zambia\",\n                \"dial_code\": \"+260\",\n                \"country_code\": \"ZM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 196,\n                \"country_name\": \"Zimbabwe\",\n                \"dial_code\": \"+263\",\n                \"country_code\": \"ZW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 197,\n                \"country_name\": \"land Islands\",\n                \"dial_code\": \"\",\n                \"country_code\": \"AX\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 198,\n                \"country_name\": \"Antarctica\",\n                \"dial_code\": null,\n                \"country_code\": \"AQ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 199,\n                \"country_name\": \"Bolivia, Plurinational State of\",\n                \"dial_code\": \"+591\",\n                \"country_code\": \"BO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 200,\n                \"country_name\": \"Brunei Darussalam\",\n                \"dial_code\": \"+673\",\n                \"country_code\": \"BN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 201,\n                \"country_name\": \"Cocos (Keeling) Islands\",\n                \"dial_code\": \"+61\",\n                \"country_code\": \"CC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 202,\n                \"country_name\": \"Congo, The Democratic Republic of the\",\n                \"dial_code\": \"+243\",\n                \"country_code\": \"CD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 203,\n                \"country_name\": \"Cote d'Ivoire\",\n                \"dial_code\": \"+225\",\n                \"country_code\": \"CI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 204,\n                \"country_name\": \"Falkland Islands (Malvinas)\",\n                \"dial_code\": \"+500\",\n                \"country_code\": \"FK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 205,\n                \"country_name\": \"Guernsey\",\n                \"dial_code\": \"+44\",\n                \"country_code\": \"GG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 206,\n                \"country_name\": \"Holy See (Vatican City State)\",\n                \"dial_code\": \"+379\",\n                \"country_code\": \"VA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 207,\n                \"country_name\": \"Hong Kong\",\n                \"dial_code\": \"+852\",\n                \"country_code\": \"HK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 208,\n                \"country_name\": \"Iran, Islamic Republic of\",\n                \"dial_code\": \"+98\",\n                \"country_code\": \"IR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 209,\n                \"country_name\": \"Isle of Man\",\n                \"dial_code\": \"+44\",\n                \"country_code\": \"IM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 210,\n                \"country_name\": \"Jersey\",\n                \"dial_code\": \"+44\",\n                \"country_code\": \"JE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 211,\n                \"country_name\": \"Korea, Democratic People's Republic of\",\n                \"dial_code\": \"+850\",\n                \"country_code\": \"KP\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 212,\n                \"country_name\": \"Korea, Republic of\",\n                \"dial_code\": \"+82\",\n                \"country_code\": \"KR\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 213,\n                \"country_name\": \"Lao People's Democratic Republic\",\n                \"dial_code\": \"+856\",\n                \"country_code\": \"LA\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 214,\n                \"country_name\": \"Libyan Arab Jamahiriya\",\n                \"dial_code\": \"+218\",\n                \"country_code\": \"LY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 215,\n                \"country_name\": \"Macao\",\n                \"dial_code\": \"+853\",\n                \"country_code\": \"MO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 216,\n                \"country_name\": \"Macedonia, The Former Yugoslav Republic of\",\n                \"dial_code\": \"+389\",\n                \"country_code\": \"MK\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 217,\n                \"country_name\": \"Micronesia, Federated States of\",\n                \"dial_code\": \"+691\",\n                \"country_code\": \"FM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 218,\n                \"country_name\": \"Moldova, Republic of\",\n                \"dial_code\": \"+373\",\n                \"country_code\": \"MD\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 219,\n                \"country_name\": \"Mozambique\",\n                \"dial_code\": \"+258\",\n                \"country_code\": \"MZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 220,\n                \"country_name\": \"Palestinian Territory, Occupied\",\n                \"dial_code\": \"+970\",\n                \"country_code\": \"PS\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 221,\n                \"country_name\": \"Pitcairn\",\n                \"dial_code\": \"+872\",\n                \"country_code\": \"PN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 222,\n                \"country_name\": \"Réunion\",\n                \"dial_code\": \"+262\",\n                \"country_code\": \"RE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 223,\n                \"country_name\": \"Russia\",\n                \"dial_code\": \"+7\",\n                \"country_code\": \"RU\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 224,\n                \"country_name\": \"Saint Barthélemy\",\n                \"dial_code\": \"+590\",\n                \"country_code\": \"BL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 225,\n                \"country_name\": \"Saint Helena, Ascension and Tristan Da Cunha\",\n                \"dial_code\": \"+290\",\n                \"country_code\": \"SH\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 226,\n                \"country_name\": \"Saint Kitts and Nevis\",\n                \"dial_code\": \"+1 869\",\n                \"country_code\": \"KN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 227,\n                \"country_name\": \"Saint Lucia\",\n                \"dial_code\": \"+1 758\",\n                \"country_code\": \"LC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 228,\n                \"country_name\": \"Saint Martin\",\n                \"dial_code\": \"+590\",\n                \"country_code\": \"MF\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 229,\n                \"country_name\": \"Saint Pierre and Miquelon\",\n                \"dial_code\": \"+508\",\n                \"country_code\": \"PM\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 230,\n                \"country_name\": \"Saint Vincent and the Grenadines\",\n                \"dial_code\": \"+1 784\",\n                \"country_code\": \"VC\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 231,\n                \"country_name\": \"Sao Tome and Principe\",\n                \"dial_code\": \"+239\",\n                \"country_code\": \"ST\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 232,\n                \"country_name\": \"Somalia\",\n                \"dial_code\": \"+252\",\n                \"country_code\": \"SO\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 233,\n                \"country_name\": \"Svalbard and Jan Mayen\",\n                \"dial_code\": \"+47\",\n                \"country_code\": \"SJ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 234,\n                \"country_name\": \"Syrian Arab Republic\",\n                \"dial_code\": \"+963\",\n                \"country_code\": \"SY\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 235,\n                \"country_name\": \"Taiwan, Province of China\",\n                \"dial_code\": \"+886\",\n                \"country_code\": \"TW\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 236,\n                \"country_name\": \"Tanzania, United Republic of\",\n                \"dial_code\": \"+255\",\n                \"country_code\": \"TZ\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 237,\n                \"country_name\": \"Timor-Leste\",\n                \"dial_code\": \"+670\",\n                \"country_code\": \"TL\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 238,\n                \"country_name\": \"Venezuela, Bolivarian Republic of\",\n                \"dial_code\": \"+58\",\n                \"country_code\": \"VE\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 239,\n                \"country_name\": \"Viet Nam\",\n                \"dial_code\": \"+84\",\n                \"country_code\": \"VN\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 240,\n                \"country_name\": \"Virgin Islands, British\",\n                \"dial_code\": \"+1 284\",\n                \"country_code\": \"VG\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            {\n                \"id\": 241,\n                \"country_name\": \"Virgin Islands, U.S.\",\n                \"dial_code\": \"+1 340\",\n                \"country_code\": \"VI\",\n                \"comment\": null,\n                \"deleted_at\": null,\n                \"created_at\": null,\n                \"updated_at\": null\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get currencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/api/countries",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"countries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get currencies",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/countries",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"countries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Currencies retrieved successfully\",\n    \"data\": {\n        \"currencies\": [\n            {\n                \"id\": 1,\n                \"name\": \"Naira\",\n                \"symbol\": \"₦\",\n                \"abbreviation\": \"NGN\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"updated_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"country\": {\n                    \"id\": 135,\n                    \"country_name\": \"Nigeria\",\n                    \"dial_code\": \"+234\",\n                    \"country_code\": \"NG\",\n                    \"comment\": null,\n                    \"deleted_at\": null,\n                    \"created_at\": null,\n                    \"updated_at\": null\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Pounds\",\n                \"symbol\": \"£\",\n                \"abbreviation\": \"GBP\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"updated_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"country\": null\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Euro\",\n                \"symbol\": \"€\",\n                \"abbreviation\": \"EURO\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"updated_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"country\": null\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Dollar\",\n                \"symbol\": \"$\",\n                \"abbreviation\": \"USD\",\n                \"deleted_at\": null,\n                \"created_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"updated_at\": \"2025-05-19T15:01:23.000000Z\",\n                \"country\": null\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}
