@@ -31,3 +31,22 @@ export const useSignupIndividual = () =>{
     mutationKey: ['signup-individual']
   })
 }
+
+const registerOrganization = async (organizationData: OrganizationSignUpFormData) => {
+  const formData = new FormData();
+  Object.entries(organizationData).forEach(([key, value]) => {
+    if (value !== undefined) {
+      formData.append(key, value);
+    }
+  });
+  
+  const response = await api.post('/register-organization', formData);
+  return response.data;
+}
+
+export const useSignupOrganization = () => {
+  return useMutation({
+    mutationFn: registerOrganization,
+    mutationKey: ['signup-organization']
+  })
+}
