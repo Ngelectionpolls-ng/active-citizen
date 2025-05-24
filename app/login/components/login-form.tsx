@@ -3,14 +3,20 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useLogin } from '@/service/auth'
+import { Loader2 } from 'lucide-react'
+import { toast } from 'sonner'
 
 // Login schema
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email'),
   password: z.string().min(8, 'Password must be at least 8 characters')
 })
-
-const LoginForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
+interface LoginFormInputs {
+  email: string;
+  password: string;
+}
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -18,6 +24,22 @@ const LoginForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
   } = useForm({
     resolver: zodResolver(loginSchema)
   })
+  const {mutate: loginUser, isPending} = useLogin()
+
+
+  const onSubmit = async (data: LoginFormInputs) => {
+    console.log(data)
+    loginUser(data, {
+      onSuccess: (res) => {
+        console.log(res)
+      },
+      onError: (res) =>{
+        console.log('erro here')
+        //@ts-ignore
+        toast.error(`${res?.response?.data?.message}`);
+      }
+    })
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -61,9 +83,18 @@ const LoginForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
       <div>
         <button
           type="submit"
+          disabled={isPending}
           className="w-full flex justify-center py-2 px-6 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brandgreen hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          Log in
+          {
+            isPending ?
+            <Loader2 className='animate-spin' />
+            :
+            <p>
+
+              Log in
+            </p>
+          }
         </button>
       </div>
     </form>

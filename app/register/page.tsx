@@ -106,7 +106,7 @@ const Register: React.FC = () => {
         <div className="w-full transition-all duration-300 max-w-lg mx-auto">
           {registrationType === "individual" ? (
             <div className="animate-fadeIn">
-              <SignupForm onSubmit={handleSubmit} />
+              <SignupForm  />
             </div>
           ) : (
             <div className="animate-fadeIn">
