@@ -1,6 +1,39 @@
-
 "use client";
 
+import { Suspense } from "react";
+
+// Main page component with Suspense boundary
+export default function VerifyPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-md w-full space-y-8">
+            <div className="text-center">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
+                <div className="space-y-4">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                    <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Loading...
+                  </h2>
+                  <p className="text-gray-600">
+                    Please wait while we prepare the verification page...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <VerifyContent />
+    </Suspense>
+  );
+}
+
+// Separate client component for verification logic
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,10 +41,12 @@ import { Icons } from "@/components/shared/icons";
 import { CheckCircle, XCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function VerifyPage() {
+function VerifyContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [verificationStatus, setVerificationStatus] = useState<"loading" | "success" | "error">("loading");
+  const [verificationStatus, setVerificationStatus] = useState<
+    "loading" | "success" | "error"
+  >("loading");
   const [message, setMessage] = useState("");
 
   const token = searchParams.get("token");
@@ -41,7 +76,9 @@ export default function VerifyPage() {
         } else {
           const errorData = await response.json();
           setVerificationStatus("error");
-          setMessage(errorData.message || "Verification failed. Please try again.");
+          setMessage(
+            errorData.message || "Verification failed. Please try again."
+          );
         }
       } catch (error) {
         setVerificationStatus("error");
@@ -58,7 +95,7 @@ export default function VerifyPage() {
 
   const handleResendVerification = async () => {
     if (!email) return;
-    
+
     try {
       const response = await fetch("/api/resend-verification", {
         method: "POST",
@@ -69,13 +106,17 @@ export default function VerifyPage() {
       });
 
       if (response.ok) {
-        setMessage("Verification email has been resent! Please check your inbox.");
+        setMessage(
+          "Verification email has been resent! Please check your inbox."
+        );
       } else {
         const errorData = await response.json();
         setMessage(errorData.message || "Failed to resend verification email.");
       }
     } catch (error) {
-      setMessage("An error occurred while resending the email. Please try again.");
+      setMessage(
+        "An error occurred while resending the email. Please try again."
+      );
     }
   };
 
@@ -86,7 +127,7 @@ export default function VerifyPage() {
           <Link href="/" className="inline-block mb-8">
             <Icons.logo className="size-16 mx-auto" />
           </Link>
-          
+
           <div className="bg-white p-8 rounded-lg shadow-lg">
             {verificationStatus === "loading" && (
               <div className="space-y-4">
@@ -119,14 +160,14 @@ export default function VerifyPage() {
                   )}
                 </div>
                 <div className="space-y-3">
-                  <Button 
+                  <Button
                     onClick={handleContinue}
                     className="w-full bg-textgreen hover:bg-textgreen/90 text-white"
                   >
                     Continue to Login
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={() => router.push("/")}
                     className="w-full"
                   >
@@ -149,22 +190,22 @@ export default function VerifyPage() {
                 </div>
                 <div className="space-y-3">
                   {email && (
-                    <Button 
+                    <Button
                       onClick={handleResendVerification}
                       className="w-full bg-textgreen hover:bg-textgreen/90 text-white"
                     >
                       Resend Verification Email
                     </Button>
                   )}
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={() => router.push("/register")}
                     className="w-full"
                   >
                     Back to Registration
                   </Button>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     onClick={() => router.push("/")}
                     className="w-full"
                   >
